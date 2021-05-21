@@ -1,0 +1,95 @@
+$custom-primary: #f47b4e;
+$custom-secondary: #203e4b;
+
+page-challenge-sport-list {
+  ion-toolbar {
+    height: 84px;
+    .toolbar-background {
+      background-image: url(../assets/img/challenge-list-header.png);
+      background-color: #16212b;
+    }
+    .toolbar-title {
+      color: white;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-family: "industry-black";
+    }
+  }
+
+  .row {
+    .col {
+      height: 64px;
+      display: flex;
+      align-items: center;
+
+      justify-content: center;
+      color: $custom-secondary;
+      text-transform: uppercase;
+      font-size: 21px;
+      font-family: "industry-black";
+      background-color: #f4f4f4;
+    }
+  }
+  .list-item {
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 15px 0px 17px 0px;
+    margin: 8px 16px 0px 16px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    line-height: 1.2;
+
+    &:first-child {
+      margin-top: 16px;
+    }
+
+    &:last-child {
+      margin-bottom: 8px;
+    }
+
+    .media {
+      padding: 8px 16px;
+      img.icon {
+        height: 30px;
+        width: 30px;
+      }
+    }
+    .sub-text {
+      color: #e8ecac;
+      font-family: roboto-regular;
+      font-size: 15px;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    .title {
+      font-family: industry-black;
+      font-size: 26px;
+      text-transform: uppercase;
+    }
+    .next {
+      font-size: 26px;
+      padding: 8px 16px;
+    }
+    &.nba,
+    &.ncaab {
+      background-image: url(../assets/img/sport-background-basketball.png);
+    }
+    &.nfl,
+    &.ncaaf {
+      background-image: url(../assets/img/sport-background-football.png);
+    }
+    &.mma {
+      background-image: url(../assets/img/sport-background-hockey.png);
+    }
+    &.golf {
+      background-image: url(../assets/img/sport-background-golf.png);
+    }
+    &.nhl {
+      background-image: url(../assets/img/sport-background-hockey.png);
+    }
+  }
+}

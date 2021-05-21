@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="showpopupw">
+    <ion-row style="border-bottom: 15px solid #e4e4e4;padding-bottom: 25px;">
+      <ion-col>
+        <h2 style="text-align: center;">Withdraw Options</h2>
+        <p style="text-align: center;">Your account currently has a rollover requirement. At the moment, you have
+          complete {{withdrawspent | currency:'USD':'2.1-2'}} of the {{totalWithdraw | currency:'USD':'2.1-2'}}
+          requirement in order to request a payout</p>
+      </ion-col>
+    </ion-row>
+    <div style="background-color: white; flex-direction:column">
+      <ion-row (click)="goFund()" class="lrow" id="makeDeposit">
+        <ion-col class="lcol1">Make a Deposit</ion-col>
+        <ion-col style="float: right;"><img style="padding: 22px 0px 0px 0px;float: right;"
+            src="./assets/img/MyAccount_RightArrow.png" /></ion-col>
+      </ion-row>
+      <ion-row (click)="GoToBonus()" class="lrow2" id="goBonus">
+        <ion-col class="lcol1">Manage Bonus Funds</ion-col>
+        <ion-col style="float: right;"><img style="padding: 22px 0px 0px 0px;float: right;"
+            src="./assets/img/MyAccount_RightArrow.png" /></ion-col>
+      </ion-row>
+      <ion-row (click)="GoToMyChallenge()" class="lrow2" id="accountActivity">
+        <ion-col class="lcol2">Account Activity</ion-col>
+        <ion-col style="float: right;"><img style="padding: 15px 0px 0px 0px;float: right;"
+            src="./assets/img/MyAccount_RightArrow.png" /></ion-col>
+      </ion-row>
+      <ion-row (click)="mailToSupport()" class="lrow2" id="contactSuport">
+        <ion-col class="lcol2">Contact Support</ion-col>
+        <ion-col style="float: right;"><img style="padding: 15px 0px 0px 0px;float: right;"
+            src="./assets/img/MyAccount_RightArrow.png" /></ion-col>
+      </ion-row>
+      <ion-row (click)="editProfile()" class="lrow2" id="contactSuport">
+        <ion-col class="lcol2"> Edit My Profile</ion-col>
+        <ion-col style="float: right;"><img style="padding: 15px 0px 0px 0px;float: right;"
+            src="./assets/img/MyAccount_RightArrow.png" /></ion-col>
+      </ion-row>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!showpopupw">
+    <div class="header-custom">
+      <div>
+        <img (click)="toBack()" src="/assets/img/Path 298.svg" alt="">
+      </div>
+      <h3>WITHDRAW FUNDS</h3>
+    </div>
+
+    <div class="select-option-section">
+      <ion-label class="heading">You have <span>${{fund}}</span> available.</ion-label>
+
+      <div class="box-enter">
+        <h3 id="p1">1. Enter amount to withdraw</h3>
+        <div class="input-holder">
+          <span>$</span>
+          <ion-input placeholder="0.00" type="tel" pattern="[0-9]*" inputmode="numeric" maxlength="7"
+          class="available-input" [(ngModel)]="wamount" (change)="enableButton()" (keyup)="keyup($event)"></ion-input>
+        </div>
+        <h3 id="p2">2. Choose your withdrawal method</h3>
+        <div id="options">
+          <button ion-button [ngClass]="withdrawOption=='paypal'?'select-button':''" outline icon-start (click)="selectWithdrawOption('paypal')">
+            <div>
+              <img src="/assets/img/icon-payment/Group 182.svg" alt="">
+            </div>
+            <span>Paypal</span>
+          </button>
+
+          <button ion-button outline icon-start [ngClass]="withdrawOption=='credit'?'select-button':''" (click)="selectWithdrawOption('credit')">
+            <div>
+              <img src="/assets/img/icon-payment/Group 181.svg" alt="">
+            </div>
+            <span>Credit Card</span>
+          </button>
+
+          <button ion-button outline icon-start [ngClass]="withdrawOption=='Courier_Check'?'select-button':''" (click)="selectWithdrawOption('Courier_Check')">
+            <div>
+              <img src="/assets/img/icon-payment/Group 196.svg" alt="">
+            </div>
+            <span>Courier Check</span>
+          </button>
+        </div>
+
+        <div id="button-action" style="padding:30px 0 ">
+          <button ion-button (click)="confirmWidhraw()" [disabled]="!buttonD">WITHDRAW FUNDS</button>
+        </div>
+      </div>
+
+
+
+    </div>
+    <!-- <ion-row class="gray-bg"> -->
+      <!-- <ion-col col-12>
+        <span style="color:gray;font-size: 16px;">View</span> <span style="color: #488aff;font-weight: bold;">Withdrawal Policy</span>
+      </ion-col> -->
+      <!-- <ion-col col-12>
+        <button ion-button outline class="gray-btn" [disabled]="!buttonD" (click)="confirmWidhraw()">WITHDRAW
+          FUNDS</button>
+      </ion-col>
+      <ion-col col-12>
+        <span style="color:#f47b4e;font-weight:bold" (click)="goback()">Cancel</span>
+      </ion-col>
+    </ion-row> -->
+    <div class="popup" *ngIf="showpopup">
+      <div class="content">
+        <img src="./assets/img/logo.png" alt="">
+        <div class="close">
+          <ion-icon name="close" (click)="closePopup()"></ion-icon>
+        </div>
+        <h2>Withdrawal Submitted</h2>
+        <p>We've received your withdrawal request in the amount of ${{wamount}} and your payment is pending processing.
+        </p>
+        <button ion-button outline class="orange-btn" (click)="closePopup()">CONTINUE</button>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>
+
+<!-- <ion-content padding *ngIf="withdrawOption=='CREDIT_CARD'">
+    <div>
+      <ion-label class="seg_title">How much do you want to withdraw?</ion-label>
+        <div id="drawamount">
+            <ion-input placeholder="&#36;&nbsp;Enter other amount" type="number" [(ngModel)]="wamount" (change)="enableButton()"></ion-input>
+        </div>
+        <div radio-group [(ngModel)]="repaymenttype" class="repaymenttype">
+          <ion-label><ion-radio value="0" (ionSelect)="reselectPayment(0)" style="margin-right:2vw"></ion-radio>Withdraw to card on file</ion-label>
+          <ion-label><ion-radio value="1" (ionSelect)="reselectPayment(1)" style="margin-right:2vw"></ion-radio>Courier Check for full amount</ion-label>
+        </div>
+
+        <button ion-button id="game_btn1" (click)="confirmWidhraw()" [disabled]="!buttonD">WITHDRAW FUNDS</button>
+    </div>
+  </ion-content> -->
+
+<!-- <ion-content padding *ngIf="withdrawOption =='PAYPAL'">
+        <div style="margin-top:70px;text-align:center">
+            <ion-label class="seg_title">Sorry we don't have option for now.</ion-label>
+        </div>
+ </ion-content> -->

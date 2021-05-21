@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+  <!-- <ion-navbar>
+    Bonus Funds
+  </ion-navbar> -->
+
+</ion-header>
+
+
+<ion-content padding>
+
+ <ng-container *ngFor="let item of bonus" class="box">
+   <ng-container *ngIf="item.redeemed">
+     <ion-row class="box">
+      <ion-col col-12>
+        <h2>{{item.bonusname}} <br> <small>{{item.rollover}}x Rollover</small></h2>
+      </ion-col>
+      <ion-col  class="col1">
+        <p class="amount">{{item.bonus_amount | currency:'USD':'2.1-2'}}</p>
+        <p class="l1">Bonus</p>
+        <p class="l2">Amonut</p>
+      </ion-col>
+      <ion-col  class="col2">
+        <p class="amount">{{item.rollover_total | currency:'USD':'2.1-2'}}</p>
+        <p class="l1"style="">Rollover</p>
+        <p class="l2">Requirement</p>
+      </ion-col>
+      <ion-col>
+        <p class="amount">{{item.completed_amount | currency:'USD':'2.1-2'}}</p>
+        <p class="l1">Completed</p>
+      </ion-col>
+    </ion-row>
+   </ng-container>
+ </ng-container>
+ <ion-row *ngIf="!showBonus">
+   <ion-col style="text-align: center;">
+    You have no bonuses
+   </ion-col>
+ </ion-row>
+</ion-content>

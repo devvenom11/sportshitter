@@ -1,0 +1,32 @@
+page-contest-sport {
+    .card-ios{
+        margin:0px;
+        margin-top:10px;
+        width:100%;
+    }
+
+    .back-button-text-ios, .back-button-text-md {        
+        display: none;
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .item-ios ion-avatar, .item-md ion-avatar {
+        min-width: 30px;
+        min-height: 30px;
+    }
+}

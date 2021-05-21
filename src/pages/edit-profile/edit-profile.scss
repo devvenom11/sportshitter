@@ -1,0 +1,33 @@
+page-edit-profile {
+    .name{
+        margin: 10px 0px;
+        font-size: 2rem;
+        color: #203e4b;
+    }
+    .subname{
+        color: rgba(142, 135, 135, 0.5)
+    }
+    .orange-icon{
+        padding-right: 20px;
+        font-size: 3rem;
+        color: #f4845a;
+    }
+    .email{
+        color: rgba(32, 62, 75, 0.8);
+        font-size: 1.5rem;
+    }
+    .data-field{
+        border-bottom: 1px solid #f4f4f4;
+        padding: 20px 10px;
+        -webkit-box-shadow: 6px 4px 9px 12px #f4f4f4;
+        box-shadow: 6px 4px 9px 3px #f4f4f4;
+        margin: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid #f4f4f4;
+        .col{
+            align-items: center;
+            display: flex;
+
+        }
+    }
+}

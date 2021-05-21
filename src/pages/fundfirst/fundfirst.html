@@ -1,0 +1,152 @@
+<ion-header>
+
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+
+  </ion-header>
+  <ion-content style="background: #F4F4F4">
+    <div class="popup" *ngIf="showpopup">
+        <div class="content">
+          <ion-row style="padding:10px 20px">
+            <ion-col col-3>
+              <img src="./assets/img/Check credit card.svg" alt="">
+            </ion-col>
+            <ion-col col-9>
+              <h2>{{title}}</h2>
+            </ion-col>
+          </ion-row>
+          <div class="description">
+            <ion-row>
+              <ion-col col-12>
+                <div [innerHTML]="description"></div>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div style="text-align: center;"><button ion-button outline class="deposit-btn" (click)="closePopup()">GOT IT</button></div>
+        </div>
+    </div>
+    <!-- <div *ngIf="firstLogin == 'true'">
+      <p class="offer-text">Fund Your Account Today</p>
+    </div> -->
+    <ion-grid class="banner-container">
+      <ion-row>
+        <ion-col col-12>
+          <h2 class="banner-title">DEPOSIT FUNDS</h2>
+          <div class="close" (click)="closeModal()"><svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)" /></svg></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid style="background: #1F2932;padding: 10px 30px;height: 64px;justify-content: center;">
+      <ion-row class="sub-header">
+        <ion-col col-7 class="label">Current Balance:</ion-col>
+        <ion-col col-5 class="value">{{ (fund * 100) / 100 | currency:'USD':'2.1-2'}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <div [ngSwitch]="icons" class="div_amount">
+      <div id="triggerkeyboard">
+        <div class="bg-white">
+          <h2 class="green-title">SELECT AMOUNT</h2>
+          <ion-segment [(ngModel)]="amount">
+            <ion-segment-button value="25" (click)="selectAmountOther(25); deposit = false">$25</ion-segment-button>
+            <ion-segment-button value="50" (click)="selectAmountOther(50)">$50</ion-segment-button>
+            <ion-segment-button value="100" (click)="selectAmountOther(100)">$100</ion-segment-button>
+            <ion-segment-button value="250" (click)="selectAmountOther(250)">$250</ion-segment-button>
+            <!-- <ion-segment-button value="" (click)="selectAmountOther(-1)">Other</ion-segment-button> -->
+          </ion-segment>
+          <span class="add-more" (click)="selectAmountOther(-1)">Click here for deposits over $250</span>
+        </div>
+        <div class="bg-white">
+          <ion-row>
+            <ion-col>
+              <h2 class="green-title" style="margin-bottom: 0;">CREDIT CARD INFORMATION</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <ion-label color="primary" stacked class="label-input">Card Number</ion-label>
+              <ion-input type="text" placeholder="1111 2222 3333 4444" [(ngModel)]="cardNumber" class="input-style bg-input"></ion-input>
+            </ion-col>
+            <ion-col col-7>
+              <ion-row>
+                <ion-col col-12>
+                  <ion-label color="primary" stacked class="label-no-marging">Expiration Date</ion-label>
+                </ion-col>
+                <ion-col col-5>
+                  <ion-input type="number" placeholder="MM" [(ngModel)]="cardMonth" class="input-style"></ion-input>
+                </ion-col>
+                <ion-col col-7>
+                  <ion-input type="number" placeholder="YYYY" [(ngModel)]="cardYear" class="input-style"></ion-input>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col col-5>
+              <ion-row>
+                <ion-col col-11 offset-1>
+                  <ion-label color="primary" stacked class="label-no-marging">CVV <img src="../../assets/img/Group 419.svg" alt=""></ion-label>
+                </ion-col>
+                <ion-col col-11 offset-1>
+                  <ion-input type="number" placeholder="123" [(ngModel)]="cardCVV" class="input-style"></ion-input>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col col-12 style="border-top: 1.5px solid rgba(51, 106, 130, .31);margin-top: 20px;padding-top: 15px;">
+              <button ion-button block (click)="validateCard()" class="deposit-btn">
+                Deposit
+              </button>
+            </ion-col>
+          </ion-row>
+          <!-- <div *ngIf="amount==100" style="width: 100%;text-align: center;margin-top: 20vh;" >
+            <form novalidate (ngSubmit)="buy($event)" [formGroup]="stripeTest" style="text-align: center;">
+              <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+              <button id="game_btn" type="submit" (click)="btnaddfund()" block>
+                <img src="./assets/img/card_buynow.png" style="width:50vw;">
+              </button>
+            </form>
+          </div>
+          <div *ngIf="amount==250" style="width: 100%;text-align: center;margin-top: 20vh;" >
+            <form novalidate (ngSubmit)="buy($event)" [formGroup]="stripeTest" style="text-align: center;">
+              <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+              <button id="game_btn" type="submit" (click)="btnaddfund()" block>
+                <img src="./assets/img/card_buynow.png" style="width:50vw;">
+              </button>
+            </form>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- <div *ngSwitchCase="'withdraw'">
+            <ion-label class="seg_title">How much do you want to withdraw?</ion-label>
+            <div id="drawamount">
+                <ion-input placeholder="&#36;&nbsp;Enter other amount" type="number" [(ngModel)]="wamount"></ion-input>
+            </div>
+
+            <ion-label class="seg_title">Select repayment method:</ion-label>
+
+            <div radio-group [(ngModel)]="repaymenttype" class="repaymenttype">
+                <div *ngFor="let item of prevpaylist;let i = index;">
+                    <ion-label *ngIf="item.type=='card'"><ion-radio value="card{{i}}" (ionSelect)="reselectPayment(0,item._id,i)"></ion-radio>&nbsp;&nbsp;&nbsp;Card ({{item.createdAt | date: 'MM/dd/yy hh:mm'}})</ion-label>
+                    <ion-label *ngIf="item.type=='paypal'"><ion-radio value="paypal{{i}}" (ionSelect)="reselectPayment(1,item._id)"></ion-radio>&nbsp;&nbsp;&nbsp;Paypal</ion-label>
+                </div>
+            </div>
+
+            <button ion-button id="game_btn1" (click)="btnwithdrawfund()">WITHDRAW FUNDS</button>
+        </div> -->
+    </div>
+  </ion-content>

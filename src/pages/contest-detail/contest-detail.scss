@@ -1,0 +1,53 @@
+page-contest-detail {
+    
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .back-button-text-ios, .back-button-text-md {        
+        display: none;
+    }
+
+    .seg_title{
+        font-size: 12px;
+        color: #3a3a3a;
+    }
+    .segment-ios .segment-button.segment-activated, .segment-md .segment-button.segment-activated {        
+        background-color: #f47b4e;  
+        border-color: #f47b4e; 
+        font-size: 12px;
+        font-style: italic;    
+    }
+    .segment-ios .segment-button {        
+        border-color: #ee8d73;
+        background-color: #ee8d73;       
+        color: #fff;        
+    }
+    .game_btn{
+        margin-top: 5vw;
+        width: 100%;
+        transform: translateX(-25%);
+        button{
+            color: #223e4b;background-color: #f47b4e;margin-top: 5vw;width: 50%; 
+        }
+    }
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    }   
+    .segment-md .segment-button {
+        color:#fff;
+        background-color: #f98e70;
+    }    
+}

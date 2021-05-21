@@ -1,0 +1,42 @@
+page-play-points {
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    .scroll-content {
+        padding-top: 0px!important;
+        background: #f4f5f6 !important;
+    }        
+    .reddem{
+        background: #f37447;
+        padding: 17px;
+        letter-spacing: 1px;
+    }
+    .item-row{
+        margin-top: 0;
+        display: flex; 
+        padding: 14px; 
+        border-bottom: 1px solid #F8F8F8;
+        margin-left: 35px;
+        margin-right: 29px;
+        align-items: center;
+        &:last-child{
+            border-bottom: 0;
+        }
+    }
+    .lcol1{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: normal;
+    }
+    .social-row{
+        padding: 30px 0;
+    }
+    .popup img{
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+}

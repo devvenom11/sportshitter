@@ -1,0 +1,263 @@
+page odds.html
+<ion-header>
+  <!-- <ion-navbar>
+    <button ion-button menuToggle>
+      <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+      <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl">Balance <br> <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span>
+        </ion-label>
+      </button>
+      <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+        <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar> -->
+
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="search == 'show'">
+    <ion-searchbar [(ngModel)]="searchWord" [showCancelButton]="true" (ionInput)="onSearch()"
+      (ionCancel)="onSearchCancel()" style="position:fixed;z-index: 1000;background-color: #F8F8F8;">
+    </ion-searchbar>
+  </div>
+  <ion-list class="search" style="margin-bottom:0px" [style.margin-top]="search == 'show'?'55px':'0px'">
+    <ion-item *ngFor="let user of searcheduserlist;let i = index;">
+      <ion-icon name="md-add" style="font-size: 2.8rem;color:#f47b4e;padding-left: 20px;" item-start
+        (click)="setfav(user)"></ion-icon>
+      <ion-label style="margin: 0px;
+               height: 100%;
+               display: flex;
+               align-items: center;" (click)="goDetail(user,i);">
+        &nbsp;&nbsp;{{user.username?user.username:user.displayname}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <div [style.margin-top]="search == 'show'?(searcheduserlist.length==0?'55px':''):''">
+    <!-- <div *ngIf="banner === true">
+                    <ion-row name >
+                            <img src='./assets/img/thumbnail_SH FOOTBALL BANNER-01.png' style="height: 60%; width:100%;"/>
+
+                    </ion-row>
+            </div> -->
+    <div *ngIf="banner === false">
+
+    </div>
+    <div class="green-menu">
+      <div>
+        <ul class="list-menu">
+          <li class="active">ODDS</li>
+          <li (click)="gotoChooseChallenges()">CHALLENGES</li>
+          <li (click)="gotoChooseResult()">RESULTS</li>
+          <li (click)="gotoHowtoplay()">HOW TO PLAY</li>
+          <!-- <li>PROMOS</li>
+                  <li (click)="gotoChooseAccount()">MY ACCOUNT</li>
+                   -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- sport menu filter -->
+    <div id="sport-menu-slides">
+      <ion-slides pager="false" [slidesPerView]='6.5'>
+        <ion-slide>
+          <div class="menu-circle item-menu" (click)="showGamesBySport('all')" [ngClass]="{'is-active':isActive=='all'}"
+            id="filterAll">
+            <img src="/assets/img/odds/Group 122.svg" class="icon" alt="">
+            <img src="/assets/img/icons-sports/Group 133.svg" class="icon-white" alt="">
+          </div>
+        </ion-slide>
+        <ion-slide *ngFor="let item of menuObj; let i=index;">
+          <div *ngIf="item.status && !sportEnable.includes(item.game); else enabled"
+            style="text-align: center;justify-content: center;"
+            [ngClass]="{'is-disabled':!sportEnable.includes(item.game)}">
+            <div class="menu-circle item-menu" id="filter{{item.game}}">
+              <img class="icon-white" src="{{sportsImageURLOtherColor[item.game]}}">
+              <img class="icon" src="{{sportsImageURL[item.game]}}">
+            </div>
+          </div>
+          <ng-template #enabled>
+            <div *ngIf="item.status" style="text-align:center;justify-content:center">
+              <div class="menu-circle item-menu" (click)="showGamesBySport(item.game)"
+                [ngClass]="{'is-active':isActive==item.game}" id="filter{{item.game}}">
+                <img class="icon-white" src="{{sportsImageURLOtherColor[item.game]}}">
+                <img class="icon" src="{{sportsImageURL[item.game]}}">
+              </div>
+            </div>
+          </ng-template>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <ion-grid id="sport-menu" style="display: none;">
+      <ion-row>
+        <ng-container *ngFor="let item of menuObj; let i=index;">
+          <ion-col *ngIf="i==0" style="text-align: center;justify-content: center;">
+            <div class="menu-circle" (click)="showGamesBySport('all')" [ngClass]="{'is-active':isActive=='all'}"
+              id="filterAll">
+              <img src="/assets/img/odds/Group 122.svg" alt="">
+            </div>
+          </ion-col>
+          <ion-col *ngIf="item.status && !sportEnable.includes(item.game); else enabled"
+            style="text-align: center;justify-content: center;"
+            [ngClass]="{'is-disabled':!sportEnable.includes(item.game)}">
+            <div class="menu-circle" id="filter{{item.game}}"><img src="{{sportsImageURLOtherColor[item.game]}}"></div>
+          </ion-col>
+          <ng-template #enabled>
+            <ion-col *ngIf="item.status" style="text-align: center;justify-content: center;">
+              <div class="menu-circle" (click)="showGamesBySport(item.game)"
+                [ngClass]="{'is-active':isActive==item.game}" id="filter{{item.game}}"><img
+                  src="{{sportsImageURLOtherColor[item.game]}}"></div>
+            </ion-col>
+          </ng-template>
+        </ng-container>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class='games' [ngClass]="i1>1?'border-divide space-divide':''" [hidden]='sport.sports.length <= 0' *ngFor="let sport of sportGames; let i1=index;">
+      <ion-row>
+        <ion-col col-12>
+          <ion-row class="fullWidth">
+            <ion-col col-12>
+              <p class="game_title team"> <img src="{{sportsImageURL[sport.game]}}" alt="">
+                <span class="industry-bold">{{sport.game | uppercase}} Game Lines</span></p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="table">
+        <ion-col col-12>
+          <table *ngFor="let game of sport.sports">
+            <tr class="header">
+              <td>{{game.newparsedTime}}</td>
+              <td>SH</td>
+              <td>
+                <p *ngIf="sport.game == 'nhl' || sport.game == 'mlb' || sport.game == 'mma'">Money</p>
+                <p *ngIf="sport.game != 'nhl' && sport.game != 'mlb' && sport.game != 'mma'">Spread</p>
+              </td>
+              <td [ngClass]="{'hide-val':sport.game=='golf' || sport.game=='nascar'}">
+                O/U
+              </td>
+            </tr>
+            <tr class="datas">
+              <td>
+                <p>{{game.AwayTeam}}</p>
+                <span *ngIf="game.AwayPitcher" class="pitcher">{{game.AwayPitcher}}</span>
+              </td>
+              <td>{{game.Odds.G2AwayVal}}</td>
+              <td>
+                <p *ngIf="sport.game!='mlb' && sport.game!='mma'">{{game.Odds.PointSpreadAway}}
+                </p>
+                <p *ngIf="sport.game=='mlb' || sport.game=='mma'">{{game.Odds.MoneyLineAway}}</p>
+              </td>
+              <td *ngIf="!game.Odds.TotalNumber" [ngClass]="{'hide-val':sport.game=='golf' || sport.game=='nascar'}">-</td>
+              <td *ngIf="game.Odds.TotalNumber" [ngClass]="{'hide-val':sport.game=='golf' || sport.game=='nascar'}">{{game.Odds.TotalNumber}}</td>
+            </tr>
+            <tr class="datas border-divide-top">
+              <td>
+                <p>{{game.HomeTeam}}</p>
+                <span *ngIf="game.AwayPitcher" class="pitcher">{{game.HomePitcher}}</span>
+              </td>
+              <td>{{game.Odds.G2HomeVal}}</td>
+              <td>
+                <p *ngIf="sport.game!='mlb' && sport.game!='mma'">{{game.Odds.PointSpreadHome}}
+                </p>
+                <p *ngIf="sport.game=='mlb' || sport.game=='mma'">{{game.Odds.MoneyLineHome}}</p>
+              </td>
+              <td *ngIf="!game.Odds.TotalNumber" [ngClass]="{'hide-val':sport.game=='golf' || sport.game=='nascar'}">-</td>
+              <td *ngIf="game.Odds.TotalNumber" [ngClass]="{'hide-val':sport.game=='golf' || sport.game=='nascar'}">{{game.Odds.TotalNumber}}</td>
+            </tr>
+          </table>
+        </ion-col>
+      </ion-row>
+
+      <ion-grid style="display: none;" *ngFor="let game of sport.sports;let i=index" class="game_grid"
+        [style.padding]="game.length==0&&'0px'">
+        <ion-note class="gameTime">
+          {{game.parsedTime}}
+          <ion-col col-2 class="title">
+            <p class="game_title1" style="text-align: center;">SH</p>
+          </ion-col>
+          <ion-col col-2 class="title">
+            <p *ngIf="sport.game == 'nhl' || sport.game == 'mlb'" class="game_title1">Money</p>
+            <p *ngIf="sport.game != 'nhl' && sport.game != 'mlb'" class="game_title1">Spread</p>
+          </ion-col>
+          <ion-col col-2 class="title">
+            <p class="game_title1" style="text-align: center;">O/U</p>
+          </ion-col>
+        </ion-note>
+        <ion-row class="rowback">
+          <ion-col col-12 class="col10">
+            <ion-row class="fullWidth linetop">
+              <ion-col col-6 class="colleaf team">
+                <p style="font-weight: bold;font-size: 3.8vw;">{{game.AwayTeam}}</p>
+                <span *ngIf="game.AwayPitcher" class="pitcher">{{game.AwayPitcher}}</span>
+              </ion-col>
+              <ion-col col-2 class="colleaf">
+                <p style="font-weight: bold;font-size: 3.8vw;">{{game.Odds.G2AwayVal}}</p>
+              </ion-col>
+              <ion-col col-2 class="colleaf">
+                <p style="font-weight: bold;font-size: 3.8vw;" *ngIf="sport.game!='mlb'">{{game.Odds.PointSpreadAway}}
+                </p>
+                <p style="font-weight: bold;font-size: 3.8vw;" *ngIf="sport.game=='mlb'">{{game.Odds.MoneyLineAway}}</p>
+              </ion-col>
+              <ion-col col-2 class="colleaf">
+                <p style="font-weight: bold;font-size: 3.8vw;">--</p>
+              </ion-col>
+
+            </ion-row>
+            <ion-row class="fullWidth linetop">
+              <ion-col col-6 class="colleaf team">
+                <p style="font-weight: bold;font-size: 3.8vw;">{{game.HomeTeam}}</p>
+                <span *ngIf="game.AwayPitcher" class="pitcher">{{game.HomePitcher}}</span>
+              </ion-col>
+              <ion-col col-2 class="colleaf">
+                <p style="font-weight: bold;font-size: 3.8vw;">{{game.Odds.G2HomeVal}}</p>
+              </ion-col>
+              <ion-col col-2 class="colleaf">
+                <p style="font-weight: bold;font-size: 3.8vw;" *ngIf="sport.game!=='mlb'">{{game.Odds.PointSpreadHome}}
+                </p>
+                <p style="font-weight: bold;font-size: 3.8vw;" *ngIf="sport.game=='mlb'">{{game.Odds.MoneyLineHome}}</p>
+              </ion-col>
+              <ion-col col-2 class="colleaf">
+                <p style="font-weight: bold;font-size: 3.8vw;">-</p>
+              </ion-col>
+
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-grid>
+  </div>
+</ion-content>

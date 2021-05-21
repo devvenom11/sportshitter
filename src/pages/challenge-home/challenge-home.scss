@@ -1,0 +1,244 @@
+page-challenge-home {
+
+  #create{
+    background-image: url(/assets/img/field-sunny@2x/field-sunny@2x@3x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1px;
+    h4{
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 22px;
+      // font-weight: bold;
+      // letter-spacing: 1px;
+      font-family: 'industry-black';
+    }
+
+  }
+
+  h3{
+    color: #203e4b;
+    font-size: 21px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    // letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 18px;
+    font-family: 'industry-black';
+  }
+
+
+  #options {
+    padding: 5px;
+    padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    .options{
+      display: flex;
+      width: 100%;
+      flex-basis: 100%;
+      justify-content: space-evenly;
+      margin-bottom: 10px;
+      div{
+        border-radius: 8px;
+        background-color: white;
+        height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #587571;
+        width: 160px;
+        height: 180px;
+        .icon-white{
+          display: none;
+        }
+        .inner{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          padding: 10px;
+          img{
+            height: 35px;
+            width: 30px;
+          }
+          h4{
+            width: 100%;
+            flex-basis: 100%;
+            font-size: 21px;
+            color: #203e4b;
+            text-transform: uppercase;
+            margin: 0;
+            text-align: center;
+            // font-weight: bold;
+            font-family: 'industry-black';
+          }
+          p{
+            width: 100%;
+            flex-basis: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #203E4B;
+          }
+          img,h4{
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      div:hover{
+        background-color: #f47b4e;
+        border-color: #cb5225;
+        .icon-white{
+          display: inline;
+        }
+        .icon{
+          display: none;
+        }
+        h4{
+          color: white;
+        }
+        p{
+          color: white;
+        }
+      }
+    }
+  }
+
+
+
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    ion-toggle{
+        .toggle-icon{
+            border-width: 2px;
+            border-style: solid;
+            border-color: #f47b4e;
+            background-color: white!important;
+            .toggle-inner{
+                width: 20px;
+                height: 20px;
+                top: -1px;
+                background-color: white!important;
+            }
+        }
+    }
+
+    ion-toggle.toggle-checked{
+        .toggle-icon{
+            background-color: #f47b4e!important;
+            .toggle-inner {
+                transform: translate3d(14px, 0, 0)!important;
+            }
+        }
+    }
+
+    ion-grid {
+        padding: 0px!important;
+        margin: 0px;
+    }
+
+    .row1 {
+        border-bottom: #f4f4f4 solid 1px;
+        padding: 5px 0 5px 0;
+        .col1 {
+            display: flex;
+            justify-content: center;
+        }
+        .col2 {
+            padding-left: 4vw;
+        }
+        .col3 {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    .game_title{
+        margin: 0px;
+        color: white;
+        font-weight: 500;
+        margin-left: 20px;
+    }
+
+    .team{
+        justify-content: flex-start;
+    }
+
+    ion-content {
+        .scroll-content {
+            padding-top: 0px!important;
+            .create-history-div {
+                position: fixed;
+                display: flex;
+                justify-content: space-evenly;
+                padding-bottom: 10px;
+                width: 100%;
+                background-color: #f4f4f4;
+                z-index: 10;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    .challenge-section {
+        align-items: center;
+        .row{
+            margin: 5px 0;
+            border: 2px solid #203e4b;
+            .header{
+                background: #203e4b;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 20px 10px;
+            }
+            .content{
+                padding: 10px;
+            }
+        }
+    }
+    .challenge-section-last{
+        align-items: center;
+        .row{
+            margin: 5px 0;
+            border: 2px solid #f3774b;
+        }
+        .header{
+            background: #f3774b;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px 10px;
+        }
+        .content{
+            padding: 10px;
+            color: #f3774b;
+        }
+    }
+
+}
+
+@media (min-width: 380px){
+  page-challenge-home #create{
+    background-size: cover;
+  }
+}

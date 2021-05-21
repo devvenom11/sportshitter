@@ -1,0 +1,165 @@
+page-fundfirst {
+  .div_amount {
+    padding: 20px 9px 0;
+    .segment-button {
+      color: #336A82;
+      background: transparent;
+      border: 2px solid #336A82;
+      border-radius: 5px;
+      margin-right: 9px;
+      font-size: 18px;
+      font-family: industry-bold;
+      height: 54px;
+      width: 66px;
+      max-width: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      padding: 0;
+      opacity: 1;
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+    .segment-ios .segment-button.segment-activated,
+    .segment-md .segment-button.segment-activated {
+      background-color: #336A82;
+      color: white;
+      border-color: #336A82;
+    }
+  }
+  .banner-container{
+    background-image: url('../../assets/img/bg-image-fund.png');
+    padding: 10px !important;
+    position: relative;
+    height: 86px;
+    .col{
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+    .banner-title{
+      margin-bottom:0;
+      margin-top: 0;
+      font-size: 26px;
+    }
+    .close{
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    svg{
+      transform: matrix(-1, 0, 0, -1, 0, 0);
+      height: 23px;
+      width: 11px;
+      path{
+        stroke:white
+      }
+    }
+  }
+  .sub-header{
+    .label{
+      font-size: 21px;
+      color: #FFFFFF;
+      opacity: 0.8;
+    }
+    .value{
+      text-align: right;
+      color: #FFFFFF;
+      font-size: 21px;
+    }
+  }
+  .bg-white{
+    border-radius: 5px;
+    padding: 10px 30px 20px;
+    margin-bottom: 20px;
+  }
+  .green-title{
+    font-family: industry-black;
+    font-size: 21px;
+    margin-bottom: 20px;
+  }
+  .add-more{
+    text-decoration: underline;
+    color: #203E4B;
+    font-size: 18px;
+    margin-top: 20px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .label-input{
+    font-size: 18px !important;
+    color:#203E4B !important;
+    margin-bottom: 10px !important;
+    margin-top: 0 !important;
+  }
+  .label-no-marging{
+    font-size: 18px !important;
+    color:#203E4B !important; 
+  }
+  .input-style{
+    border: 1.5px solid #336A82;
+    color: #B7B7B7;
+    font-size: 21px;
+    height: 44px;
+    .text-input{
+      margin: 0 10px !important;
+      width: 80%;
+      height: 100%;
+    }
+  }
+  .bg-input{
+    background-image: url('../../assets/img/Group 180.svg');
+    background-repeat: no-repeat;
+    background-position: 97% 50%;
+  }
+  .deposit-btn {
+    background-image: url('../../assets/img/Group 416.svg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin: 10px auto;
+    height: 50px;
+    width: 172px;
+    border-radius: 5px;
+    font-size: 21px;
+    font-family: industry-bold;
+    border:0;
+    .button-inner{
+      font-family: industry-bold;
+    }
+  }
+  .popup{
+    .description{
+      background: #F4F4F4;
+      font-size: 18px;
+      color: #336A82;
+      padding: 10px;
+      margin: 5px 10px;
+      border-radius: 5px;
+      a{
+        color:#F47B4E
+      }
+    }
+    .content{
+      max-width: 100%;
+      padding: 0;
+    }
+    img{
+      margin: 0;
+    }
+    h2{
+      color: #203E4B;
+      font-size: 24px;
+      margin: 0;
+      text-align: left;
+    }
+  }
+}
+$checkbox-ios-icon-border-radius:0;

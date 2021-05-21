@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>Account Settings</ion-title>
+      <ion-buttons end>
+          <button ion-button end (click)="goFund()">
+            <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+          </button>   
+          
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="prosettings" *ngIf="upgrade">
+    Fanatic settings
+  </div>
+  <div class="prosettings" *ngIf="!upgrade">
+    Fan settings
+  </div>
+  <ion-item class="change">
+    <ion-label>Home Screen Feed</ion-label>     
+        <ion-select [(ngModel)]="favsport" class="favteam" interface="popover" placeholder="Favorite Sport"> 
+            
+            <ion-option value="">All Sports</ion-option>      
+            <ion-option value="NFL">NFL</ion-option>
+            <ion-option value="NHL">NHL</ion-option>
+            <ion-option value="NBA">NBA</ion-option>
+            <ion-option value="GOLF">GOLF</ion-option>
+            <ion-option value="NCAAB">NCAAB</ion-option>
+            <ion-option value="NCAAF">NCAAF</ion-option>
+            <ion-option value="MLB">MLB</ion-option>
+            <ion-option value="NASCAR">NASCAR</ion-option>  
+        </ion-select>
+  </ion-item>
+
+  <div class="upgradefeed" *ngIf="!upgrade">
+    <span (click)="openUpgrade(true)"><span style="border-bottom:1px solid #f47f53;padding:0px;">Upgrade to SportHitters Fanatic</span></span>
+    <span (click)="openUpgrade(false)"><span style="border-bottom:1px solid #f47f53;padding:0px;">See Fanatic features here</span></span>
+  </div>
+
+  <div class="game_btn" style="margin-bottom: 5vw;">
+    <button ion-button (click)="submit()">SUBMIT</button>
+  </div>
+  <div>
+    
+  </div>
+  <div class="bit" style="font-size: 5vw;background-color: #F4F4F4">
+    Preferences
+  </div>
+  <div class="bit">
+    Tell us a little bit about yourself!
+  </div>
+  <div class="pretitle">
+    What's your gender?
+  </div>
+  <div class="preselect" radio-group> 
+    <div class="preitem">
+        <ion-label>Male</ion-label>
+        <ion-radio value="male" [checked]="gender == 'm'" (click)="changeGender('m')"></ion-radio>
+    </div>     
+    <div class="preitem">
+        <ion-label>Female</ion-label>
+        <ion-radio value="female" [checked]="gender == 'f'" (click)="changeGender('f')"></ion-radio>
+    </div>      
+  </div>
+  <div class="pretitle">
+    What's your age?
+  </div>
+  <ion-item class="preselect">    
+    <ion-label>Age</ion-label>    
+        <ion-select [(ngModel)]="age" interface="popover">
+            <ion-option value="10">16-25</ion-option>
+            <ion-option value="20">26-35</ion-option>
+            <ion-option value="30">36-45</ion-option>
+            <ion-option value="40">46-55</ion-option>
+            <ion-option value="50">56-65</ion-option>
+        </ion-select>    
+  </ion-item>
+
+  <div class="pretitle">
+    What's your favorite sports team?
+  </div>
+  <div class="precontent">
+    <ion-input [(ngModel)]="team" type="text" placeholder="sports team" ></ion-input>
+  </div>
+
+  <div class="pretitle">
+    What's your favorite sport?
+  </div>
+  <ion-item class="preselect">      
+      <ion-label>Sport</ion-label>
+      <ion-select [(ngModel)]="sport" interface="popover">
+        <ion-option value="NFL">NFL</ion-option>
+        <ion-option value="NHL">NHL</ion-option>
+        <ion-option value="NBA">NBA</ion-option>
+        <ion-option value="GOLF">GOLF</ion-option>
+        <ion-option value="NCAAB">NCAAB</ion-option>
+        <ion-option value="NCAAF">NCAAF</ion-option>
+        <ion-option value="MLB">MLB</ion-option>
+        <ion-option value="NASCAR">NASCAR</ion-option>  
+      </ion-select>
+  </ion-item>
+
+  <div class="pretitle">
+    What's your favorite sport to bet on?
+  </div>
+  <ion-item class="preselect">    
+      <ion-label>Bet sport</ion-label>      
+      <ion-select [(ngModel)]="presport" interface="popover">
+        <ion-option value="NFL">NFL</ion-option>
+        <ion-option value="NHL">NHL</ion-option>
+        <ion-option value="NBA">NBA</ion-option>
+        <ion-option value="GOLF">GOLF</ion-option>
+        <ion-option value="NCAAB">NCAAB</ion-option>
+        <ion-option value="NCAAF">NCAAF</ion-option>
+        <ion-option value="MLB">MLB</ion-option>
+        <ion-option value="NASCAR">NASCAR</ion-option>  
+      </ion-select>
+  </ion-item>
+
+  <div class="pretitle">
+    Where do you like to watch a game?
+  </div>
+
+  <div class="precontent">
+    <ion-input type="text" [(ngModel)]="place" placeholder="place"></ion-input>
+  </div>
+
+  <div class="pretitle">
+    What's your favorite cocktail to drink during a game?
+  </div>
+
+  <div class="precontent">
+    <ion-input type="text" [(ngModel)]="cocktail" placeholder="cocktail"></ion-input>
+  </div>
+
+  <div class="game_btn" style="margin-bottom: 5vw;">
+    <button ion-button (click)="submit1()">SUBMIT</button>
+  </div>
+
+  <div class="dlgupgrade" *ngIf="showDlgUpgrade" (click)="closeUpgrade()">
+    <div class="frmupgrade">
+            <img src='./assets/img/logo.png'/>
+            <div class="upgradetitle">Upgrade</div>
+            <div class="upgradecomment">Upgrade to unlock the following benefits:</div>
+            <ul>
+                <li>Winner fees lowered from 8% to 6%</li>
+                <li>Unlimited follows</li>                
+                <li>Create private contests and invite friends</li>
+                <li>News feed on the home screen</li>
+                <li>Unlock chats fpr pending games</li>                
+                <li>Special and Progressive contests available</li>
+            </ul>
+            
+            <div class="game_btn" *ngIf="showBtnUpgrade">
+              <button ion-button (click)="goUpgrade()">LET'S DO IT</button>
+            </div>
+    </div>            
+  </div>
+</ion-content>

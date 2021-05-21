@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div id="header">
+    <div>
+      <img (click)="toBack()" src="/assets/img/Path 298.svg" alt="">
+    </div>
+    <h3>my challenges</h3>
+  </div>
+
+  <div class="item-full">
+    <h3>CURRENT CHALLENGES</h3>
+    <div class="item">
+      <div class="date-header">
+        <span>Challenge Details</span>
+        <span>Status</span>
+      </div>
+      <div class="challenge" (click)="gosingle(item)" *ngFor="let item of pendingChalleges; let i = index;">
+        <div class="detail-generaly">
+          <div class="icon-sport">
+            <img *ngIf="!item.icon" [src]="newSportsImageURL[item.challengedetails.sport]" [alt]="item.challengedetails.sport">
+            <img *ngIf="item.icon" class="api-image" [src]="item.icon" alt="">
+          </div>
+          <div class="detail">
+            <div class="icon-name">
+              <h3>{{getName(item)}}</h3>
+            </div>
+            <div class="detail-users-money">
+              <div class="users">
+                <span class="bold">{{item.challengedetails.player}}</span>
+                <span>Challengers</span>
+              </div>
+              <div class="views">
+                <span class="bold">{{item.challengedetails.team}}</span>
+                <span>PICKS</span>
+              </div>
+              <div class="money">
+                <span class="bold">${{item.challengedetails.game}}</span>
+                <span>ENTRY FEE</span>
+              </div>
+              <!-- <div class="deposit" *ngIf="item.winnerstatus && item.winnerstatus=='winner'">
+                <span>{{item.prizeamount | currency:'USD':'2.1-2'}}</span>
+              </div> -->
+            </div>
+            <div class="date">
+              {{item.challengedetails.createdAt | date:'MM/dd hh:mm a'}} EST
+              <img src="{{urlFlag[item.challengedetails.flag]}}" alt=""> <br>
+              <ng-container *ngIf="checkForPendingPicks(item.challengedetails)">
+                <small style="color: #F37343;">You have not selected your picks</small>
+              </ng-container>
+            </div>
+          </div>
+          <div class="action-to">
+            <div class="status-text">
+              <span class="pending">Pending</span>
+            </div>
+            <div class="action-button">
+              <img src="/assets/img/result/Path 298.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="item-full">
+    <h3>HISTORY</h3>
+    <div class="item">
+      <div class="date-header">
+        <span>Challenge Details</span>
+        <span>Result</span>
+      </div>
+      <div class="challenge" (click)="gosingle(item)" *ngFor="let item of historyChallenges; let i = index;">
+        <div class="detail-generaly">
+          <div class="icon-sport">
+            <img *ngIf="!item.icon" [src]="newSportsImageURL[item.challengedetails.sport]" [alt]="item.challengedetails.sport">
+            <img *ngIf="item.icon" class="api-image" [src]="item.icon" alt="">
+          </div>
+          <div class="detail">
+            <div class="icon-name">
+              <h3>{{getName(item)}}</h3>
+            </div>
+            <div class="detail-users-money">
+              <div class="users">
+                <span class="bold">{{item.challengedetails.player}}</span>
+                <span>Challengers</span>
+              </div>
+              <div class="views">
+                <span class="bold">{{item.challengedetails.team}}</span>
+                <span>PICKS</span>
+              </div>
+              <div class="money">
+                <span class="bold">${{item.challengedetails.game}}</span>
+                <span>ENTRY FEE</span>
+              </div>
+              <!-- <div class="deposit" *ngIf="item.winnerstatus && item.winnerstatus=='winner'">
+                <span>{{item.prizeamount | currency:'USD':'2.1-2'}}</span>
+              </div> -->
+            </div>
+            <div class="date">
+              {{item.challengedetails.createdAt | date:'MM/dd hh:mm a'}} EST
+              <img src="{{urlFlag[item.challengedetails.flag]}}" alt="">
+            </div>
+          </div>
+          <div class="action-to">
+            <div class="status-text">
+              <span class="pending" [ngClass]="item.winnerstatus">{{item.winnerstatus === 'noplay' ? 'NO PLAY' : item.winnerstatus === 'tie' ? 'TIE' : item.winnerstatus === 'loser' ? '$' + item.challengedetails.game : item.challengedetails.flag=='sp' ? 'WIN' : '$' + item.prizeamount }}</span>
+            </div>
+            <div class="action-button">
+              <img src="/assets/img/result/Path 298.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- <div id="options">
+    <div class="options">
+      <div class="img">
+        <img src="/assets/img/result/Group 131.svg" alt="">
+      </div>
+      <div class="text">
+        <h3>Challenge History</h3>
+      </div>
+    </div>
+    <div class="options">
+      <div class="img">
+        <img src="/assets/img/result/Group 65.svg" alt="">
+      </div>
+      <div class="text">
+        <h3>Start New</h3>
+        <h3>Challenge</h3>
+      </div>
+    </div>
+  </div> -->
+
+</ion-content>

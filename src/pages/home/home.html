@@ -1,0 +1,206 @@
+<ion-header
+  style="background-image: url(./assets/img/shutterstock_678842350.png); background-size: contain; background-attachment: fixed;">
+  <ion-navbar style="padding: 8px;">
+    <button ion-button menuToggle>
+      <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px; height: 20.08px" />
+      <ion-badge *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src="./assets/img/logo-new@2x.png" style="height: 36px; width: 28px; position: absolute; top: 8px" />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl">Balance <br />
+          <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span></ion-label>
+      </button>
+      <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div style="padding:24px 36px; min-height: 240px; display: flex; justify-content: flex-end;flex-direction: column;">
+    <div>
+      <div
+        style="font: normal normal normal 14px/14px Roboto; text-transform: uppercase; background-color: white; color:#203E4B;display: inline-block;padding:4px;border-radius: 2px;">
+        Featured
+      </div>
+      <div style="
+        padding: 16px 0px 8px;
+        font-weight: bolder;
+        font: normal normal normal 30px/30px Roboto;
+        color: white;
+        letter-spacing: 0px;
+        text-transform: uppercase;
+      ">
+        MLB<br />
+        BASEBALL
+      </div>
+      <!-- <div style="font: normal normal normal 14px/14px Roboto; text-transform: uppercase;color:#fff;display: inline-block;"> -->
+      <div class="img-date white-color">
+        APRIL 1,2021
+      </div>
+
+      <div style="margin-top: 8px;">
+        <!-- <button style="padding:12px; font-size: 18px; background-color: #F47B4E;border: 1px solid white; border-radius: 5px;color:white;">SEE DETAILS</button> -->
+        <button class="img-btn white-color">SEE DETAILS</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ctas -->
+  <ion-grid style="
+      background: rgb(32, 62, 75);
+      background: linear-gradient(
+        180deg,
+        rgba(32, 62, 75, 1) 0%,
+        rgba(43, 87, 106, 1) 100%
+      );
+      border: 2px solid #2b576a;
+      border-radius: 16px 16px 0 0;
+      padding: 15px 10px 0px 10px;
+    ">
+    <!-- border-radius: 32px 32px 0 0; -->
+    <ion-row>
+      <ion-col col-12>
+        <div class="challenge-main-title white-color">
+          Join a challenge or create your own!
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding-bottom: 24px">
+
+      <ion-col col-6 style="padding: 8px; display: flex; justify-content: flex-end">
+        <!-- <div (click)="gotocustom({ create:'cc'})"> -->
+        <!-- <div (click)="goto({ create:'jc', inviteFlag:false})"> -->
+        <div (click)="gotoChallengeList()" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 72px;
+            width: 155px;
+            background: #203e4b;
+            border-radius: 8px;
+            border: 1px solid #ffffff;
+          ">
+          <div style="display: flex; justify-content: center">
+            <img style="height: 36px" src="./assets/img/icon-white-friends.svg" alt="Join" />
+            <div style="margin-left: 8px">
+              <div class="challenge-sub-title white-color">
+                Join
+              </div>
+              <div class="challenge-info">
+                A challenge
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-6 style="padding: 8px; display: flex; justify-content: flex-start">
+        <!-- <div (click)="goto({ create:'jc', inviteFlag:true})"> -->
+        <div (click)="gotocustom({ create:'cc'})">
+          <div style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 72px;
+            width: 155px;
+            background: #203e4b;
+            border-radius: 8px;
+            border: 1px solid #ffffff;
+            font-weight: bold;
+          ">
+            <div style="display: flex; justify-content: center">
+              <img style="height: 36px" src="./assets/img/icon-white-trophy.svg" alt="Join" />
+              <div style="margin-left: 8px">
+                <div class="challenge-sub-title white-color">
+                  Create
+                </div>
+                <div class="challenge-info">
+                  A new challenge
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-header>
+
+<ion-content padding style=" background: url(./assets/img/quick-links-bg.png) bottom/contain;">
+  <!-- hero -->
+
+  <!-- quick linksw -->
+  <ion-grid>
+    <ion-row style="padding: 25px 16px 0px;">
+      <ion-col col-6 class="quick-link left" (click)="gotoChooseOdds()">
+        <div class="quick-title">
+          Quick Links
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 0px 8px;padding: 0 15px;">
+      <ion-col col-6 class="quick-link left" (click)="goToSpecialPromo()">
+        <div class="quick-button">
+          <img src="./assets/img/Group 356.svg" alt="" /> EVENTS
+        </div>
+      </ion-col>
+      <ion-col col-6 class="quick-link right" (click)="gotoChooseOdds()">
+        <div class="quick-button">
+          <img src="./assets/img/Group 365.svg" alt="" /> PROMOTIONS
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 0px 8px;padding: 0 15px;">
+      <ion-col col-6 class="quick-link left" (click)="gotoChooseResult()">
+        <div class="quick-button">
+          <img src="./assets/img/Group 357.svg" alt="" />CHALLENGES
+        </div>
+      </ion-col>
+      <ion-col col-6 class="quick-link right" (click)="gotoHowtoplay()">
+        <div class="quick-button">
+          <img src="./assets/img/Group 354.svg" alt="" /> HOW TO PLAY
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 0px 8px;padding: 0 15px;">
+      <ion-col col-6 class="quick-link left" (click)="mailToSupport()">
+        <div class="quick-button">
+          <img src="./assets/img/Group 358.svg" alt="" /> RESULT
+        </div>
+      </ion-col>
+      <ion-col col-6 class="quick-link right" (click)="gotoReferral()">
+        <div class="quick-button">
+          <img src="./assets/img/Group 355.svg" alt="" /> REFERRALS
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<div class="add-to-home-screen" *ngIf="showAddToHomeScreenPopup">
+  <div class="close-icon">
+    <a href="#" (click)="closeAddToHomeScreenPopup()" id="closeAddHomeScreen">
+      <ion-icon name="close"></ion-icon>
+    </a>
+  </div>
+  <div class="body">
+    <div class="logo-img">
+      <img src="./assets/img/logo.png" width="36" />
+    </div>
+    <div class="header">Install SportHitters</div>
+    <p>
+      Install this application in your home Screen for quick and easy access
+      when you're on the go.
+    </p>
+    <div class="footer">
+      <p>
+        Just tap <ion-icon name="{{addToHomeScreenIcon}}"></ion-icon> then add
+        to Home Screen
+      </p>
+    </div>
+  </div>
+</div>

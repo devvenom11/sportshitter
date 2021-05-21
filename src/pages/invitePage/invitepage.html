@@ -1,0 +1,128 @@
+<!--
+  Generated template for the FavouritesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu">
+              <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+              margin-left: -10px;
+              margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+          </ion-icon>
+      </button>
+      <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+      <ion-buttons end>
+          <button ion-button icon-only end>
+              <ion-label class="fund_lbl">Balance <br> <span class="fund">
+                {{funds | currency:'USD':'2.1-2'}}
+              </span></ion-label>
+          </button>
+          <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+              <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+          </button>
+
+      </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content style="background-color:#fff;">
+
+    <ion-row class="top-heading">
+        <ion-col>
+            <strong class="active">Invite Friends </strong>&nbsp;to {{name}} Challenge:
+        </ion-col>
+    </ion-row>
+    <ion-row  class="challenge-heading">
+        <ion-col col-12 >
+            <strong>{{game}}</strong>
+            <ul>
+                <li>{{player==0?'All':player}} Challengers,</li>
+                <li>{{ pick }} Picks,</li>
+                <li>{{payoutOption}} win</li>
+            </ul>
+        </ion-col>
+        <button ion-button outline class="invite-btn" *ngIf="invitePickerNum > 0" (click)="sendInvite()">Done</button>
+    </ion-row>
+
+    <!-- <ion-row style="background-color:#203e4b;padding:3vw;color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+        Invite existing SportHitters friends
+    </ion-row>
+    <div [ngSwitch]="search">
+        <div *ngSwitchCase="'show'">
+            <ion-searchbar
+                [(ngModel)]="searchWord"
+                (ionInput)="onSearch()"
+                >
+            </ion-searchbar>
+        </div>
+        <div *ngSwitchCase="'hide'" style="display:flex;justify-content: flex-end;">
+            <ion-icon ios="ios-search" md="md-search" class="searchIcon" (click)="onSearchShow()"></ion-icon>
+        </div>
+    </div>
+    <ion-list class="search" style="margin-top:0px;margin-bottom: 0px">
+        <ion-item *ngFor="let user of searcheduserlist">
+            <ion-icon name="md-people" item-start (click)="setfav(user)"></ion-icon>&nbsp;&nbsp;{{user.username || user.displayname}}
+        </ion-item>
+    </ion-list> -->
+    <!--   -->
+    <div class="heading">
+        <div class="custom-search" tabindex="-1" (focusout)="hide()" >
+            <ion-row class="input" (click)="toggle('search')">
+                    <ion-col col-11>
+                            <input type="text" placeholder="Search" [(ngModel)]="searchWord"
+                            (keyup)="onSearch()"/>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon  name="ios-search" item-end></ion-icon>
+                    </ion-col>
+                </ion-row>
+            <ul class="dropdown dropdown-picks"  >
+                <li *ngFor="let user of searcheduserlist" (click)="setfav(user)">{{user.username || user.displayname}}</li>
+            </ul>
+        </div>
+    </div>
+    <ion-label class="title-text">
+        <ion-note class="title-text">
+                Invite SportHitter Friends:
+        </ion-note>
+    </ion-label>
+    <ion-label *ngIf="items.length==0" style="text-align: center;
+    font-style: italic;
+    color: #bdbcbc;">Search for other SportHitters users...</ion-label>
+    <ion-list  style="padding-left: 0vw;margin-top: 0px;margin-bottom: 90px ">
+        <ion-item class='item' no-lines *ngFor="let item of items;let i = index;">
+            <!-- <ion-icon item-start name="close" style="color:#f47b4e;font-size: 1em;" (click)="deleteuser(i)"></ion-icon> -->
+            <ion-label class="invite-user" >
+                    <p>{{ item }}<ion-note>&nbsp;&nbsp;({{scores[i]}}%)</ion-note></p>
+                    <ion-note>
+                        <ion-label *ngIf="!inviteArr[i]" class="btn" (click)="inviteSelect(i)">Invite</ion-label>
+                        <!-- <ion-label *ngIf="inviteArr[i]" class="btn sent" (click)="inviteSelect(i)">Invite Select</ion-label> -->
+                        <ion-label *ngIf="inviteArr[i]" class="btn sent" (click)="inviteSelect(i)">Invite Sent</ion-label>
+                    </ion-note>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <!-- Author:Anjali
+    1.uncomment 2.write more invite function -->
+    <div class="non-users" ion-fixed>
+        <button ion-button  (click)="shareOpen()">Invite Non-Users to Play</button>
+
+    </div>
+    <div class="sharecontent" *ngIf="shareFlag">
+        <button ion-button large (click)="invite(0)">Invite By Email</button>
+        <button ion-button large (click)="invite(1)" *ngIf="platform.is('mobile')">Invite By SMS</button>
+        <!-- <button ion-button large (click)="invite(2)">Invite On Facebook</button>
+        <button ion-button large (click)="invite(3)">Invite On Twitter</button> -->
+        <button ion-button large (click)="invite(4)">Close</button>
+</div>
+</ion-content>

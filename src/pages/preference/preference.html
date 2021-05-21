@@ -1,0 +1,114 @@
+<!--
+  Generated template for the PreferencePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>Preferences</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only class="my-network-btn" (click)="goFavourite()" end>
+              <ion-icon name="md-people"></ion-icon>
+            </button>
+            <button ion-button end (click)="goFund()">
+                    <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}0</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+            </button>   
+            
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+  <div class="bit">
+    Tell us a little bit about yourself!
+  </div>
+  <div class="pretitle">
+    What's your gender?
+  </div>
+  <div class="preselect" radio-group> 
+    <div class="preitem">
+        <ion-label>Male</ion-label>
+        <ion-radio value="male" [checked]="gender == 'm'" (click)="changeGender('m')"></ion-radio>
+    </div>     
+    <div class="preitem">
+        <ion-label>Female</ion-label>
+        <ion-radio value="female" [checked]="gender == 'f'" (click)="changeGender('f')"></ion-radio>
+    </div>      
+  </div>
+  <div class="pretitle">
+    What's your age?
+  </div>
+  <ion-item class="preselect">    
+    <ion-label>Age</ion-label>    
+        <ion-select [(ngModel)]="age" interface="popover">
+            <ion-option value="10">16-25</ion-option>
+            <ion-option value="20">26-35</ion-option>
+            <ion-option value="30">36-45</ion-option>
+            <ion-option value="40">46-55</ion-option>
+            <ion-option value="50">56-65</ion-option>
+        </ion-select>    
+  </ion-item>
+
+  <div class="pretitle">
+    What's your favorite sports team?
+  </div>
+  <div class="precontent">
+    <ion-input [(ngModel)]="team" type="text" placeholder="sports team" ></ion-input>
+  </div>
+
+  <div class="pretitle">
+    What's your favorite sport?
+  </div>
+  <ion-item class="preselect">      
+      <ion-label>Sport</ion-label>
+      <ion-select [(ngModel)]="sport" interface="popover">
+        <ion-option value="NFL">NFL</ion-option>
+        <ion-option value="NHL">NHL</ion-option>
+        <ion-option value="NBA">NBA</ion-option>
+        <ion-option value="GOLF">GOLF</ion-option>
+        <ion-option value="NCAAB">NCAAB</ion-option>
+        <ion-option value="NCAAF">NCAAF</ion-option>
+        <ion-option value="MLB">MLB</ion-option>
+        <ion-option value="NASCAR">NASCAR</ion-option>  
+      </ion-select>
+  </ion-item>
+
+  <div class="pretitle">
+    What's your favorite sport to bet on?
+  </div>
+  <ion-item class="preselect">    
+      <ion-label>Bet sport</ion-label>      
+      <ion-select [(ngModel)]="presport" interface="popover">
+        <ion-option value="NFL">NFL</ion-option>
+        <ion-option value="NHL">NHL</ion-option>
+        <ion-option value="NBA">NBA</ion-option>
+        <ion-option value="GOLF">GOLF</ion-option>
+        <ion-option value="NCAAB">NCAAB</ion-option>
+        <ion-option value="NCAAF">NCAAF</ion-option>
+        <ion-option value="MLB">MLB</ion-option>
+        <ion-option value="NASCAR">NASCAR</ion-option>  
+      </ion-select>
+  </ion-item>
+
+  <div class="pretitle">
+    Where do you like to watch a game?
+  </div>
+
+  <div class="precontent">
+    <ion-input type="text" [(ngModel)]="place" placeholder="place"></ion-input>
+  </div>
+
+  <div class="pretitle">
+    What's your favorite cocktail to drink during a game?
+  </div>
+
+  <div class="precontent">
+    <ion-input type="text" [(ngModel)]="cocktail" placeholder="cocktail"></ion-input>
+  </div>
+
+  <div class="game_btn">
+    <button ion-button (click)="submit()">SUBMIT</button>
+  </div>
+</ion-content>

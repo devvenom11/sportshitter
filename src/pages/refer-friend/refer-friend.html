@@ -1,0 +1,135 @@
+<ion-header>
+  <!-- <ion-navbar>
+    <span style="display: block;text-align: center;color: #1f323b;font-size: 1.8rem;text-align: center;font-weight: 500;">Refer a Friend</span>
+    <ion-buttons end>
+        <button ion-button end (click)="goFund()">
+          <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+        </button>
+
+    </ion-buttons>
+  </ion-navbar> -->
+
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid class="banner-container">
+    <ion-row>
+      <ion-col col-12>
+        <img src="./assets/img/Group 414.svg" alt="">
+        <h2 class="banner-title">$25 CREDIT FOR EVERY 5 POINTS</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row class="bg-white">
+      <ion-col col-12>
+        <h2 class="green-title">INVITE YOUR FRIENDS!</h2>
+      </ion-col>
+      <ion-col col-12>
+        <ion-input clearInput type="email" name="email" placeholder="Enter your friend's email address" [(ngModel)]="email" required class="email-invite"></ion-input>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block (click)="invite()" class="green-btn-style">
+          SEND INVITE
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block (click)="copyLink()" class="transparent-btn--style">
+          COPY LINK
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding:20px 0 0; align-items:center">
+      <ion-col col-8>
+        <div class="current-point"> CURRENT POINTS: <span>{{currentPoint}}</span></div>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button block class="transparent-btn-white" (click)="goToPointActivity()">REDEEM</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid style="padding: 20px 5px 0!important;">
+    <div class="bg-white" style="margin-top: 0;padding:20px 10px">
+      <ion-row>
+        <ion-col col-12>
+          <h2 class="green-title" style="text-align: center;">HOW IT WORKS</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row class="box">
+        <ion-col col-4>
+          <img src="../../assets/img/Group 409.svg" alt="">
+        </ion-col>
+        <ion-col col-8>
+          <div class="text">Invite Your Friends and Make Sure They Sign Up Using Your Referral Link</div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="box">
+        <ion-col col-4>
+          <img src="../../assets/img/Group 411.svg" alt="">
+        </ion-col>
+        <ion-col col-8>
+          <div class="text">*For Every $25 of Their First Deposit, You Will EARN 1 Point. <br> <span style="text-decoration: underline;" (click)="showExample()">SEE EXAMPLE</span></div>
+        </ion-col>
+        <ion-col col-12 class="example" *ngIf="isExample">
+          If They Deposit $50, you earn 2 points. For a $100 Deposit, you earn 4 points.
+        </ion-col>
+      </ion-row>
+      <ion-row class="box">
+        <ion-col col-4>
+          <img src="../../assets/img/Group 412.png" alt="">
+        </ion-col>
+        <ion-col col-8>
+          <div class="text">**Save YOUR Points <br>and Redeem!</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="last-text">
+            * You can only redeem in increments of 5 points at a time. ** This offer also has a 5X rollover requirement.
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="item-row" (click)="goToPointActivity()">
+        <ion-col col-12>
+          <h2 class="green-title">HOW IT WORKS</h2>
+        </ion-col>
+        <ion-col class="box">Points Activity</ion-col>
+        <ion-col style="float: right;"><img src="./assets/img/MyAccount_RightArrow.png" style="float: right;"/></ion-col>
+      </ion-row>
+      <ion-row class="item-row>
+        <ion-col class="lcol1">Play Points</ion-col>
+        <ion-col><img src="./assets/img/MyAccount_RightArrow.png" style="float: right;"/></ion-col>
+      </ion-row> -->
+    </div>
+  </ion-grid>
+  <input type="text" value="{{url}}" id="url-share" readonly>
+  <div class="popup" *ngIf="showpopup">
+    <div class="content">
+      <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+      <h2 style="margin-bottom: 0;">Share Options</h2>
+      <ion-item style="text-align: center;" class="social-row">
+        <ion-icon name="logo-facebook" style="color: #4267b2;" class="social-icons" (click)="sharesocial(2)" id="sharebyfacebook"></ion-icon>
+        <ion-icon name="logo-twitter" style="color: #1da1f2;" class="social-icons" (click)="sharesocial(3)" id="sharebytwitter"></ion-icon>
+        <img src="./assets/img/iphone-icon-msj.png" class="social-icons" (click)="sharesocial(1)" style="width: 49px;" id="sharebymsj"/>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,208 @@
+<ion-content class="slide-background" [ngClass]="{'first-page':firstPage, 'lastslide':lastSlide}">
+  <ng-container *ngIf="firstPage">
+    <ion-row style="padding-left: 48px;padding-right: 58px;position: absolute;top: 50%;transform: translate(0, -50%);margin-top: 20px;">
+      <ion-col col-12 style="text-align: center;">
+        <img src="./assets/img/Group 252.png" alt="" style="width: 233.83px;height: 153px;">
+      </ion-col>
+      <ion-col col-12>
+        <h2 style="color: #F37343;font-size: 56px;text-align: center;margin: 0;padding:20px 0;font-family: industry-bold;">Welcome!</h2>
+      </ion-col>
+      <ion-col col-12>
+        <p style="color: white;font-size: 18px;text-align: center;">Welcome to SportHitters.<br> We’re changing the game, to Daily Challenge Brackets, where players Challenge each other instead of trying to beat the Book.</p>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button block (click)="start()" class="button">START <img src="./assets/img/Path 2.svg" alt=""></button>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+  <ion-grid *ngIf="!firstPage" style="position: relative;">
+    <div class="test">
+      <ion-slides pager #slides (ionSlideDidChange)="slideChanged()" pager>
+        <ion-slide class="slide-background">
+          <ion-row>
+            <ion-col col-6 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+              <span class="skip" (click)="skip()">skip</span>
+            </ion-col>
+            <ion-col col-12>
+              <img class="img" src="./assets/img/Group 253.svg" style="margin-top: 50px;"/>
+            </ion-col>
+            <ion-col col-12>
+              <h2 class="slide-title">What is a Challenge?</h2>
+              <p class="slide-content">
+                A Challenge is picking 3 or more games and competing your picks against other players for real money.
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide class="slide-background">
+          <ion-row>
+            <ion-col col-6 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+              <span class="skip" (click)="skip()">skip</span>
+            </ion-col>
+            <ion-col col-12>
+              <h2 class="slide-title">Types of Challenges</h2>
+              <div class="slide2 types">
+
+                <div class="item">
+                  <div>
+                    <img src="./assets/img/Path 553.svg" alt="">
+                  </div>
+                  <div>
+                    <h3>public</h3>
+                    <p>Quickly enter a Challenge by letting the app pair you against one or more challengers</p>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <div>
+                    <img src="./assets/img/Group 249.svg" alt="">
+                  </div>
+                  <div>
+                    <h3>private</h3>
+                    <p>Allows you to quickly Challenge a friend from your network</p>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <div>
+                    <img src="./assets/img/Group 248.svg" alt="">
+                  </div>
+                  <div>
+                    <h3>custom</h3>
+                    <p>Allows you to set your own Challenge options and invite friends from your network</p>
+                  </div>
+                </div>
+
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide class="slide-background">
+          <ion-row>
+            <ion-col col-6 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+              <span class="skip" (click)="skip()">skip</span>
+            </ion-col>
+            <ion-col col-12>
+              <h2 class="slide-title">How do Points work?</h2>
+              <div class="slide-content slide3">
+                <img src="./assets/img/Rectangle 3@3x.png" alt="">
+                <p>
+                  There are no point spreads with our Challenges. You just pick winners. Each team is assigned a SH point value. Underdogs are worth more points than favorites. When your team wins, you receive their Value Points.
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide class="slide-background">
+          <ion-row>
+            <ion-col col-6 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+              <span class="skip" (click)="skip()">skip</span>
+            </ion-col>
+            <ion-col col-12 class="slide4">
+              <h2 class="title_down">Here's how to begin</h2>
+              <div class="title">
+                <div>
+                  <span>1</span>
+                </div>
+                <div>
+                  <p class="slide-title">Choose a<br> Challenge from<br> the home screen</p>
+                </div>
+              </div>
+              <div class="slide-content">
+                <img src="./assets/img/Rectangle slide4 3@3x.png" alt="">
+                <p>Entering a Challenge is quick and easy. Select your desired Challenge type from the home screen or Challenges screen.</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide>
+          <ion-row>
+            <ion-col col-6 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+              <span class="skip" (click)="skip()">skip</span>
+            </ion-col>
+            <ion-col col-12 class="slide4 slide5">
+              <div class="title">
+                <div>
+                  <span>2</span>
+                </div>
+                <div>
+                  <p class="slide-title">Select the<br> options for<br> the Challenge</p>
+                </div>
+              </div>
+              <div class="slide-content">
+                <img src="./assets/img/Rectangle slide5 3@3x.png" alt="">
+                <p>
+                  Players have many Challenge options to select from. You can choose the number of challengers, entry fee amounts and number of picks. You can also set these options by creating a “Custom Challenge”
+                </p>
+                <p>*In a Public Challenge, these options appear after the sport and entry fee amount are selected</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide class="slide-background">
+          <ion-row>
+            <ion-col col-6 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+              <span class="skip" (click)="skip()">skip</span>
+            </ion-col>
+            <ion-col col-12 class="slide4 slide6">
+              <div class="title">
+                <div>
+                  <span>3</span>
+                </div>
+                <div>
+                  <p class="slide-title">Make your picks</p>
+                </div>
+              </div>
+              <div class="slide-content">
+                <img src="./assets/img/Rectangle slide6 3@3x.png" alt="">
+                <p>
+                  Make the picks that give you the best opportunity to outscore your opponents
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide class="slide-background">
+          <ion-row>
+            <ion-col col-12 style="text-align: left;">
+              <img src="./assets/img/logo.png" alt="" style="width: 28px; height: 38px;">
+            </ion-col>
+            <ion-col col-12 style="text-align: center;">
+              <img src="./assets/img/Group 246.svg" alt="">
+            </ion-col>
+            <ion-col col-12>
+              <h2 class="slide-title">Chat with friends and grow your network</h2>
+            </ion-col>
+            <ion-col col-12>
+              <p class="slide-content">SportHitters allows you to build a network of friends and sport fans around the globe. Use the search bar to find friends and potential Challengers</p>
+            </ion-col>
+            <ion-col col-12>
+              <button ion-button block (click)="home()" class="button noborder">HOME <img src="./assets/img/Path 2.svg" alt=""></button>
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="bg-image-right" *ngIf="!firstPage && !lastSlide">
+      <img src="./assets/img/Path 2.svg" alt="" class="right-arrow" (click)="howtpplay()">
+    </div>
+  </ion-grid>
+</ion-content>

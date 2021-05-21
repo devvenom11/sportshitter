@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-navbar style="padding-left: 25px; padding-right: 15px;">
+        <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+        <ion-buttons end>
+            <button ion-button end (click)="goLoginIn()" id="addFundButton" class="addfundbtn">
+                SIGN IN
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content  class="bg-img">
+    <ion-grid class="not-allow-popup" *ngIf="showpopup">
+        <ion-row>
+            <div class="close"><ion-icon name="close-circle" (click)="closePopup()"></ion-icon></div>
+            <ion-col>
+                <img src="./assets/img/logo.png" alt="">
+                <div class="label_div">
+                    <p style="width: 100%">
+                        <span class="label_f">SPORT</span><span class="label_s">HITTERS</span>
+                    </p>
+                </div>
+                <h3>Sorry<br> At this <br>time <br>SportHitters is <br>not available in <br>your area.</h3>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="auth-container">
+        <ion-label class="label_div">CREATE <br>YOUR<br>ACCOUNT</ion-label>
+        <form >
+            <ion-list>
+                <!-- User name field -->
+                <ion-item>
+                    <ion-label floating class="label-floating">USERNAME</ion-label>
+                    <ion-input clearInput type="text" name="Username" (input)="validUsername()" [(ngModel)]="form.username" required class="username"></ion-input>
+                </ion-item>
+                <!-- Email field -->
+                <ion-item>
+                    <ion-label floating class="label-floating">EMAIL</ion-label>
+                    <ion-input clearInput type="email" name="Email" [(ngModel)]="form.email" required class="email"></ion-input>
+                </ion-item>
+                <!-- password field -->
+                <ion-item style="overflow: hidden;opacity: 0;height: 0; min-height: 0;">
+                    <ion-label>
+                        <ion-icon name="ios-lock-outline"></ion-icon>
+                    </ion-label>
+                    <ion-input clearInput type="password" placeholder="" name="password" required style="overflow: hidden;opacity: 0;"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating class="label-floating">PASSWORD</ion-label>
+                    <ion-input clearInput type="password" name="Password-text" [(ngModel)]="form.password" required id="password-text-signup" class="password-text"></ion-input>
+                </ion-item>
+                <ion-item class="eye-section"><ion-label class="icon-eye" (click)="ShowPassword()"><svg [ngClass]="{'active-pass':showPassword}" xmlns="http://www.w3.org/2000/svg" width="20.05" height="15.038" viewBox="0 0 20.05 15.038"><defs><style>.a{fill:#afc0c7;}</style></defs><g transform="translate(-97 -590)"><g transform="translate(97 590)"><path class="a" d="M10.025,64A10.7,10.7,0,0,0,0,71.519a10.7,10.7,0,0,0,10.025,7.519A10.7,10.7,0,0,0,20.05,71.519,10.7,10.7,0,0,0,10.025,64Zm0,12.531a5.013,5.013,0,1,1,5.013-5.013A5.013,5.013,0,0,1,10.025,76.531Z" transform="translate(0 -64)"/><path class="a" d="M196.279,192.734a2.506,2.506,0,1,1-3.544,0,2.506,2.506,0,0,1,3.544,0" transform="translate(-184.481 -186.988)"/></g></g></svg></ion-label></ion-item>
+                <ion-item>
+                    <ion-label floating class="label-floating">PHONE NUMBER</ion-label>
+                    <!-- <ion-label class="label-right">+1</ion-label> -->
+                    <ion-input clearInput type="number" name="Phone" [(ngModel)]="form.phone" text-left class="phone"></ion-input>
+
+                </ion-item>
+            </ion-list>
+            <ion-grid text-center class="gridTop">
+                <ion-row>
+                    <ion-col style="padding-left: 2vw;padding-right: 3vw;">
+                        <button ion-button class="sgn_btn" (click)="GeneralSignUp()" block [disabled]="!buttonD">CREATE ACCOUNT</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </form>
+    </div>
+</ion-content>

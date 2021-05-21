@@ -1,0 +1,94 @@
+page-create-contest {
+    .back-button-text-ios{
+        display: none;
+    }
+    .colClass{
+        margin-top:10em;
+        width:90%;
+        margin-left: 5%;
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    }
+
+    .dlgupgrade{
+        background: rgba(32,62,75,0.5);
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        z-index: 999;
+        padding: 5vw;
+        align-items: center;
+    }
+
+    .frmupgrade{
+        background-color: white;
+        padding: 4vw;
+        border-radius: 2vw;
+        padding-bottom: 7vw;
+        text-align: center;
+        img {
+            max-width: 100px;
+            border: 0;
+            margin-top: -18vw;
+        }
+
+        .upgradetitle{
+            color: #223e4b;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        li{
+            padding: 5px 0px;
+            font-size: 11px;
+        }
+
+        .upgradecomment{
+            color: #223e4b;
+            padding-top: 2vw;
+            font-size: 11px;
+        }
+
+        ul{
+            color: #223e4b;
+            text-align: left;
+            font-style: italic;
+        }
+
+        button{
+            z-index: 2000;
+            background-color: #f47f53;
+        }
+    }
+
+    ion-list {
+        padding-left: 4vw;
+    }
+
+    button > .button-inner{
+        font-family: Raleway-bold;
+        font-weight: bolder;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,103 @@
+<ion-menu id="myMenu" [content]="content" [ngClass]="{'web-app' : platformType==='web'}">
+    <ion-header menuClose>
+        <div style="    display: flex;
+        align-items: center;
+        padding: 25px;">
+            <img src="./assets/img/User icon@2x.png" width="50px" height="50px" class="userImg">
+            <span style="padding-left: 15px;">
+                <span *ngIf="loggedUser!=null" style="font-size:20px;">{{username}}</span><BR>
+                <span style="color:grey;font-style:italic;">Hitter</span>
+            </span>
+            <ion-icon name="ios-arrow-forward" style="font-size: 40px;
+            color: #f47b4e;
+            position: absolute;
+            right: 10px;"></ion-icon>
+        </div>
+        <!-- <ion-row style="margin-top:3vw;">
+            <ion-col col-3 style="display:flex;align-items:center;padding-left:3vw;">
+                <img src="./assets/img/user.png" width="50px" height="50px" class="userImg">
+            </ion-col>
+            <ion-col col-5>
+                <ion-row *ngIf="loggedUser!=null">
+                    <ion-col>{{username}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="color:grey;font-style:italic;">Hitter</ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-4 style="display:flex;align-items:center;justify-content:flex-end;padding-right:3vw;">
+                <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" style="font-size:6vw;font-size: 14vw;color: #f47b4e;"></ion-icon>
+            </ion-col>
+        </ion-row> -->
+    </ion-header>
+
+    <ion-content class="menus">
+        <ion-list no-lines>
+            <ion-item (click)="gotoEdit()" *ngIf="showEditAlert">
+                <ion-icon name="alert" style="color:red;"></ion-icon>  Urgent: Update Profile
+            </ion-item>
+            <div *ngFor="let p of pages">
+                <ion-item class="item-stable"
+                      (click)="toggleGroup(p)"
+                      [ngClass]="{active: isSubmenuShown(p)}"
+                      style="color: #203e4b;" id="menuItem{{p.title | removewhitespaces}}">
+                      <!--<i class="icon" [ngClass]="isSubmenuShown(p) ? 'md-remove' : 'md-add'"></i>-->
+                      <ion-icon style="color:#f47b4e;" name={{p.iconClass}}>
+                        <ion-badge *ngIf="p.title=='Notification' && global.notifiBadget.length != 0" style="position: absolute;
+                            margin-left: -10px;
+                            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+                        </ion-icon>
+                    &nbsp;
+                    {{p.title}}
+                    <!--<ion-icon name={{isSubmenuShown(p) ? 'md-remove' : 'md-add'}} *ngIf="p.title=='About'"></ion-icon>-->
+                </ion-item>
+                <ion-item class="item-accordion"
+                          *ngFor="let sub of p.subs"
+                          [hidden]="isSubmenuShown(p)" menuClose (click)="openPage(sub)" id="menuItem{{sub.title | removewhitespaces}}">
+                          <p class='subItem'>{{sub.title}}</p>
+                </ion-item>
+            </div>
+        </ion-list>
+        <ion-list no-lines>
+            <ion-item style="border-bottom: 1px solid rgba(185, 179, 179, 0.5);"><ion-icon style="color:#f47b4e;" name="share"></ion-icon><span style="font-size: 20px;display: inline-block;padding-left: 10px;font-weight: bold;">Share</span></ion-item>
+            <ion-item style="text-align: center;">Share SportHitters with friends</ion-item>
+            <ion-item style="text-align: center;" class="social-row">
+                <ion-icon name="logo-facebook" style="color: #4267b2;" class="social-icons" (click)="sharesocial(2)" id="sharebyfacebook"></ion-icon>
+                <ion-icon name="logo-twitter" style="color: #1da1f2;" class="social-icons" (click)="sharesocial(3)" id="sharebytwitter"></ion-icon>
+                <ion-icon name="mail" style="color: #094edc;" class="social-icons" (click)="sharesocial(0)" id="sharebymail"></ion-icon>
+                <img src="./assets/img/iphone-icon-msj.png" class="social-icons" (click)="sharesocial(1)" style="width: 49px;" id="sharebymsj"/>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false">
+
+</ion-nav>
+
+<div class="sharecontent" *ngIf="shareFlag">
+        <button ion-button large (click)="sharesocial(0)" id="sharebyemail">Share By Email</button>
+        <button ion-button large (click)="sharesocial(1)" *ngIf="platform.is('mobile')" id="sharebysms">Share By SMS</button>
+        <button ion-button large (click)="sharesocial(2)" id="sharebyfacebook">Share On Facebook</button>
+        <button ion-button large (click)="sharesocial(3)" id="sharebytwitter">Share On Twitter</button>
+        <button ion-button large (click)="sharesocial(4)" id="closeShare">Close</button>
+</div>
+
+
+<!-- <div class="add-to-home-screen" *ngIf="showAddToHomeScreenPopup">
+    <div class="close-icon">
+        <a href="#" (click)="closeAddToHomeScreenPopup()" id="closeAddHomeScreen"><ion-icon name="close"></ion-icon></a>
+    </div>
+    <div class="body">
+        <div class="logo-img">
+            <img src='./assets/img/logo.png' width="36" />
+        </div>
+        <div class="header">Install SportHitters</div>
+        <p>Install this application in your home Screen for quick and easy access when you're on the go.</p>
+        <div class="footer">
+            <p>Just tap  <ion-icon name={{addToHomeScreenIcon}}></ion-icon> then add to Home Screen</p>
+        </div>
+    </div>
+</div> -->
+

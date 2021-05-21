@@ -1,0 +1,19 @@
+<!--
+  Generated template for the TabsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-tabs #myTabs [selectedIndex]="mySelectedIndex">
+    <ion-tab [root]="tab1Root" tabTitle="Home" (ionSelect)="onHitter1()" id="tabHome"></ion-tab>
+    <ion-tab [root]="tab2Root" (ionSelect)="onHitter4()" tabTitle="Play" id="tabChallenges"></ion-tab>
+    <ion-tab [root]="tab3Root" (ionSelect)="onFriendsClick()" tabTitle="Friends" id="tabFriends" [tabBadge]="this.global.badgeFriendCount"></ion-tab>
+    <!-- <ion-tab [root]="tab4Root"  tabIcon="chat" tabTitle="Chat"  [tabBadge]="this.badgeNum"  (ionSelect)="onHitter2()" id="tabChat"></ion-tab> -->
+
+    <!-- <ion-tab [root]="tab4Root" (ionSelect)="onHitter4()" tabIcon="hitters" tabTitle="Hitters"></ion-tab> -->
+
+
+    <!-- <ion-tab [root]="tab2Root" tabIcon="categories"></ion-tab>
+    <ion-tab [root]="tab1Root" tabIcon="home"></ion-tab>
+    <ion-tab [root]="tab3Root" tabIcon="hot"></ion-tab> -->
+</ion-tabs>

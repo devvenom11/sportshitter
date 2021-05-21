@@ -1,0 +1,114 @@
+<!--
+  Generated template for the HowToPlayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div style="background-color: white;padding:20px 20px 0px 20px">
+          <!-- <iframe width="400" height="345" src="https://youtu.be/skOsApsF0jQ">
+          </iframe> -->
+          <iframe width="100%" min-height="300"  src="https://www.youtube.com/embed/lcrkBm645_E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- <video width="400" autoplay>
+              <source src="https://www.youtube.com/embed/tgbNymZ7vqY" >
+            </video> -->
+            <button ion-button (click)="howtpplay()" class="button">GET STARTED</button>
+      </div>
+
+
+      <div class="terms-section">
+
+        <h2 style="margin-top: 25px;">
+          Challenge Game Option
+        </h2>
+        <div>
+          <!-- <p>There are two types of Quick Plays which</p>
+          <p>allow you to quickly enter a Challenge. Scroll</p>
+          <p>down to learn more about game options.</p> -->
+          <p><b>Public Challenge:</b>
+            This allows you to quickly enter and Challenge others from the SportHitters universe. Simply select the Challenge options you desire and select your teams. Once you confirm your picks, you will be placed in a Challenge against a Challenger with the same game options</p>
+        
+          <p><b>Private Challenge:</b> To play a Challenger from your network select the Challenge options labeled Private Challenge. Follow the process of selecting your teams. Once you confirm your picks, you will be prompted to invite a Challenger from your network.</p>
+          <p><b>Custom Challenge:</b>
+            All Users may create their own custom Challenges by selecting the Custom 
+           Challenge tab on the Challenge screen.  Select your sport and then customize your game options. Once 
+           you save it the Challenge will appear in “My Challenges” screen. Enter the screen and proceed with your 
+           Challenge.</p>
+          <p><b>Special Promotion:</b> This allows users with similar interests to Challenge each other as large groups. A password is needed to enter. Be sure to get the password from your groups administrator and enjoy a Special Promotion Challenge.
+          </p>
+          <p></p>
+        </div>
+        <p style="border-top: 1px solid #FFFFFF;margin-top: 10px;opacity: 0.2;"></p>
+        <h2>Rules</h2>
+        <ul class="ul" style="padding-bottom: 2px;">
+          <li>
+            <h3>
+              Pick the team you think will win the game. No spreads
+            </h3>
+          </li>
+          <li>
+            <h3>
+              All entries are final once selections are confirmed.
+            </h3>
+          </li>
+          <li>
+            <h3>
+              If your team wins, Value Points are awarded.
+            </h3>
+          </li>
+          <li>
+            <h3>Challenge winner is determined by Challenger with most points earned</h3>
+          </li>
+          <li>
+            <h3>SportHitters Game Team Values are determined by our formula and algorithm. Values are 
+              released daily, except for NFL and NCAAF which are released Monday or Tuesday to minimize 
+              large value fluctuations during the week. </h3>
+          </li>
+          <li>
+            <h3> Points may vary slightly in a Challenge based on time of entry. Same team selections can have 
+              varying results based on point changes up-to game time.</h3>
+          </li>
+          <li>
+            <h3>If a sports game is cancelled, suspended or postponed and no game result is offered, the 
+              Challenge is Active and Challenge winner is decided by total points.  </h3>
+          </li>
+        </ul>
+        <p><b>Get Social:</b> 
+          SportHitters allows users to develop and grow a network of players.
+          To build a network enter 
+          the Chat screen. You may search for users by typing in their Username and add them to your network. 
+          This will allow you to Invite them to a Challenge and/or chat directly with them any time.</p>
+          <p><b>Deposit:</b>
+            Funding your account is quick and easy. Simply tap the “add funds button on the upper right 
+           corner of the home screen and follow the steps. Your deposits are added to your account in seconds so 
+           you can play immediately. We don not charge you a processing fee for deposits.</p>
+          <p><b>Withdraw your winnings:</b>
+          Withdraw your winnings is quick and easy. Tap on the Home Menu in the top
+          left corner. Click withdraw and enter the amount. You will receive an email confirmation</p>
+          <p>PayPal withdraws are the quickest and processed within 24 hours.</p>
+          <p>Check withdraws typically take 3-5 business days</p>
+          <p>SportHitters charges a $2.50 Withdraw processing fee to cover our fees.</p>
+      </div>
+    </ion-content>

@@ -1,0 +1,261 @@
+
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+<div class="popup" *ngIf="showpopup">
+    <div class="content">
+      <img src="./assets/img/logo.png" alt="">
+      <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+      <h2>{{header}}</h2>
+      <p>{{msg}}</p>
+      <button ion-button outline class="orange-btn" (click)="closePopup()">CONTINUE</button>
+    </div>
+</div>
+<div class="heading">
+    <!--
+    <ion-row >
+            <strong class="active">{{status==='Save'?'Make':(status=='Submit'?'Confirm':'')}} Picks</strong>&nbsp;for {{createflag=='jc' ? 'Quick' : 'Custom'}} {{name.toUpperCase()}} Challenge:
+    </ion-row>
+    <ion-row  class="challenge-heading">
+        <ion-col col-2 class='entryfee flexlist'>
+            <strong *ngIf="game" >{{game!=0?'$'+game:'Free'}}</strong>
+            <div class="entryfee-txt">Entry Fee</div>
+        </ion-col>
+        <ion-col col-8 class='flexlist'>
+            <strong>{{contestname}}</strong>
+            <ul>
+                <li>{{player==0?'All':player}} Challengers,</li>
+                <li>{{ team }} Picks,</li>
+                <li *ngIf="payoutoption">{{payoutoption}} win</li>
+            </ul>
+            <div *ngIf="createflag!='sp'">{{game*(player+1)*contestPrizeFraction | currency:'USD':'2.1-2'}} Prize</div>
+        </ion-col>
+        <ion-col col-2></ion-col>
+    </ion-row>
+    <ion-row *ngIf="showCounter">
+        <ion-col col-12 style="text-align: center;display: block">Challenge begins:</ion-col>
+        <ion-col>
+            <div class="countDown" [ngClass]="{'hideCounter':hideCounter}">
+                <label class="digit-label" [ngClass]="{'hidelabel':hideDays}">
+                    <span class="label">Days</span>
+                    <span class="digit days0"></span>
+                    <span class="digit days1"></span>
+                    <span class="dots green">:</span>
+                </label>
+                <label class="digit-label" [ngClass]="{'hidelabel': hideHours}">
+                    <span class="label">Hours</span>
+                    <span class="digit hours0"></span>
+                    <span class="digit hours1"></span>
+                    <span class="dots">:</span>
+                </label>
+                <label class="digit-label">
+                    <span class="label">Minutes</span>
+                    <span class="digit minutes0"></span>
+                    <span class="digit minutes1"></span>
+                    <span class="dots">:</span>
+                </label>
+                <label class="digit-label">
+                    <span class="label">Seconds</span>
+                    <span class="digit seconds0"></span>
+                    <span class="digit seconds1"></span>
+                    <span class="dots green">:</span>
+                </label>
+            </div>
+        </ion-col>
+    </ion-row>
+    <ion-row class="contest-pickem-title-bar" ion-fixed>
+        <ion-col>
+            Contest
+        </ion-col>
+        <ion-col>Pick 'Em Value</ion-col>
+    </ion-row> -->
+
+</div>
+<ion-content padding >
+    <ion-grid class="slide-header" style="background-image: url('./assets/img/field-sunny@2x/field-sunny@2x.png');">
+        <h2 class="title noab">QUICK {{name.toUpperCase()}} CHALLENGE</h2>
+        <div class="header-details">
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12.206" height="9.155" viewBox="0 0 12.206 9.155"><defs><style>.a{fill:#fff;}</style></defs><path class="a" d="M11.062,73.154H1.144A1.146,1.146,0,0,1,0,72.01V70.1a.381.381,0,0,1,.381-.381,1.144,1.144,0,0,0,0-2.289A.381.381,0,0,1,0,67.051V65.143A1.146,1.146,0,0,1,1.144,64h9.918a1.146,1.146,0,0,1,1.144,1.144v1.907a.381.381,0,0,1-.381.381,1.144,1.144,0,0,0,0,2.289.381.381,0,0,1,.381.381V72.01a1.146,1.146,0,0,1-1.144,1.144ZM.763,70.445V72.01a.382.382,0,0,0,.381.381h9.918a.382.382,0,0,0,.381-.381V70.445a1.907,1.907,0,0,1,0-3.738V65.143a.382.382,0,0,0-.381-.381H1.144a.382.382,0,0,0-.381.381v1.564a1.907,1.907,0,0,1,0,3.738Z" transform="translate(0 -63.999)"/></svg>
+                <br><span class="label">Entry Fee</span><br><span class="number">{{game}}</span>
+            </div>
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="9.966" height="11.569" viewBox="0 0 9.966 11.569"><defs><style>.a{fill:#203e4b;stroke:#203e4b;stroke-width:0.2px;}</style></defs><g transform="translate(-33.8 0.1)"><g transform="translate(33.9)"><path class="a" d="M188.745,215.1h-.65a.428.428,0,1,1,0-.856h1.144a.284.284,0,0,0,0-.567H188.7v-.395a.284.284,0,0,0-.567,0v.395h-.04a1,1,0,1,0,0,1.99h.65a.428.428,0,0,1,0,.856H187.58a.284.284,0,0,0,0,.567h.558v.4a.284.284,0,0,0,.567,0v-.4h.054a1,1,0,0,0-.014-1.99Z" transform="translate(-183.479 -207.966)"/><path class="a" d="M43.1,6.493a8.13,8.13,0,0,0-1.229-1.971,9.157,9.157,0,0,0-1.574-1.5L41.506.789a.28.28,0,0,0-.052-.336A1.413,1.413,0,0,0,40.442,0a2.379,2.379,0,0,0-.917.241,1.736,1.736,0,0,1-.577.173A.359.359,0,0,1,38.814.39,4.2,4.2,0,0,0,37.4.057a1.916,1.916,0,0,0-1.423.667.285.285,0,0,0-.033.355l1.3,1.964a9.31,9.31,0,0,0-1.553,1.48,8.2,8.2,0,0,0-1.229,1.971A6.7,6.7,0,0,0,33.9,9.168a2.2,2.2,0,0,0,2.2,2.2h5.365a2.2,2.2,0,0,0,2.2-2.2A6.7,6.7,0,0,0,43.1,6.493ZM36.55.96A1.237,1.237,0,0,1,37.4.619a3.683,3.683,0,0,1,1.217.3.96.96,0,0,0,.329.057A2.094,2.094,0,0,0,39.74.761a1.917,1.917,0,0,1,.7-.2A.75.75,0,0,1,40.9.719L39.762,2.827H37.786ZM41.466,10.8H36.1a1.635,1.635,0,0,1-1.633-1.633A6.609,6.609,0,0,1,36.115,4.9a8.676,8.676,0,0,1,1.6-1.5h2.123a8.513,8.513,0,0,1,1.6,1.5,6.592,6.592,0,0,1,1.647,4.271A1.628,1.628,0,0,1,41.466,10.8Z" transform="translate(-33.9)"/></g></g></svg><br><span class="label">Prize</span><br><span class="number" *ngIf="createflag!='sp'">{{game*(player+1)*contestPrizeFraction | currency:'USD':'2.1-2'}}</span>
+            </div>
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11.428" viewBox="0 0 10 11.428"><defs><style>.a{fill:#203e4b;}</style></defs><path class="a" d="M7.93,68.915a2.53,2.53,0,1,0-4.092-1.708,2.016,2.016,0,0,0-2.351,3.238A2.483,2.483,0,0,0,0,72.717V75.06a.782.782,0,0,0,.781.781H9.094A.907.907,0,0,0,10,74.936V71.863a3.139,3.139,0,0,0-2.07-2.948ZM6.357,65.18a1.758,1.758,0,1,1-1.768,1.758A1.765,1.765,0,0,1,6.357,65.18ZM2.868,67.727A1.249,1.249,0,0,1,4.09,69.271a3.159,3.159,0,0,0-.883.908,1.25,1.25,0,1,1-.339-2.452ZM.766,75.06V72.717A1.716,1.716,0,0,1,2.48,71h.355a3.125,3.125,0,0,0-.12.859v3.073a.91.91,0,0,0,.011.14H.781A.017.017,0,0,1,.766,75.06Zm8.468-.124a.142.142,0,0,1-.14.14H3.62a.142.142,0,0,1-.14-.14V71.863A2.37,2.37,0,0,1,5.848,69.5H6.867a2.37,2.37,0,0,1,2.367,2.367Z" transform="translate(0 -64.414)"/></svg><br><span class="label">Challengers</span><br><span class="number">{{player}}</span>
+            </div>
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11"><defs><style>.a{fill:#203e4b;}.b,.d{fill:none;}.b{stroke:#203e4b;stroke-width:0.7px;}.c{stroke:none;}</style></defs><g transform="translate(-25 -203)"><circle class="a" cx="2.5" cy="2.5" r="2.5" transform="translate(25 203)"/><g class="b" transform="translate(25 209)"><circle class="c" cx="2.5" cy="2.5" r="2.5"/><circle class="d" cx="2.5" cy="2.5" r="2.15"/></g><g class="b" transform="translate(31 203)"><circle class="c" cx="2.5" cy="2.5" r="2.5"/><circle class="d" cx="2.5" cy="2.5" r="2.15"/></g><g class="b" transform="translate(31 209)"><circle class="c" cx="2.5" cy="2.5" r="2.5"/><circle class="d" cx="2.5" cy="2.5" r="2.15"/></g></g></svg><br><span class="label">Picks</span><br><span class="number">{{ team }}</span>
+            </div>
+        </div>
+    </ion-grid>
+    <ion-grid *ngIf="!showpicks" style="padding-left: 25px;padding-right: 35px;">
+        <ion-row>
+            <ion-col col-7><h3 class="subtitle">MAKE YOUR PICKS!</h3></ion-col>
+            <ion-col col-5>
+                <ion-row *ngIf="showCounter">
+                    <ion-col col-12 class="counter-label-start">STARTS IN</ion-col>
+                    <ion-col>
+                        <div class="countDown" [ngClass]="{'hideCounter':hideCounter}">
+                            <label class="digit-label" [ngClass]="{'hidelabel':hideDays}">
+                                <span class="digit daysPicks"></span>
+                                <span class="label">Days</span>
+                                <span class="dots green">:</span>
+                            </label>
+                            <label class="digit-label" [ngClass]="{'hidelabel': hideHours}">
+                                <span class="digit hoursPicks"></span>
+                                <span class="label">Hours</span>
+                                <span class="dots">:</span>
+                            </label>
+                            <label class="digit-label">
+                                <span class="digit minutesPicks"></span>
+                                <span class="label">Minutes</span>
+                                <span class="dots">:</span>
+                            </label>
+                            <label class="digit-label">
+                                <span class="digit secondsPicks"></span>
+                                <span class="label">Seconds</span>
+                                <!-- <span class="dots green">:</span> -->
+                            </label>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class='game-list' *ngIf="!showpicks" [ngClass]="{'gamelisCounter' : showCounter}">
+        <ion-grid *ngFor="let item of sportinfo; let i = index;" class="cardcontent" >
+            <ion-row class="pick-header">
+                <ion-col col-7><ion-note class="time_note">{{item.parsedTime}} <ng-container *ngIf="name=='SX'">( {{item.sport | uppercase}} )</ng-container></ion-note></ion-col>
+                <ion-col col-5 style="justify-content: flex-end;"><ion-note class="pick-label">Pick 'Em Value</ion-note></ion-col>
+            </ion-row>
+            <div class="gridcontent">
+                <ion-row>
+                    <ion-col col-6>
+                        <div class="team">
+                            {{item.AwayTeam}}
+                            <div>
+                                <span class="pitcher">{{item.AwayPitcher}}</span>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col col-6 style="justify-content: flex-end;">
+                        <div class="odd" [ngClass]="{'active-sport':awaySports[i]}">
+                            <ion-checkbox class="challenge2CB" (ionChange)="checkItem2(i,'away', item.HomeTeam, item.parsedTime, item.AwayTeam, item.Odds.MoneyLineAway,item.Odds.MoneyLineHome,item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2AwayVal, $event,'awaySports',item.source)" [(ngModel)]="awaySports[i]"></ion-checkbox>
+                            <span class="challenge2Points">{{item.Odds.G2AwayVal}}</span>
+                            <!-- <div class="challenge2CB" (click)="checkItem2(i,'away', item.HomeTeam, item.parsedTime, item.AwayTeam, item.Odds.MoneyLineAway,item.Odds.MoneyLineHome,item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2AwayVal, $event,'awaySports')" [ngClass]="{'active-sport':awaySports[i]}">
+                                <span class="challenge2Points">{{item.Odds.G2AwayVal}}</span>
+                            </div>-->
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <div class="team">
+                            {{item.HomeTeam}}
+                            <div>
+                                <span class="pitcher">{{item.HomePitcher}}</span>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col col-6 style="justify-content: flex-end;">
+                        <div class="odd" [ngClass]="{'active-sport':homeSports[i]}">
+                            <ion-checkbox class="challenge2CB" (ionChange)="checkItem2(i,'home', item.AwayTeam, item.parsedTime, item.HomeTeam,item.Odds.MoneyLineHome,item.Odds.MoneyLineAway, item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2HomeVal, $event,'homeSports',item.source)" [(ngModel)]="homeSports[i]"></ion-checkbox>
+                            <span class="challenge2Points">{{item.Odds.G2HomeVal}}</span>
+                            <!-- <div class="challenge2CB" (click)="checkItem2(i,'home', item.AwayTeam, item.parsedTime, item.HomeTeam,item.Odds.MoneyLineHome,item.Odds.MoneyLineAway, item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2HomeVal, $event,'homeSports')" [ngClass]="{'active-sport':homeSports[i]}">
+                                <span class="challenge2Points">{{item.Odds.G2HomeVal}}</span>
+                            </div> -->
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-grid>
+    </div>
+
+    <!-- End Game 2 -->
+    <div class="user-status-bar" ion-fixed *ngIf="!showpicks">
+        <div *ngIf="global.gameType == 'game2'">
+            <h6>Points Possible</h6>
+            <h6 class="pointsPossible" >{{pointsPossible | number : '1.2-2'}}</h6>
+        </div>
+        <div>
+            <h6>Your Picks</h6>
+            <h6 class="pointsPossible" >{{checkitemlength}}/{{team}}</h6>
+        </div>
+
+        <ion-note class="pick" (click)="showConfirmPicks()">Submit Picks</ion-note>
+    </div>
+    <div class="showpicks" *ngIf="showpicks" [ngClass]="{'showpicksCounter':showCounter}">
+
+        <div class="showpicks1" style="overflow-y: scroll; z-index: 8;">
+            <ion-row class="showpicks-heading">
+                <ion-col col-12><h3 class="subtitle">Is This Correct? CONFIRM BELOW</h3></ion-col>
+                <ion-col col-12 style="height: 34px;">
+                    <ion-row>
+                        <ion-col col-8 >Your Picks</ion-col>
+                        <ion-col col-4 style="justify-content: flex-end;">Pick 'Em Value</ion-col>
+                        <!-- <ion-col col-1 offset-1>
+                            <ion-icon name="md-arrow-dropdown" style="color: #f47b4e;font-size:2.5em" (click)="closepicks()"></ion-icon>
+                        </ion-col> -->
+                    </ion-row>
+                </ion-col>
+
+            </ion-row>
+            <ion-row *ngFor="let val of showpicklist;" style="border-bottom: 1px solid rgba(112, 112, 112, .1);">
+                <ion-col col-12 *ngIf="val" style="width: 100%;">
+                    <ion-row>
+                        <ion-col col-3 style="font-size: 16px;color: #203E4B;font-family: roboto-medium;">{{val.time}} EST</ion-col>
+                        <ion-col col-7 style="display: initial;color: #203E4B;font-size: 16px;font-family: roboto-medium;"><span class="yourpick">{{val.team}}</span><br>{{val.ii}}</ion-col>
+                        <ion-col col-2 style="font-size: 16px;font-weight: bold;">{{val.g2Val}}</ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-12>
+                    <ion-row>
+                        <ion-col col-10 >
+                            <h5 style="margin-top: 10px;font-size:16px;font-weight: bold;">Possible Points&nbsp;</h5>
+                        </ion-col>
+                        <ion-col col-2>
+                            <h5 style="margin-top: 10px;font-size:16px;font-weight: bold;">{{pointsPossible | number : '1.2-2'}}</h5>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <div class="fundmodal" *ngIf="fundmodalflag==true">
+              <div>
+                <ion-icon name="close" (click)="closefundmodal()"></ion-icon>
+                <img src='./assets/img/logo.png'/>
+                <h3>Not Enough Funds!</h3>
+                <p>You need to add more funds to your account to be able to join this challenge.</p>
+                <button ion-button (click)="goFund()">ADD FUNDS</button>
+              </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="user-status-bar" ion-fixed *ngIf="showpicks" style="justify-content: center;">
+        <ion-note class="btn-pick" (click)="confirmPicks()">Confirm Your Picks</ion-note>
+    </div>
+</ion-content>
+
+

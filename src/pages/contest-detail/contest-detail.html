@@ -1,0 +1,60 @@
+<!--
+  Generated template for the ContestDetailPage page.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{name}} Contest</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only class="my-network-btn" (click)="goFavourite()" end>
+                <ion-icon name="md-people"></ion-icon>
+            </button>
+            <button ion-button end (click)="goFund()">
+                    <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+            </button>
+
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-label class="seg_title">Number of players:</ion-label>
+    <ion-segment [(ngModel)]="player">
+        <ion-segment-button value="1" (ionSelect)="initPostRequest()" style="border-bottom-left-radius: 5px;border-top-left-radius: 5px;">1</ion-segment-button>
+        <ion-segment-button value="10" (ionSelect)="initPostRequest()">10</ion-segment-button>
+        <ion-segment-button value="25" (ionSelect)="initPostRequest()">25</ion-segment-button>
+        <ion-segment-button value="100" (ionSelect)="initPostRequest()">100</ion-segment-button>
+        <ion-segment-button value="-1" (ionSelect)="initPostRequest()" style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">All</ion-segment-button>
+    </ion-segment>
+    <ion-label  class="seg_title"> Number of picks:</ion-label>
+    <ion-segment [(ngModel)]="team" style="width:60%;">
+        <ion-segment-button value="6" (ionSelect)="initPostRequest()" style="border-bottom-left-radius: 5px;border-top-left-radius: 5px;">6</ion-segment-button>
+        <ion-segment-button value="10" (ionSelect)="initPostRequest()" style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">10</ion-segment-button>
+        <!-- <ion-segment-button value="-1" (ionSelect)="initPostRequest()" style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">All</ion-segment-button>         -->
+    </ion-segment>
+
+    <ion-label  class="seg_title"> Game Type:</ion-label>
+
+    <ion-segment [(ngModel)]="game">
+        <ion-segment-button value="10" (ionSelect)="initPostRequest()" style="border-bottom-left-radius: 0px;border-top-left-radius: 5px;">$10</ion-segment-button>
+        <ion-segment-button value="25" (ionSelect)="initPostRequest()">$25</ion-segment-button>
+        <ion-segment-button value="50" (ionSelect)="initPostRequest()">$50</ion-segment-button>
+        <ion-segment-button value="100" (ionSelect)="initPostRequest()">$100</ion-segment-button>
+        <ion-segment-button value="-1" (ionSelect)="initPostRequest()" style="border-bottom-right-radius: 0px;border-top-right-radius: 5px;">Free</ion-segment-button>
+    </ion-segment>
+    <ion-segment [(ngModel)]="game">
+        <ion-segment-button value="10" (ionSelect)="initPostRequest()" style="border-top-left-radius: 0px;border-bottom-left-radius: 5px;">Open</ion-segment-button>
+        <ion-segment-button value="25" (ionSelect)="initPostRequest()">Open</ion-segment-button>
+        <ion-segment-button value="50" (ionSelect)="initPostRequest()">Open</ion-segment-button>
+        <ion-segment-button value="100" (ionSelect)="initPostRequest()">Open</ion-segment-button>
+        <ion-segment-button value="-1" (ionSelect)="initPostRequest()" style="border-top-right-radius: 0px;border-bottom-right-radius: 5px;">Open</ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="game" class="game_btn" >
+        <button *ngSwitchCase="'10'" ion-button (click)="continue()">CONTINUE</button>
+        <button *ngSwitchCase="'25'" ion-button (click)="continue()">CONTINUE</button>
+        <button *ngSwitchCase="'50'" ion-button (click)="continue()">CONTINUE</button>
+        <button *ngSwitchCase="'100'" ion-button (click)="continue()">CONTINUE</button>
+        <button *ngSwitchCase="'-1'" ion-button (click)="continue()">CONTINUE</button>
+    </div>
+</ion-content>

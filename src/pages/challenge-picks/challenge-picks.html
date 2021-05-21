@@ -1,0 +1,333 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <img
+        src="./assets/img/Group 9.svg"
+        alt=""
+        style="margin-right: 15px; height: 20.08px"
+      />
+      <ion-badge
+        *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px"
+        >{{global.notifiBadget.length}}</ion-badge
+      >
+    </button>
+    <img
+      src="./assets/img/logo-new@2x.png"
+      style="height: 36px; width: 28px; position: absolute; top: 8px"
+    />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl"
+          >Balance <br />
+          <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label
+        >
+      </button>
+      <button
+        ion-button
+        end
+        (click)="goFund()"
+        id="addFundButton"
+        class="addfundbtn"
+      >
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid
+    class="slide-header"
+    style="
+      background-image: url('./assets/img/field-sunny@2x/field-sunny@2x.png');
+    "
+  >
+    <h2 class="title">
+      NEW
+      <ng-container *ngIf="create=='cc';else other">CUSTOM</ng-container>
+      <ng-template #other>
+        <ng-container *ngIf="directFlag; else public">PRIVATE</ng-container>
+        <ng-template #public>PUBLIC</ng-template>
+      </ng-template>
+      CHALLENGE
+    </h2>
+  </ion-grid>
+  <ion-grid
+    style="text-align: center; color: white; padding: 5px 0 5px 20px !important"
+  >
+    <ion-row style="align-items: center">
+      <ion-col col-12>
+        <h2 class="subtitle">Choose Your Sport</h2>
+      </ion-col>
+      <ion-col col-12>
+        <ion-slides
+          pager="false"
+          slidesPerView="4"
+          spaceBetween="7"
+          loop
+          class="slide-sport"
+        >
+          <ion-slide
+            *ngFor="let item of sports; let i = index"
+            [ngClass]="{'active-sport': i == currentSportIndex}"
+            (click)="currentSport(i, item.active)"
+          >
+            <!-- ITEM COMING FROM MENU ENDPOINT -->
+            <ion-slide *ngIf="item.name === 'SX'; else others" class="sx">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="27.786"
+                height="15.18"
+                viewBox="0 0 27.786 15.18"
+              >
+                <defs>
+                  <style>
+                    .a {
+                      fill: #203e4b;
+                    }
+                  </style>
+                </defs>
+                <path
+                  class="a"
+                  d="M4.882,18l1.408-1.32H13l.44-.44V14.346l-.33-.33H6.84L4.97,12.124V7.02l2.2-2.2H17.576V6.866L16.322,8.032H9.59l-.44.462v1.892l.33.352h6.27l1.87,1.87V17.8L15.42,20H4.882Zm17.6-5.764-3.5-7.414H23.6l2.178,5.214,2.2-5.214h4.444l-3.674,7.37L32.668,20H27.96l-2.442-5.346L23.252,20H18.764Z"
+                  transform="translate(-4.882 -4.82)"
+                />
+              </svg>
+            </ion-slide>
+            <ng-template #others>
+              <img
+                *ngIf="item.active; else inactive"
+                src="{{ i == currentSportIndex ? item.imagewhite : item.image }}"
+                alt=""
+              />
+              <ng-template #inactive>
+                <img src="{{item.inactive}}" alt="" />
+              </ng-template>
+            </ng-template>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid
+    style="text-align: center; color: white; padding: 5px 20px !important"
+  >
+    <ion-row>
+      <ion-col col-12 style="padding-top: 10px">
+        <h2 class="subtitle">Select Entry Amount</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col
+        col-4
+        *ngFor="let item of picksarray;let i=index"
+        (click)="chooseGameVal(i)"
+      >
+        <div class="picks" [ngClass]="{'active':i==currentGameIndex}">
+          {{item.game | currency:'USD':true:'2.0'}}
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="gameChoose && sports[currentSportIndex] && hasgame">
+      <ion-col col-12 style="padding-top: 10px">
+        <h2 class="subtitle">Select Challenge Options</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="gameChoose && sports[currentSportIndex] && hasgame">
+      <ng-container *ngFor="let item of gameChoose.val; let i=index">
+        <!-- SHOW ONLY PRIVATE CHALLENGES -->
+        <ion-col
+          col-6
+          (click)="chooseChallenge(item.challenge,item.pick,gameChoose.game,i)"
+          *ngIf="directFlag==true && item.flag=='private'"
+        >
+          <div
+            class="challenge"
+            [ngClass]="{'active':i==challengeIndexSelected}"
+          >
+            <div class="content">
+              <img
+                src="./assets/img/Path 506.svg"
+                alt=""
+                width="10px"
+                height="11.43px"
+              /><br /><span class="label">Challengers</span><br /><span
+                class="number"
+                >{{item.challenge}}</span
+              >
+            </div>
+            <div class="content">
+              <img
+                src="./assets/img/Group 105.svg"
+                alt=""
+                width="11px"
+                height="11px"
+              /><br /><span class="label">Picks</span><br /><span class="number"
+                >{{item.pick}}</span
+              >
+            </div>
+            <div class="content">
+              <img
+                src="./assets/img/Group 124.svg"
+                alt=""
+                width="9.77px"
+                height="11.37px"
+              /><br /><span class="label">Prize</span><br /><span class="number"
+                >{{(gameChoose.game*(item.challenge+1))-(gameChoose.game*(item.challenge+1))*0.07
+                | currency:'USD':true:'2.0'}}</span
+              >
+            </div>
+          </div>
+        </ion-col>
+        <!-- SHOW PUBLIC CHALLENGES -->
+        <ion-col
+          col-6
+          (click)="chooseChallenge(item.challenge,item.pick,gameChoose.game,i)"
+          *ngIf="directFlag==false && item.flag=='public'"
+        >
+          <div
+            class="challenge"
+            [ngClass]="{'active':i==challengeIndexSelected}"
+          >
+            <div class="content">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="11.428"
+                viewBox="0 0 10 11.428"
+              >
+                <defs>
+                  <style>
+                    .a {
+                      fill: #203e4b;
+                    }
+                  </style>
+                </defs>
+                <path
+                  class="a"
+                  d="M7.93,68.915a2.53,2.53,0,1,0-4.092-1.708,2.016,2.016,0,0,0-2.351,3.238A2.483,2.483,0,0,0,0,72.717V75.06a.782.782,0,0,0,.781.781H9.094A.907.907,0,0,0,10,74.936V71.863a3.139,3.139,0,0,0-2.07-2.948ZM6.357,65.18a1.758,1.758,0,1,1-1.768,1.758A1.765,1.765,0,0,1,6.357,65.18ZM2.868,67.727A1.249,1.249,0,0,1,4.09,69.271a3.159,3.159,0,0,0-.883.908,1.25,1.25,0,1,1-.339-2.452ZM.766,75.06V72.717A1.716,1.716,0,0,1,2.48,71h.355a3.125,3.125,0,0,0-.12.859v3.073a.91.91,0,0,0,.011.14H.781A.017.017,0,0,1,.766,75.06Zm8.468-.124a.142.142,0,0,1-.14.14H3.62a.142.142,0,0,1-.14-.14V71.863A2.37,2.37,0,0,1,5.848,69.5H6.867a2.37,2.37,0,0,1,2.367,2.367Z"
+                  transform="translate(0 -64.414)"
+                />
+              </svg>
+              <br /><span class="label">Challengers</span><br /><span
+                class="number"
+                >{{item.challenge}}</span
+              >
+            </div>
+            <div class="content">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 11 11"
+              >
+                <defs>
+                  <style>
+                    .a {
+                      fill: #203e4b;
+                    }
+                    .b,
+                    .d {
+                      fill: none;
+                    }
+                    .b {
+                      stroke: #203e4b;
+                      stroke-width: 0.7px;
+                    }
+                    .c {
+                      stroke: none;
+                    }
+                  </style>
+                </defs>
+                <g transform="translate(-25 -203)">
+                  <circle
+                    class="a"
+                    cx="2.5"
+                    cy="2.5"
+                    r="2.5"
+                    transform="translate(25 203)"
+                  />
+                  <g class="b" transform="translate(25 209)">
+                    <circle class="c" cx="2.5" cy="2.5" r="2.5" />
+                    <circle class="d" cx="2.5" cy="2.5" r="2.15" />
+                  </g>
+                  <g class="b" transform="translate(31 203)">
+                    <circle class="c" cx="2.5" cy="2.5" r="2.5" />
+                    <circle class="d" cx="2.5" cy="2.5" r="2.15" />
+                  </g>
+                  <g class="b" transform="translate(31 209)">
+                    <circle class="c" cx="2.5" cy="2.5" r="2.5" />
+                    <circle class="d" cx="2.5" cy="2.5" r="2.15" />
+                  </g>
+                </g>
+              </svg>
+              <br />
+              <span class="label">Picks</span><br /><span class="number"
+                >{{item.pick}}</span
+              >
+            </div>
+            <div class="content">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="9.966"
+                height="11.569"
+                viewBox="0 0 9.966 11.569"
+              >
+                <defs>
+                  <style>
+                    .a {
+                      fill: #203e4b;
+                      stroke: #203e4b;
+                      stroke-width: 0.2px;
+                    }
+                  </style>
+                </defs>
+                <g transform="translate(-33.8 0.1)">
+                  <g transform="translate(33.9)">
+                    <path
+                      class="a"
+                      d="M188.745,215.1h-.65a.428.428,0,1,1,0-.856h1.144a.284.284,0,0,0,0-.567H188.7v-.395a.284.284,0,0,0-.567,0v.395h-.04a1,1,0,1,0,0,1.99h.65a.428.428,0,0,1,0,.856H187.58a.284.284,0,0,0,0,.567h.558v.4a.284.284,0,0,0,.567,0v-.4h.054a1,1,0,0,0-.014-1.99Z"
+                      transform="translate(-183.479 -207.966)"
+                    />
+                    <path
+                      class="a"
+                      d="M43.1,6.493a8.13,8.13,0,0,0-1.229-1.971,9.157,9.157,0,0,0-1.574-1.5L41.506.789a.28.28,0,0,0-.052-.336A1.413,1.413,0,0,0,40.442,0a2.379,2.379,0,0,0-.917.241,1.736,1.736,0,0,1-.577.173A.359.359,0,0,1,38.814.39,4.2,4.2,0,0,0,37.4.057a1.916,1.916,0,0,0-1.423.667.285.285,0,0,0-.033.355l1.3,1.964a9.31,9.31,0,0,0-1.553,1.48,8.2,8.2,0,0,0-1.229,1.971A6.7,6.7,0,0,0,33.9,9.168a2.2,2.2,0,0,0,2.2,2.2h5.365a2.2,2.2,0,0,0,2.2-2.2A6.7,6.7,0,0,0,43.1,6.493ZM36.55.96A1.237,1.237,0,0,1,37.4.619a3.683,3.683,0,0,1,1.217.3.96.96,0,0,0,.329.057A2.094,2.094,0,0,0,39.74.761a1.917,1.917,0,0,1,.7-.2A.75.75,0,0,1,40.9.719L39.762,2.827H37.786ZM41.466,10.8H36.1a1.635,1.635,0,0,1-1.633-1.633A6.609,6.609,0,0,1,36.115,4.9a8.676,8.676,0,0,1,1.6-1.5h2.123a8.513,8.513,0,0,1,1.6,1.5,6.592,6.592,0,0,1,1.647,4.271A1.628,1.628,0,0,1,41.466,10.8Z"
+                      transform="translate(-33.9)"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <br />
+              <span class="label">Prize</span><br /><span class="number"
+                >{{(gameChoose.game*(item.challenge+1))-(gameChoose.game*(item.challenge+1))*0.07
+                | currency:'USD':true:'2.0'}}</span
+              >
+            </div>
+          </div>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+    <ion-row *ngIf="showpopup">
+      <ion-col col-12>
+        <h2 class="subtitle">{{header}}</h2>
+        <div class="no-available" [innerHTML]="msg"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar style="padding: 0">
+    <ion-row [ngClass]="{'active-btn': enablebtn}" class="button-section">
+      <button
+        class="process-btn"
+        [attr.disabled]="enablebtn ? null : true"
+        (click)="goPick()"
+      >
+        Proceed and Make Your Picks!
+        <img src="./assets/img/Path 298.svg" alt="" style="margin-left: 10px" />
+      </button>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

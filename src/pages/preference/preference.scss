@@ -1,0 +1,100 @@
+page-preference {
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .item-ios ion-avatar, .item-md ion-avatar {
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    .game_btn{
+        text-align: center;
+        button{
+            color: #223e4b;background-color: #f47b4e;margin-top: 5vw;width: 60%; 
+        }
+    }
+
+    .bit{
+        padding: 4vw;
+        text-align: center;
+    }
+    .pretitle{
+        padding: 3vw;
+        background-color: #1f323b;
+        color: white;
+    }
+    .preselect{
+        display: flex;
+        justify-content: space-around;
+        .select-ios .select-icon,.select-md .select-icon {            
+            margin-right: 2vw;
+        }
+    }
+    .preitem{
+        padding: 4vw;
+        display: flex;
+        .label-ios, .label-md {
+            color: rgb(7, 7, 7);
+            padding-left: 3vw;
+        }
+        .radio-ios, .radio-md {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .radio-ios .radio-icon,.radio-md .radio-icon {
+            position: relative;
+            display: block;
+            width: 22px;
+            height: 22px;
+            border: 1px solid #1f323b;
+        }
+        .radio-ios .radio-checked .radio-inner,.radio-md .radio-checked .radio-inner {            
+            border-color: #1f323b;           
+        }
+        .radio-md .radio-inner, .radio-ios .radio-inner {
+            left: 2px;
+            top: 2px;
+            border-radius: 50%;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: #1f323b;
+        }
+    }
+
+    .precontent{
+        ion-input{
+            padding: 4vw;
+        }
+        .text-input-ios, .text-input-ios {
+            margin: 0px;
+            width: 100%;
+            border-bottom: grey 1px solid;
+        }
+    }
+
+    .precontent .text-input-ios, .precontent .text-input-md {       
+        padding-bottom: 1vw;
+    }
+
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    }  
+
+
+
+}

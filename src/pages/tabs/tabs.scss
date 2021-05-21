@@ -1,0 +1,140 @@
+page-tabs {
+
+    .tabs-md .tab-button[aria-selected=true] {
+        color: #191919;        
+    }
+
+    .tabs-ios .tab-button[aria-selected=true] {
+        color: #191919;
+    }
+
+    .tabbar, .tabs-ios, .tabs-md , .tabs-wp{
+        .tab-button-icon {
+            background-repeat:no-repeat;
+            background-position:center;
+            height:24px;
+            width:24px;
+            background-size:contain;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            &:before {
+                display:none;
+            }
+        }
+    }
+
+    .tabs-ios {
+      a[aria-selected=false]{
+        .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label="categories"], .tab-button-icon[aria-label="categories outline"] {
+            background-image: url('../assets/img/tab_brackets.png');
+        }
+        .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home], .tab-button-icon[aria-label="home outline"] {
+            background-image: url('../assets/img/tab_home.png');
+        }
+        .tab-button-icon[ng-reflect-name=chat], .tab-button-icon[aria-label=chat], .tab-button-icon[aria-label="chat outline"] {
+            background-image: url('../assets/img/tab_chat.png');
+        }
+        .tab-button-icon[ng-reflect-name=hitters], .tab-button-icon[aria-label=hitters], .tab-button-icon[aria-label="hitters outline"]  {
+            background-image: url('../assets/img/tab_consultant.png');
+        }
+      }
+     a[aria-selected=true] {
+       //führ eventuellen text
+       //span {
+          //color: #f00; //whatever colour you want to use for the text
+        //}
+        .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label=categories] {
+          background-image: url('../assets/img/tab_brackets1.png');
+        }
+        .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+          background-image: url('../assets/img/tab_home1.png');
+        }
+        .tab-button-icon[ng-reflect-name=chat], .tab-button-icon[aria-label=chat] {
+          background-image: url('../assets/img/tab_chat1.png');
+        }
+        .tab-button-icon[ng-reflect-name=hitters], .tab-button-icon[aria-label=hitters] {
+            background-image: url('../assets/img/tab_consultant1.png');
+        }
+      }
+    }
+
+    .tabs-md {
+      a[aria-selected=false]{
+         .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label="categories"] {
+          background-image: url('../assets/img/tab_brackets.png');
+        }
+        .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+          background-image: url('../assets/img/tab_home.png');
+        }
+        .tab-button-icon[ng-reflect-name=chat], .tab-button-icon[aria-label=chat] {
+          background-image: url('../assets/img/tab_chat.png');
+        }
+        .tab-button-icon[ng-reflect-name=hitters], .tab-button-icon[aria-label=hitters] {
+            background-image: url('../assets/img/tab_consultant.png');
+        }
+      }
+
+     a[aria-selected=true] {
+       //führ eventuellen text
+       //span {
+          //color: #f00; //whatever colour you want to use for the text
+        //}
+        .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label=categories] {
+          background-image: url('../assets/img/tab_brackets1.png');
+        }
+        .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+          background-image: url('../assets/img/tab_home1.png');
+        }
+        .tab-button-icon[ng-reflect-name=chat], .tab-button-icon[aria-label=chat] {
+          background-image: url('../assets/img/tab_chat1.png');
+        }
+        .tab-button-icon[ng-reflect-name=hitters], .tab-button-icon[aria-label=hitters] {
+            background-image: url('../assets/img/tab_consultant1.png');
+        }
+      }
+    }
+
+    .tabs-wp {
+      a[aria-selected=false]{
+         .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label="categories"] {
+          background-image: url('../assets/img/tab_brackets.png');
+        }
+        .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+          background-image: url('../assets/img/tab_home.png');
+        }
+        .tab-button-icon[ng-reflect-name=chat], .tab-button-icon[aria-label=chat] {
+          background-image: url('../assets/img/tab_chat.png');
+        }
+        .tab-button-icon[ng-reflect-name=hitters], .tab-button-icon[aria-label=hitters] {
+            background-image: url('../assets/img/tab_consultant.png');
+        }
+      }
+
+     a[aria-selected=true] {
+       //führ eventuellen text
+       //span {
+          //color: #f00; //whatever colour you want to use for the text
+        //}
+        .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label=categories] {
+          background-image: url('../assets/img/tab_brackets1.png');
+        }
+        .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+          background-image: url('../assets/img/tab_home1.png');
+        }
+        .tab-button-icon[ng-reflect-name=chat], .tab-button-icon[aria-label=chat] {
+          background-image: url('../assets/img/tab_chat1.png');
+        }
+        .tab-button-icon[ng-reflect-name=hitters], .tab-button-icon[aria-label=hitters] {
+            background-image: url('../assets/img/tab_consultant1.png');
+        }
+      }
+    }
+    .tab-button-text{
+      color: #DFDFDF !important;
+      text-transform: uppercase !important;
+      font-size: 13px !important;
+      padding-top: 6px !important;
+      font-family: industry-medium;
+    }
+}

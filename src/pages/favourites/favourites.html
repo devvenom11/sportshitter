@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+      <img
+        src="./assets/img/Group 9.svg"
+        alt=""
+        style="margin-right: 15px; height: 20.08px"
+      />
+      <ion-badge
+        *ngIf="global.notifiBadget.length"
+        style="position: absolute; margin-left: -10px; margin-top: -3px"
+        >{{global.notifiBadget.length}}</ion-badge
+      >
+    </button>
+    <img
+      src="./assets/img/logo-new@2x.png"
+      style="height: 36px; width: 28px; position: absolute; top: 8px"
+    />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl"
+          >Balance <br />
+          <span class="fund"
+            >{{funds | currency:'USD':'2.1-2'}}</span
+          ></ion-label
+        >
+      </button>
+      <button
+        ion-button
+        end
+        (click)="goFund()"
+        id="addFundButton"
+        class="addfundbtn"
+      >
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid
+    class="slide-header"
+    style="
+      background-image: url('./assets/img/field-sunny@2x/field-sunny@2x.png');
+    "
+  >
+    <div class="arrow-content">
+      <img (click)="goHome()" alt="" src="/assets/img/Path 298.svg" />
+    </div>
+    <h2 class="title">MY NETWORK</h2>
+  </ion-grid>
+  <div class="content-padding">
+    <ion-grid class="input-container">
+      <div class="header-search">
+        <img src="./assets/img/Path 539.svg" alt="" />
+        <span class="label">Add new friends</span>
+      </div>
+      <ion-row>
+        <ion-col col-7>
+          <ion-input
+            type="text"
+            placeholder="Username"
+            [(ngModel)]="searchWord"
+            class="search-friend"
+          ></ion-input>
+        </ion-col>
+        <ion-col col-5>
+          <button class="search-btn" (click)="onSearch()">
+            <img src="./assets/img/Group 255.svg" alt="" />FIND
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list class="search" style="margin-bottom: 0px" *ngIf="showResult">
+      <ion-grid
+        ><h2 class="list-title" *ngIf="!showSuccess">RESULTS</h2></ion-grid
+      >
+      <ion-row *ngFor="let user of users" class="item">
+        <ion-col col-11
+          ><p class="friend-name">
+            {{ user.username || user.displayname }}
+          </p></ion-col
+        >
+        <ion-col col-1 (click)="pendingRequest(user)"
+          ><img src="./assets/img/Group 259.svg"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-grid *ngIf="showSuccess">
+        <p style="font-size: 20px; color: #203e4b; text-align: center">
+          Friend request sent to {{requestSentTo.username}}
+        </p>
+      </ion-grid>
+      <ion-grid style="align-items: center">
+        <button (click)="showLists()" class="btn-showList">
+          Return to Friends List
+        </button>
+      </ion-grid>
+    </ion-list>
+    <ion-grid *ngIf="showList">
+      <div *ngIf="requests.length">
+        <h2 class="list-title">FRIEND REQUESTS</h2>
+        <ion-list>
+          <ion-row class="item" no-lines *ngFor="let request of requests;">
+            <ion-col col-8>
+              <div class="friend-name">{{ request.user.username }}</div>
+              <span *ngIf="request.status === 'received'">
+                Has added you as a friend. Add them back?
+                {{request.message}}
+              </span>
+              <span *ngIf="request.status === 'sent'">
+                Request is pending.
+              </span>
+            </ion-col>
+            <ion-col col-2>
+              <button ion-button small outline icon-only (click)="declineRequest(request.user)">
+                <ion-icon name="remove-circle"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-2>
+              <button ion-button small outline icon-only (click)="acceptRequest(request.user)">
+                <ion-icon name="add-circle"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </div>
+
+      <div *ngIf="friends.length">
+        <h2 class="list-title">FRIENDS LIST</h2>
+        <ion-list>
+          <ion-row class="item" no-lines *ngFor="let friend of friends;">
+            <ion-col col-10 (click)="goToChat(friend.user)">
+              <p class="friend-name">{{ friend.user.username }}</p>
+            </ion-col>
+            <ion-col col-2>
+              <!-- if new message indicator -->
+              <ion-icon name="mail"></ion-icon>
+              <!-- else none -->
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </div>
+    </ion-grid>
+
+    <ion-label
+      *ngIf="!friends.length"
+      style="text-align: center; font-style: italic; color: #bdbcbc">
+      Search for other SportHitters users...
+    </ion-label>
+
+  </div>
+
+</ion-content>

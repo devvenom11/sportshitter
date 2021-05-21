@@ -1,0 +1,270 @@
+page-chatfeed {
+    
+    .adversitsement{
+        background: #f2f2f2;
+    }
+
+    .card-ios{
+        margin:0px;
+        margin-top:10px;
+        width:100%;
+    }    
+    
+    .grid{
+        padding:1px;
+    }
+    
+    .rowback{
+        background: #fff;        
+        display: flex;
+        align-items: center;
+        // margin-bottom: 2vw;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .scroll-content{
+        margin: -16px;
+    }
+    .card-ios, .card-md {
+        margin-top: 0px;
+    }
+
+    .col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .game_title{
+        margin: 0px;
+        color: white;
+        font-weight: 500;
+        margin-left:2vw;
+    }
+    .game_title1{
+        color: #a6b2b7;
+        margin: 0px;
+        font-size: 12px;       
+    }
+    // .note-ios, .note-md {
+    //     color: #fff;
+    //     position: absolute;
+    //     background-color: #f47b4e;
+    //     padding: 3vw;
+    //     padding-top: 2vw;
+    //     padding-bottom: 2vw;
+    //     height: 6vw;
+    //     font-size: 2vw;
+    //     margin-left: 3vw;
+    // }
+    .game_grid{
+        padding: 2vw;
+        background-color: #f4f4f4;
+        padding-top: 0px;
+    }  
+    
+    .colleaf{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+    // [col-10] {
+    //     padding-bottom: 0px;
+    //     display: inline-table;
+    //     border-right: 2px solid #f4f4f4;
+    // }
+    .chatrow{
+        background: transparent; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:#f47b4e;
+        font-size: 21px;
+     }
+
+     .segment-ios .segment-button.segment-activated, .segment-md .segment-button.segment-activated{
+         background-color: transparent;
+         color:grey;
+         border-bottom: 2px solid #f47b4e;
+     }
+     .segment-ios .segment-button, .segment-md .segment-button{
+        color:grey;
+        border:none;
+     }
+
+     ion-segment{
+        background-color: #f8f8f8;
+     }
+
+     .item-ios, .item-md{
+         padding-left: 0px;
+        // background-color: rgb(244, 244, 244);
+     }
+
+     .list-ios, .list-md{
+         margin-top: 0px;         
+     }
+
+     .search .item-ios, .search .item-md{
+        padding-left: 4vw;
+     }
+
+     .label-ios, .label-md{
+        color: #24414e;
+        font-size: 16px;
+     }
+
+     .search{
+        .label-md, .label-ios{
+            color: grey;
+            padding-left: 3vw;
+            font-size: 1.3rem;
+        }
+        .item-ios, .item-md{            
+            background-color: #fff;
+        }
+    }
+
+     .scroll-content{
+        background-color: rgb(244, 244, 244);
+     }
+
+     .item > ion-icon, .item-inner > ion-icon{
+         font-size: 1.2em;
+     }
+
+     .searchIcon{
+        font-size:23px;
+        padding:10px;
+        color:#f47b4e;
+        margin-right:5px;
+     }
+
+     .input-wrapper{
+        ion-label{
+            display: flex;
+            ion-note{
+                display: flex;
+                h1{
+                    
+                }
+            }
+        }
+     }
+
+     .greanClass{
+        color:green;
+        margin: 0 0 0px;
+        margin-top: -15px;
+        font-size: 4rem;
+        padding-right: 10px;
+     }
+     .redClass {
+        color: red;
+        margin: 0 0 0px;
+        margin-top: -15px;
+        font-size: 4rem;
+        padding-right: 10px;
+     }
+
+     .item-cell{
+        border-bottom-color: #c7c7c7;
+        border-bottom-style: solid;
+        border-bottom-width: 1px!important;
+        background-color: #fff;
+        div{
+            div{
+                ion-label{
+                    margin: 17px 8px 7px 0px;
+                }
+            }
+        }
+     }
+
+     ion-list.search.list.list-md{
+        margin-bottom:0px;
+     }
+
+     ion-label.label.label-md{
+        margin: 17px 8px 2px 0px!important;
+     }
+
+     .searchbar-ios .searchbar-ios-cancel{
+         display: block!important;
+     }
+
+     button.searchbar-ios-cancel.disable-hover.button.button-ios.button-clear.button-clear-ios{
+         padding-left: 8px;
+     }
+
+     //jami
+     .note-ios, .note-md {
+        //color: #fff;
+        // position: absolute;
+        //background-color: #f47b4e;
+        //padding: 3vw;
+        // padding-top: 1vw;
+        // padding-bottom: 1vw;
+       // font-size: 12px;
+        
+        // margin-left: 3vw;
+
+        //jami
+        display: flex;
+        //width: 100%;
+    }
+
+    .chatrow{
+        background: transparent; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:#f47b4e;
+        font-size: 21px;
+     }
+
+    .col10{
+        border-right: 2px solid #f4f4f4;
+        padding-left: 20px;
+    }
+
+    [col-10] {
+        padding: 0px;
+        display: inline-table;        
+    }
+
+    .row1 {
+        padding: 5px 0 5px 0;
+        .col1 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .col2 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .col3 {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    }
+    .empty-list{
+        text-align: center;
+        padding: 40px 15px;
+    }
+
+}

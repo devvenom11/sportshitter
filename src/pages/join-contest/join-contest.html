@@ -1,0 +1,79 @@
+<ion-header>
+    <!-- <ion-navbar>
+        <span *ngIf="create=='cc';else private">Custom Challenge</span>
+        <ng-template #private>
+            <span *ngIf="inviteFlag; else public">Private Challenges</span>
+            <ng-template #public>Public Challenges</ng-template>
+        </ng-template>
+        <ion-buttons end>
+            <button ion-button end (click)="goFund()">
+                    <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+            </button>
+
+        </ion-buttons>
+    </ion-navbar> -->
+    <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu">
+              <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+              margin-left: -10px;
+              margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+          </ion-icon>
+      </button>
+      <!-- <div style="width:35%">
+          <div *ngIf="search == 'hide'" style="display:flex;justify-content: flex-end;">
+              <ion-icon ios="ios-search" md="md-search" class="searchIcon" (click)="onSearchShow()"></ion-icon>
+          </div>
+      </div> -->
+      <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+      <ion-buttons end>
+          <button ion-button icon-only end>
+              <ion-label class="fund_lbl">Balance <br> <span class="fund">
+                {{funds | currency:'USD':'2.1-2'}}
+              </span></ion-label>
+          </button>
+          <button ion-button end (click)="goFund()" id="addFundButton" style="font-size: 13px; font-weight: normal;" class="addfundbtn">
+              <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-grid style="background-color:#203e4b;text-align: center;color:white;padding: 5px !important;">
+        <ion-row>
+          <ion-col>CHOOSE YOUR SPORT</ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="custom-content">
+        <ion-list>
+            <div *ngFor="let item of originsports"> 
+                <div *ngIf="item === 'SOCCER'; else enable">
+                    <ion-item class="sports disabled"  no-lines  style="border-bottom: 1px solid #dedede;">
+                        <ion-avatar item-start>
+                            <img src={{sportsImageURL[item]}}>
+                        </ion-avatar>
+                        <ng-container *ngIf="item=='NFL' || item=='NCAAF'"><p style="color:#575757;">{{ item  | uppercase }} <span>- BACK SEPT 2020</span></p></ng-container>
+                        <ng-container *ngIf="item=='NHL' || item=='NBA'"><p style="color:#575757;">{{ item | uppercase }} <span>- COMING BACK JULY 30</span></p></ng-container>
+                        <ng-container *ngIf="item=='GOLF'"><p style="color:#575757;">{{ item | uppercase }} <span>- COMING BACK AUG 6</span></p></ng-container>
+                        <ng-container *ngIf="item=='SOCCER'"><p style="color:#575757;">{{ item | uppercase }} <span>- COMING SOON</span></p></ng-container>
+                        <ion-icon name="ios-arrow-forward" item-end style="color:#f47b4e;"></ion-icon>
+                    </ion-item>
+                </div>
+                <ng-template #enable>
+                    <ion-item class="sports"  no-lines  style="border-bottom: 1px solid #dedede;" (click)="goDetail(item)">
+                        <ion-avatar item-start>
+                            <ng-container *ngIf="item=='SX';else nosx">
+                                <svg height="15.18" viewBox="0 0 27.786 15.18" width="27.786" xmlns="http://www.w3.org/2000/svg"><defs><style>.a{fill:#203e4b;}</style></defs><path class="a" d="M4.882,18l1.408-1.32H13l.44-.44V14.346l-.33-.33H6.84L4.97,12.124V7.02l2.2-2.2H17.576V6.866L16.322,8.032H9.59l-.44.462v1.892l.33.352h6.27l1.87,1.87V17.8L15.42,20H4.882Zm17.6-5.764-3.5-7.414H23.6l2.178,5.214,2.2-5.214h4.444l-3.674,7.37L32.668,20H27.96l-2.442-5.346L23.252,20H18.764Z" transform="translate(-4.882 -4.82)"></path></svg>
+                            </ng-container>
+                            <ng-template #nosx>
+                                <img src={{sportsImageURL[item]}}>
+                            </ng-template>
+                        </ion-avatar>
+                        <p style="color:#575757;">{{ item =='SX' ? 'CROSS SPORTS' : item | uppercase }} </p>
+                        <ion-icon name="ios-arrow-forward" item-end style="color:#f47b4e;"></ion-icon>
+                        </ion-item>
+                </ng-template>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>

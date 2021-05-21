@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid *ngIf="showData" style="padding:0;">
+    <ion-row class="challenge-section">
+      <ion-col col-12 [style.background-image]="promoData.promoimage" class="bg-img">
+      </ion-col>
+    </ion-row>
+    <ion-row class="content" style="color: white;text-align: center;padding: 10px 0;">
+      <ion-col col-12>
+        <h2 style="font-size: 18px;">{{promoData.contestname}}<br>{{promoData.subtitle}}</h2>
+        <p>{{promoData.description}}</p>
+        <ng-container *ngIf="!challengeStarted; else ontime">
+          <p *ngIf="showLabel">Challenge will begin on {{fullTimeLabel}} EST. <br>You will be able to select your picks in:</p>
+          <!-- This challenge has started, see details. -->
+        </ng-container>
+        <ng-template #ontime>
+          <p style="margin-top: 40px;">
+            Challenge will end on {{labelEndDate}} EST. <br>
+            You must make your picks within the next:</p>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+    <ion-row style="color: white;" *ngIf="showCounter">
+      <ion-col>
+          <div class="countDown" [ngClass]="{'hideCounter':hideCounter}">
+              <label class="digit-label" [ngClass]="{'hidelabel':hideDays}">
+                  <span class="label">Days</span>
+                  <span class="digit days0"></span>
+                  <span class="digit days1"></span>
+                  <span class="dots white">:</span>
+              </label>
+              <label class="digit-label" [ngClass]="{'hidelabel': hideHours}">
+                  <span class="label">Hours</span>
+                  <span class="digit hours0"></span>
+                  <span class="digit hours1"></span>
+                  <span class="dots">:</span>
+              </label>
+              <label class="digit-label">
+                  <span class="label">Minutes</span>
+                  <span class="digit minutes0"></span>
+                  <span class="digit minutes1"></span>
+                  <span class="dots">:</span>
+              </label>
+              <label class="digit-label">
+                  <span class="label">Seconds</span>
+                  <span class="digit seconds0"></span>
+                  <span class="digit seconds1"></span>
+                  <span class="dots white">:</span>
+              </label>
+          </div>
+          <div style="text-align: center;color: white;margin-top: 5px;"> *Timer subject to change.</div>
+          <div style="text-align: center;color: white;margin-top: 25px;" *ngIf="!showbutton"> Challenge will end on {{labelEndDate}} EST.</div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="showbutton">
+      <ion-col>
+        <div style="margin-top: 30px;"><button ion-button block (click)="picks()" class="orange-btn-s">{{label}}</button></div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="social-row">
+      <ion-col>
+        <div style="text-align: center;color: white;">
+          <span style="border-bottom: 1px solid rgba(255, 255, 255, 0.5);display: inline-block;padding: 8px 0;margin-bottom: 10px;">currently {{challengeData.userlist.length}} people register to play.</span>
+        </div>
+        <p style="text-align: center;color:white">Invite A Friend</p>
+      <ion-icon name="logo-facebook" style="color: white;" class="social-icons" (click)="sharesocial(2)" id="sharebyfacebook"></ion-icon>
+        <ion-icon name="logo-twitter" style="color: white;" class="social-icons" (click)="sharesocial(3)" id="sharebytwitter"></ion-icon>
+        <ion-icon name="mail" style="color: white;" class="social-icons" (click)="sharesocial(0)" id="sharebymail"></ion-icon>
+        <img src="./assets/img/iphone-icon-msj.png" class="social-icons" alt="phone-icon" (click)="sharesocial(1)" style="width: 49px;" id="sharebymsj"/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

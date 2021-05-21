@@ -1,0 +1,117 @@
+my-account {
+  .label {
+    font-weight: lighter !important;
+    color: #A6BBC5;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .amount {
+    color: #FFFFFF;
+    font-size: 21px;
+    line-height: normal;
+    text-align: center;
+  }
+  .acc-opt{
+    .border-img{
+      padding: 10px 5px;
+    }
+    .labl {
+      color: #203E4B;
+      font-size: 16px;
+    }
+    .val {
+      text-align: right;
+      width: 5.9px;
+      height: 11.81px;
+    }
+  }
+  .bg-white{
+    padding: 20px 35px;
+    margin: 10px 8px;
+    border-radius: 5px;
+  }
+  .green-title{
+    text-align: center;
+    font-size: 21px;
+    font-family: industry-black;
+    text-align: center;
+  }
+  .fee-val{
+    text-align: right;
+    color: #203E4B;
+    font-size: 16px;
+  }
+  .fee-label{
+    font-size: 16px;
+    color: #203E4B;
+  }
+  .banner-container{
+    background-image: url('../../assets/img/bg-image-account.png');
+    padding: 10px !important;
+    position: relative;
+    .banner-title{
+      margin-bottom: 5px;
+      font-size: 26px;
+    }
+    .subtitle{
+      margin: 0 !important;
+      font-weight: 400;
+      font-family: roboto;
+      font-size: 21px;
+    }
+    .close{
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    svg{
+      transform: matrix(-1, 0, 0, -1, 0, 0);
+      height: 23px;
+      width: 11px;
+      path{
+        stroke:white
+      }
+    }
+  }
+  .green-bg{
+    background: #1F2932;
+    margin: 10px 10px 20px;
+    border-radius: 5px;
+    color: white;
+    .row{
+      padding: 10px 35px;
+      align-items: center;
+    }
+    h2{
+      font-size: 21px;
+      font-family: industry-black;
+      text-align: center;
+    }
+    .bonus-name{
+      font-size: 16px;
+    }
+    .accept{
+      background: transparent;
+      border: 1.5px solid white;
+      border-radius: 6px;
+      text-transform: capitalize;
+      font-size: 13px;
+      width: 64px;
+      height: 31px;
+    }
+    .bonus-val{
+      display: block;
+      color: #f47b4e;
+      text-align: right;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}

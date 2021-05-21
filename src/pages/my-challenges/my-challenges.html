@@ -1,0 +1,271 @@
+<!--
+  Generated template for the MyChallengesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+      <img
+        src="./assets/img/Group 9.svg"
+        alt=""
+        style="margin-right: 15px; height: 20.08px"
+      />
+      <ion-badge
+        *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px"
+        >{{global.notifiBadget.length}}</ion-badge
+      >
+    </button>
+    <img
+      src="./assets/img/logo-new@2x.png"
+      style="height: 36px; width: 28px; position: absolute; top: 8px"
+    />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl"
+          >Balance <br />
+          <span class="fund"
+            >{{funds | currency:'USD':'2.1-2'}}</span
+          ></ion-label
+        >
+      </button>
+      <button
+        ion-button
+        end
+        (click)="goFund()"
+        id="addFundButton"
+        class="addfundbtn"
+      >
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goJoinTournament()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>MY CHALLENGES</ion-title>
+  </ion-toolbar>
+
+  <ion-row>
+    <ion-col col-12 class="subheader">CURRENT CHALLENGES</ion-col>
+  </ion-row>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row class="pick-header">
+    <ion-col col-7><ion-note class="time_note">Challenge Detail</ion-note></ion-col>
+    <ion-col col-5 style="text-align: right;"><ion-note class="pick-label">Status</ion-note></ion-col>
+  </ion-row>
+  <div class="challenge-freeplay-box">
+    <div class="challenge-avatar">
+      <ng-container *ngIf="selectedSportKey && selectedSport">
+        <!-- <img style="width: 40px;" src="{{selectedSport.iconImage}}"/> -->
+        <img  style="width: 40px;" [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+      </ng-container>
+    </div>
+    <div class="challenge-all-details">
+      <div>
+        <div>
+          <h6 class="challenge-title">Pro Basketball Open Tournament</h6>
+        </div>
+        <div class="challenge-cat-details">
+            <span class="challenge-cat-info">27</span>
+            <p class="challenge-category">CHALLANGES</p>
+            <span class="challenge-cat-info">3</span>
+            <p class="challenge-category">PICKS</p>
+            <span class="challenge-cat-info">$100</span>
+            <p class="challenge-category">ENTRY FEE</p>
+        </div>
+        <div>
+          <p class="challenge-date">02/20 06:40PM  EST <span style="background: #203E4B; color: white; font-size: 10px; border-radius: 2px;">SP</span> </p>
+        </div>
+      </div>
+      <div>
+        <!-- <div class="challenge-btn"> -->
+          <ion-row>
+              <ion-col col-10 style="align-self: center;">
+                <span style="font-weight: bold; color: f47b4e;">PENDING</span>
+              </ion-col>
+              <ion-col col-2>
+                <ion-icon style="color:#f47b4e;" name="ios-arrow-forward"></ion-icon>
+              </ion-col>
+          </ion-row>
+           
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="challenge-freeplay-box">
+    <div class="challenge-avatar">
+      <ng-container *ngIf="selectedSportKey && selectedSport">
+        <!-- <img style="width: 40px;" src="{{selectedSport.iconImage}}"/> -->
+        <img  style="width: 40px;" [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+      </ng-container>
+    </div>
+    <div class="challenge-all-details">
+      <div>
+        <div>
+          <h6 class="challenge-title">Pro Basketball Open Tournament</h6>
+        </div>
+        <div class="challenge-cat-details">
+            <span class="challenge-cat-info">27</span>
+            <p class="challenge-category">CHALLANGES</p>
+            <span class="challenge-cat-info">3</span>
+            <p class="challenge-category">PICKS</p>
+            <span class="challenge-cat-info">$100</span>
+            <p class="challenge-category">ENTRY FEE</p>
+        </div>
+        <div>
+          <p class="challenge-date">02/20 06:40PM  EST <span style="background: #203E4B; color: white; font-size: 10px; border-radius: 2px;">SP</span> </p>
+        </div>
+      </div>
+      <div>
+        <ion-row>
+          <ion-col col-10 style="align-self: center;">
+            <span style="font-weight: bold; color: f47b4e;">PENDING</span>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon style="color:#f47b4e;" name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+<div class="subheader">
+  <ion-row>
+    <ion-col col-12>HISTORY</ion-col>
+  </ion-row>
+</div>
+<ion-row class="pick-header">
+  <ion-col col-7><ion-note class="time_note">Challenge Detail</ion-note></ion-col>
+  <ion-col col-5 style="text-align: right;"><ion-note class="pick-label">Result</ion-note></ion-col>
+</ion-row>
+<div class="challenge-freeplay-box">
+  <div class="challenge-avatar">
+    <ng-container *ngIf="selectedSportKey && selectedSport">
+      <!-- <img style="width: 40px;" src="{{selectedSport.iconImage}}"/> -->
+      <img  style="width: 40px;" [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+    </ng-container>
+  </div>
+  <div class="challenge-all-details">
+    <div>
+      <div>
+        <h6 class="challenge-title">Pro Basketball Open Tournament</h6>
+      </div>
+      <div class="challenge-cat-details">
+          <span class="challenge-cat-info">27</span>
+          <p class="challenge-category">CHALLANGES</p>
+          <span class="challenge-cat-info">3</span>
+          <p class="challenge-category">PICKS</p>
+          <span class="challenge-cat-info">$100</span>
+          <p class="challenge-category">ENTRY FEE</p>
+      </div>
+      <div>
+        <p class="challenge-date">02/20 06:40PM  EST <span style="background: #203E4B; color: white; font-size: 10px; border-radius: 2px;">SP</span> </p>
+      </div>
+    </div>
+    <div>
+      <ion-row>
+        <ion-col col-10 style="align-self: center;">
+          <span style="font-weight: bold; color: black;">NO PLAY </span>
+        </ion-col>
+        <ion-col col-2>
+          <ion-icon style="color:#f47b4e;" name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+     </ion-row>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="challenge-freeplay-box">
+  <div class="challenge-avatar">
+    <ng-container *ngIf="selectedSportKey && selectedSport">
+      <!-- <img style="width: 40px;" src="{{selectedSport.iconImage}}"/> -->
+      <img  style="width: 40px;" [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+    </ng-container>
+  </div>
+  <div class="challenge-all-details">
+    <div>
+      <div>
+        <h6 class="challenge-title">Pro Basketball Open Tournament</h6>
+      </div>
+      <div class="challenge-cat-details">
+          <span class="challenge-cat-info">27</span>
+          <p class="challenge-category">CHALLANGES</p>
+          <span class="challenge-cat-info">3</span>
+          <p class="challenge-category">PICKS</p>
+          <span class="challenge-cat-info">$100</span>
+          <p class="challenge-category">ENTRY FEE</p>
+      </div>
+      <div>
+        <p class="challenge-date">02/20 06:40PM  EST  <span style="background: #203E4B; color: white; font-size: 10px; border-radius: 2px;">SP</span></p>
+      </div>
+    </div>
+    <div>
+      <div class="challenge-btn">
+        <ion-row>
+          <ion-col col-10 style="align-self: center;">
+            <span style="font-weight: bold; color: green;">$46.50</span>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon style="color:#f47b4e;" name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="challenge-freeplay-box">
+  <div class="challenge-avatar">
+    <ng-container *ngIf="selectedSportKey && selectedSport">
+      <!-- <img style="width: 40px;" src="{{selectedSport.iconImage}}"/> -->
+      <img  style="width: 40px;" [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+    </ng-container>
+  </div>
+  <div class="challenge-all-details">
+    <div>
+      <div>
+        <h6 class="challenge-title">Pro Basketball Open Tournament</h6>
+      </div>
+      <div class="challenge-cat-details">
+          <span class="challenge-cat-info">27</span>
+          <p class="challenge-category">CHALLANGES</p>
+          <span class="challenge-cat-info">3</span>
+          <p class="challenge-category">PICKS</p>
+          <span class="challenge-cat-info">$100</span>
+          <p class="challenge-category">ENTRY FEE</p>
+      </div>
+      <div>
+        <p class="challenge-date">02/20 06:40PM  EST <span style="background: #203E4B; color: white; font-size: 10px; border-radius: 2px;">SP</span> </p>
+      </div>
+    </div>
+    <div>
+      <div class="challenge-btn">
+         <ion-row>
+          <ion-col col-10 style="align-self: center;">
+            <span style="font-weight: bold; color: red;">$20.25</span>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon style="color:#f47b4e;" name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+  
+</ion-content>

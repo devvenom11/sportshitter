@@ -1,0 +1,168 @@
+$custom-primary: #f47b4e;
+$custom-secondary: #203e4b;
+
+page-my-challenges{
+    ion-toolbar {
+    height: 84px;
+    .toolbar-background {
+        background-image: url(../assets/img/field-sunny@2x/field-sunny@2x.png);
+        background-color: #16212b;
+    }
+    .toolbar-title {
+        color: white;
+        text-transform: uppercase;
+        font-size: 22px;
+        font-family: "industry-black";
+    }
+    }
+    ion-header {
+        .row {
+            .col {
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $custom-secondary;
+                text-transform: uppercase;
+                font-size: 21px;
+                font-family: "industry-black";
+            }
+        }
+    }
+    .subheader{
+        .row {
+            .col {
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $custom-secondary;
+                text-transform: uppercase;
+                font-size: 21px;
+                font-family: "industry-black";
+            }
+        }
+    }
+
+    .list-item {
+        cursor: pointer;
+        box-sizing: border-box;
+        padding: 15px 0px 17px 0px;
+        margin: 8px 16px 0px 16px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        line-height: 1.2;
+
+        &:first-child {
+            margin-top: 16px;
+        }
+
+        &:last-child {
+            margin-bottom: 8px;
+        }
+
+        .media {
+            padding: 8px 16px;
+            img.icon {
+            height: 30px;
+            width: 30px;
+        }
+    }
+    .sub-text {
+        color: #e8ecac;
+        font-family: roboto-regular;
+        font-size: 15px;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+    .title {
+        font-family: industry-black;
+        font-size: 26px;
+        text-transform: uppercase;
+    }
+    
+       
+    }
+
+    .pick-header{
+        height: 34px !important;
+        color: #587581;
+        background: #F4F4F4;
+        padding-left: 25px;
+        padding-right: 35px;
+        .time_note{
+            font-weight: 500;
+            color:#587581;
+            font-size: 15px;
+        }
+        .pick-label{
+            font-weight: 500;
+            color:#587581;
+            font-size: 15px;            
+        }
+    }
+
+    .challenge-all-details{
+        width: 100%;
+        display: flex;
+        margin-left: 10px;
+        justify-content: space-between;
+    }
+    
+    .challenge-btn {
+        width: 100%;
+        text-align: right;
+        margin-top: 1px;
+    }
+    .challenge-cat-details{
+        display: flex;
+        width: 100%;
+      }
+    
+    .challenge-title{
+        font-size: 14px;
+        margin-top: 0;
+        margin-bottom: 1px;
+        font-family: roboto-condensed-bold;
+        color: #203E4B;
+    }
+    .challenge-category{
+        font-size: 8px;
+        font-family: roboto-regular;
+        color: #587581;
+        margin-right: 10px;
+        align-self: center;
+      }
+    
+    .challenge-cat-info{
+        font-size: 12px;
+        color: #203E4B;
+        margin-right: 3px;
+        font-family: roboto;
+        font-weight: 700;
+    }
+    .challenge-date{
+        font-size: 12px;
+        font-family: roboto-regular;
+        color: #203E4B;
+        margin-top: 2px;
+    }
+     
+    .challenge-freeplay-box,
+    .challenge-winner-box {
+        margin: 0px 10px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+
+    ion-content{
+        ion-icon{
+           font-size: 25px; 
+        }
+    }
+}

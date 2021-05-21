@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+      <img
+        src="./assets/img/Group 9.svg"
+        alt=""
+        style="margin-right: 15px; height: 20.08px"
+      />
+      <ion-badge
+        *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px"
+        >{{global.notifiBadget.length}}</ion-badge
+      >
+    </button>
+    <img
+      src="./assets/img/logo-new@2x.png"
+      style="height: 36px; width: 28px; position: absolute; top: 8px"
+    />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl"
+          >Balance <br />
+          <span class="fund"
+            >{{funds | currency:'USD':'2.1-2'}}</span
+          ></ion-label
+        >
+      </button>
+      <button
+        ion-button
+        end
+        (click)="goFund()"
+        id="addFundButton"
+        class="addfundbtn"
+      >
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Join A Challenge</ion-title>
+  </ion-toolbar>
+
+  <ion-row>
+    <ion-col col-12 class="subheader">Choose your sport</ion-col>
+  </ion-row>
+
+
+</ion-header>
+
+<ion-content>
+
+  <div style="display: flex; flex: 1;flex-direction: column;">
+    <div *ngFor="let sport of sports" class="list-item {{sport.game}}" (click)="goToLobby(sport)">
+      <div class="media">
+          <img class="icon" src="{{sport.iconImage}}" />
+      </div>
+      <div style="flex:1;">
+        <div class="sub-text">
+          {{sport.subText}}
+        </div>
+        <div class="title">
+          {{sport.title}}
+        </div>
+      </div>
+      <div class="next">
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

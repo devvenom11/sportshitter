@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar class="new-header" hideBackButton="true">
+      <button ion-button menuToggle>
+          <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+          <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+              margin-left: -10px;
+              margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+      </button>
+      <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+      <ion-buttons end>
+          <button ion-button icon-only end>
+              <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+          </button>
+          <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+              <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+          </button>
+
+      </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-row class="challenge-section">
+    <ion-col col-12  [style.background-image]="item.promoimage" class="bg-img">
+    </ion-col>
+  </ion-row>
+  <ion-grid>
+    <ion-row class="content" style="color: white;text-align: center;padding: 40px 0;">
+      <ion-col col-12 style="margin-bottom: 40px;">
+        <h2 style="font-size: 18px;">{{item.contestname}} <br>{{item.subtitle}}</h2>
+        <p style="color: #f37447;">{{item.description}}</p>
+      </ion-col>
+      <ion-col col-12 style="overflow: hidden;opacity: 0;height: 0; min-height: 0;">
+        <ion-input clearInput type="password" placeholder="" name="password" required style="overflow: hidden;opacity: 0;"></ion-input>
+      </ion-col>
+      <ion-col col-12>
+        <p style="margin-bottom: 5px;">Enter the challenge password below to join the challenge.</p>
+        <ion-input clearInput type="password" name="passwordN" placeholder="ENTER PASSWORD" [(ngModel)]="password" required style="background: white; border-radius: 2px;color:gray;"></ion-input>
+      </ion-col>
+      <!-- <ion-col col-12>
+        <h2 style="font-size: 18px;text-decoration: underline;">Rules</h2>
+        <div style="text-align: left;">
+          <ul>
+            <li>No Entry Fee</li>
+            <li>All picks are for Sunday March 1st , 2020 College Basketball games</li>
+            <li>Teams become available 7:00 AM Sunday March 1st, 2020</li>
+            <li>Submit picks before 12:00 PM EST on Sunday March 1st, 2020</li>
+            <li>Challenge is Limited to 100 players</li>
+            <li>1 entry per user</li>
+            <li>Most points Wins. 1 winner</li>
+            <li>Must be at least 18 to play.</li>
+          </ul>
+        </div> -->
+        <!-- <div [innerHTML]="item.promorules" style="text-align: left;"></div> -->
+      <!-- </ion-col> -->
+      <ion-col col-12>
+        <h2 style="font-size: 18px;text-decoration: underline;" *ngIf="item.promorules">Rules</h2>
+        <div [innerHTML]="item.promorules" style="text-align: left;"></div>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button block (click)="submit()" class="orange-btn-s">
+          SUBMIT
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

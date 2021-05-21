@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ContestSportPage page.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title></ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only class="my-network-btn" (click)="goFavourite()" end>
+                <ion-icon name="md-people"></ion-icon>                
+            </button>
+            <button ion-button end (click)="goFund()">
+                    <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+            </button>   
+            
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-label style="padding-left:6px;font-size: 21px;color: #24414e;margin-top: 0px;">Choose your sport.</ion-label>
+    <ion-list>
+        <ion-item no-lines *ngFor="let item of items" (click)="godetail(item)">
+            <ion-avatar item-start style="background-color:#aeaeae;border-radius:50%;">
+            </ion-avatar>
+            <p style="color:#575757;">{{ item }}</p>
+            <ion-icon name="ios-arrow-forward" item-end style="color:#f47b4e;"></ion-icon>        
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,412 @@
+page-contest-main {
+  .card-ios {
+    margin: 0px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .bar-button-default-ios,
+  .bar-button-default.bar-button-ios-default,
+  .bar-button-clear-ios-default,
+  .bar-button-default-md,
+  .bar-button-default.bar-button-md-default,
+  .bar-button-clear-md-default {
+    color: #f47b4e;
+  }
+
+  .fund_lbl {
+    font-size: 11px;
+    color: #282828;
+    padding-left: 0px;
+    margin-right: 0px;
+  }
+
+  .login_btn {
+    box-shadow: none;
+    color: #203e4b;
+    border-radius: 4px;
+    background-color: #f47b4e;
+    font-size: 12px;
+  }
+
+  .game_title {
+    margin: 0px;
+    color: white;
+    font-weight: 500;
+    margin-left: 2vw;
+    padding: 0 4vw;
+  }
+
+  .scroll-content {
+    margin: -16px;
+    padding: 0px 16px !important;
+
+    .my-challenges {
+      background-color: #203e4b;
+      height: 36px;
+
+      ion-col {
+        justify-content: center;
+        color: #fff
+      }
+    }
+
+    .current-challenges {
+      background-color: #f47b4e;
+      height: 36px;
+    }
+
+    .history {
+      background-color: #203e4b;
+      height: 36px;
+    }
+
+
+  }
+
+  .col {
+    // height: 11vw;
+    display: flex;
+    // align-items: center;
+  }
+
+  .button-ios.activated,
+  .button-md.activated {
+    background-color: #f47f53;
+  }
+
+  .row1 {
+    padding: 5px 0 5px 0;
+
+    .col1 {
+      display: flex;
+      justify-content: center;
+    }
+
+    .col2 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .col3 {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  .sport-icon {
+    width: 20px;
+    padding-top: 5px;
+  }
+
+  #header {
+    background-image: url(/assets/img/field-sunny@2x/field-sunny@2x@3x.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 76px;
+    width: 100%;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    div {
+      margin-left: 16px;
+
+      img {
+        transform: rotate(180deg);
+        width: 11.65px;
+        height: 23.31px;
+      }
+    }
+
+    h3 {
+      margin: 0 0 0 60px;
+      padding: 0;
+      color: white;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-family: 'industry-black';
+    }
+  }
+
+  .item-full {
+    h3 {
+      font-family: 'industry-black';
+      font-size: 21px;
+      text-align: center;
+      color: #203E4B;
+      margin-top: 20px !important;
+      margin-bottom: 22px;
+    }
+
+    .item {
+      background-color: #F4F4F4;
+      font-size: 15px;
+      width: 100%;
+
+      .date-header {
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        padding-right: 35px;
+
+        span {
+          color: #587581;
+          line-height: 18px;
+        }
+
+        span:first-child {
+          width: 162px;
+        }
+
+        span:nth-child(2) {
+          width: 60px;
+          text-align: center;
+        }
+      }
+
+      .challenge {
+        padding: 13px 15px 0;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .detail-generaly {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #70707021;
+          padding-bottom: 16px;
+          align-items: center;
+          .icon-name {
+            height: 18px;
+            overflow: hidden;
+            max-width: 201px;
+
+            img {
+              width: 24.36px;
+              height: 17.57px;
+            }
+
+            h3 {
+              font-size: 16px;
+              // line-height: 18px;
+              display: inline;
+              font-family: 'roboto';
+              font-weight: bold;
+            }
+          }
+
+          .icon-sport {
+            height: 100%;
+            width: 69px;
+            img{
+              width: 40px;
+              height: 35.86px;
+            }
+            img[alt='sx']{
+              border: 1px solid #213F4C;
+              border-radius: 50%;
+              height: 34px;
+              width: 34px;
+              object-fit: contain;
+              padding: 4px;
+            }
+            img.api-image{
+              width: 30px;
+              height: auto;
+            }
+          }
+
+          .detail {
+            width: calc(100% - 90px);
+            flex-basis: calc(100% - 90px);
+
+            .detail-users-money {
+              display: flex;
+              width: 180px;
+              flex-basis: 180px;
+              margin-top: 4px;
+              align-items: center;
+
+              div {
+                display: flex;
+                align-items: center;
+              }
+
+              .users {
+                img {
+                  width: 10px;
+                  height: 11.43px;
+                }
+              }
+
+              .views {
+                margin-left: 10px;
+
+                img {
+                  width: 10px;
+                  height: 12px;
+                }
+              }
+
+              .money {
+                margin-left: 11px;
+
+                img {
+                  width: 12px;
+                  height: 10px;
+                }
+              }
+
+              span{
+                color: #203E4B;
+                font-size: 8px;
+              }
+              span.bold{
+                font-size: 12px;
+
+                font-weight: bold;
+              }
+
+              div {
+                span {
+                  margin-left: 3px;
+                  text-transform: uppercase;
+                }
+              }
+            }
+
+            .date {
+              font-size: 12px;
+              color: #203E4B;
+              margin-top: 2px;
+              // font-family: 'rubik';
+              // font-weight: bold;
+              img{
+                width: 14px;
+                height: 11px;
+                margin-left: 5px;
+              }
+            }
+          }
+
+          .action-to {
+            width: 90px;
+            flex-basis: 90px;
+            display: flex;
+            height: 16.1px;
+
+            .status-text {
+              width: 80px;
+              text-align: center;
+              height: 16.1px;
+
+              span {
+                font-size: 13px;
+                // line-height: 17px;
+                text-transform: uppercase;
+                font-weight: bold;
+              }
+
+              span.pending {
+                color: #F37343;
+              }
+              span.noplay{
+                color: #575757;
+              }
+              span.tie{
+                color: #587581;
+              }
+              span.loser{
+                color: #E63C48;
+              }
+              span.winner{
+                color: #2BC24E;
+              }
+            }
+
+            .action-button {
+              height: 16.1px;
+
+              img {
+                width: 8.05px;
+                height: 16.1px;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin-bottom: 20px;
+
+    .options {
+      width: 163px;
+      height: 74px;
+      display: flex;
+      border: 1.5px solid #587581;
+      border-radius: 8px;
+      padding: 15px 5px;
+
+      img:first-child {
+        width: 43.64px;
+        height: 37.16px;
+      }
+
+      img:nth-child(2) {
+        width: 37.16px;
+        height: 37.16px;
+      }
+
+      .text {
+        width: 83px;
+        height: 49px;
+        margin-left: 13px;
+
+        h3 {
+          font-family: 'industry-black';
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: normal;
+          margin: 0;
+          text-align: left;
+          color: #203E4B;
+        }
+      }
+    }
+
+    .options:nth-child(2) {
+      background: linear-gradient(to bottom, rgba(88, 117, 129, 1) 0%, rgba(88, 117, 129, 0.95) 52%, rgba(32, 62, 75, 0.91) 100%);
+      ;
+
+      .text {
+        width: 95px;
+        height: 50px;
+
+        h3 {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 380px) {
+  page-contest-main #header {
+    background-size: cover;
+  }
+}

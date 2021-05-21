@@ -1,0 +1,117 @@
+<!--
+  Generated template for the ContestMainPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div class="teamlogo" *ngIf="(!sportflag && team=='' && !userflag && !challengeFlag && !customer) ">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-5 class="teamlogo1">
+                    <img *ngIf="sport=='nhl'" src='./assets/img/nhl.png'/>
+                    <img *ngIf="sport=='nba'" src='./assets/img/nba.png'/>
+                    <img *ngIf="sport=='mlb'" src='./assets/img/mlb.png'/>
+                    <img *ngIf="sport=='golf'" src='./assets/img/golf.png'/>
+                    <img *ngIf="sport=='nfl'" src='./assets/img/nfl.png'/>
+                    <img *ngIf="sport=='ncaab'" src='./assets/img/col-basket.png'/>
+                    <img *ngIf="sport=='ncaaf'" src='./assets/img/col-football.png'/>
+                    <img *ngIf="sport=='nascar'" src='./assets/img/nascar.png'/>
+                    <div style="font-size: 1.2rem;color: #f47b4e;">{{awayTeam}}</div>
+                </ion-col>
+                <ion-col col-2 class="vs-class">
+                    <p>V&nbsp;S</p>
+                </ion-col>
+                <ion-col col-5 class="teamlogo1">
+                    <img *ngIf="sport=='nhl'" src='./assets/img/nhl.png'/>
+                    <img *ngIf="sport=='nba'" src='./assets/img/nba.png'/>
+                    <img *ngIf="sport=='mlb'" src='./assets/img/mlb.png'/>
+                    <img *ngIf="sport=='golf'" src='./assets/img/golf.png'/>
+                    <img *ngIf="sport=='nfl'" src='./assets/img/nfl.png'/>
+                    <img *ngIf="sport=='ncaab'" src='./assets/img/col-basket.png'/>
+                    <img *ngIf="sport=='ncaaf'" src='./assets/img/col-football.png'/>
+                    <img *ngIf="sport=='nascar'" src='./assets/img/nascar.png'/>
+                    <div style="font-size: 1.2rem;color: #f47b4e;">{{homeTeam}}</div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="teamlogo" style="justify-content: center;" *ngIf="(sportflag || team!='' || userflag) && !customer">
+        <div *ngIf="sportflag" style="color:white;">{{sport}}</div>
+        <div *ngIf="team!=''" style="color:white;">{{team}}</div>
+        <div *ngIf="userflag" style="color:white;">{{name}}</div>
+        <div *ngIf="challengeFlag" style="color:white;display:flex;width:100%;justify-content: space-around;">
+            <div class="teamlogo1" style="font-size:15px;align-items: center;max-width:100px">{{ homeTeam }}</div>
+            <p>V&nbsp;S</p>
+            <div class="teamlogo1" style="font-size:15px;align-items: center;max-width:100px">{{ awayTeam }}</div>
+
+            </div>
+    </div>
+
+    <div class="teamlogo" style="justify-content: center;" *ngIf="challengeFlag && !customer">
+        <div style="transform: rotate(180deg); left: 20px; position: absolute;" (click)="goBack()" *ngIf="comingfromSingleChallenge"><img alt="" src="/assets/img/Path 298.svg" ></div>
+        <div style="color:white">{{ sport| uppercase }} - {{ contest }}<span *ngIf="!contest && game_id!=''">{{game_id}}</span> <small><br>({{ date | date: 'MM/dd/yy:hh.mm a' }})</small></div>
+    </div>
+
+    <div class="teamlogo" style="justify-content: center;" *ngIf="customer">
+        <div style="color: white">Customer Service</div>
+    </div>
+
+
+    <div id = "chat-autoscroll">
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles"
+                                            loadingText="Loading more data..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+        <div>
+            <div *ngFor="let message of messages">
+                <div *ngIf="!customer || (customer && (message.userid == myid || message.userid == '5a1de49ce150b4543d8a419d')) || myid =='5a1de49ce150b4543d8a419d'">
+                    <p [ngClass]="{'my_messagep': message.userid == myid, 'other_messagep': message.userid != myid}" (click)="addfav(message.userid,message.from)">{{ message.from}}</p>
+                    <div *ngIf="message.userid != myid" class="message" [ngClass]="{'my_message': message.userid == myid, 'other_message': (message.userid != myid || myid =='5a1de49ce150b4543d8a419d')}">
+                        <span>{{ message.text }}</span><br>
+                        <div class="time">{{message.created | date:'h:m a M/d/yy'}}</div>
+                    </div>
+                    <div *ngIf="message.userid == myid" class="message" [ngClass]="{'my_message': message.userid == myid, 'other_message': message.userid != myid}">
+                        <span>{{ message.text }}</span><br>
+                        <div class="time">{{message.created | date:'h:m a M/d/yy'}}</div>
+                    </div>
+                    <h1>&nbsp;</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="sendchat" [ngClass]="{'sendchat-chrome' : isChromeBrowser}"> -->
+    <div class="sendchat">
+        <div class="container-message-action">
+            <ion-item>
+                <ion-textarea  [(ngModel)]="message" (input)="setmsg($event.target.value)" placeholder="Write a message..."></ion-textarea>
+            </ion-item>
+            <button ion-button icon-only (click)="sendmsg()">
+               <img src="./assets/img/Path 540.svg" alt="">
+            </button>
+        </div>
+
+    </div>
+
+</ion-content>

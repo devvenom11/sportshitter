@@ -1,0 +1,176 @@
+$secondary-color : #203d4a;
+$custom-primary : #f47b4e;
+page-join-contest {
+    .back-button-text-ios{
+        display: none;
+    }
+    .circle{
+        background: #f2f2f2;
+        width:16px;
+        height: 16px;
+        border-radius: 7.5px;
+        display: -webkit-inline-box;
+    }
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+    .item-md ion-avatar ion-img, .item-md ion-avatar img, .item-ios ion-avatar ion-img, .item-ios ion-avatar img{
+        border-radius: 0px;
+        height: auto;
+        width: auto;
+    }
+    .item-md ion-avatar, .item-ios ion-avatar{
+        width:50px;
+    }
+
+    .item-md ion-avatar ion-img, .item-md ion-avatar img, .item-ios ion-avatar ion-img, .item-ios ion-avatar img{
+        width:26px;
+    }
+    .item-md ion-avatar[item-left], .item-md ion-thumbnail[item-left], .item-md ion-avatar[item-start], .item-md ion-thumbnail[item-start]{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .item-inner{
+        border-bottom:0px!important;
+    }
+
+    .fundmodal{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(63,86,97,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        div{
+            width: 80%;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 5px;
+        }
+        img{
+            width: 100px;
+            position: relative;
+            margin-top: -66px;
+            margin-left: 20px;
+        }
+        h3{
+            color: #214049;
+            font-weight: 700;
+            margin-bottom: 5vw;
+        }
+
+        p{
+            color: #214049;
+            font-size: 12px;
+        }
+
+        button{
+            color: #223e4b;
+            background-color: #f47b4e;
+            margin-top: 5vw;
+            width: 80%;
+            height: 4.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        ion-icon{
+            float: right;
+            font-size: 20px;
+            width: 20px;
+        }
+    }
+    .content{
+        // .heading{
+        //     .row{
+        //         height: 36px;
+        //         background-color:$secondary-color;
+        //         padding:10px;
+        //         color: white;
+        //         font-size: 15px;
+        //         font-family: 'Raleway-bold';
+        //         justify-content: center;
+        //     }
+        // }
+        .custom-content{
+            padding: 5px 15px;
+            .heading{
+                padding-left:6px;
+                font-size: 21px;
+                color: $secondary-color;
+                margin-top: 0px;
+            }
+            .img-nba{
+                filter :hue-rotate(174deg) saturate(6.5) brightness(0.9) !important
+            }
+            // padding: 33px;
+            // max-width: 400px;
+            // margin: 0 auto;
+            // .item{
+            //     height: 40px;
+            //     margin: 20px auto;
+            //     .label-md {
+            //         font-family: 'Raleway-bold';
+            //         color: white;
+            //         padding-left: 3vw;
+            //     }
+            // }
+
+            // .label{
+            //     font-size: 14px;
+            //     color: $secondary-color;
+            //     margin: 0px;
+            // }
+        
+            // img.icon-sport {
+            //     filter: hue-rotate(178deg) saturate(0.8) brightness(0.7) !important;
+            // }
+         }
+    }
+    @mixin grayscale_element($value) {
+        -webkit-filter: #{"grayscale(#{$value})"};
+        -moz-filter: #{"grayscale(#{$value})"};
+        filter:#{"grayscale(#{$value})"};
+    }
+    .sports{
+        margin-bottom: 20px;
+    }
+    .disabled{
+        background: rgba(222, 222, 222, 0.5);
+        margin-bottom: 20px;
+    }
+    .overlay{
+        position: absolute;
+        width: 100%;
+        height: 52px;
+        z-index: 9;
+        text-align: right;
+        padding: 16px;
+        padding-right: 66px;
+        left: 0;
+        color: white;
+        font-size: 16px;
+        background-color: rgba(0, 0, 0, 0.38);
+        text-shadow: 0 0 4px rgb(0,0,0);
+        font-weight: 700;
+    }
+}

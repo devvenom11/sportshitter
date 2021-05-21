@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="popup" *ngIf="showpopup">
+    <div class="content">
+      <img src="./assets/img/logo.png" alt="">
+      <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+      <h2>{{header}}</h2>
+      <p>{{msg}}</p>
+      <button ion-button outline class="orange-btn" (click)="closePopup()">CONTINUE</button>
+    </div>
+  </div>
+<ion-row>
+  <ion-col>
+    <div style="text-align: center">
+      <img
+        (click)="takePhoto(0)"
+        style="border-radius: 50px"
+        src="./assets/img/User icon@2x.png"
+      />
+      <p class="name">{{userInfo.username}}</p>
+      <p class="subname">Hitter</p>
+    </div>
+  </ion-col>
+</ion-row>
+<!-- <ion-row class="data-field">
+  <ion-col col-10 (click)="openAlert('Email')">
+    <ion-icon name="mail" class="orange-icon"></ion-icon> <span class="email">{{userInfo.email}}</span>
+  </ion-col>
+  <ion-col col-2 style="justify-content: flex-end;">
+    <img src="./assets/img/MyAccount_RightArrow.png"/>
+  </ion-col>
+</ion-row> -->
+<ion-row class="data-field" (click)="openAlert('Phone')">
+  <ion-col col-10>
+    <ion-icon name="call" class="orange-icon"></ion-icon><span class="email"><b>+1</b> {{userInfo.phone!=''? userInfo.phone: 'No phone number added'}}</span>
+  </ion-col>
+  <ion-col col-2 style="justify-content: flex-end;">
+    <img src="./assets/img/MyAccount_RightArrow.png"/>
+  </ion-col>
+</ion-row>
+<ion-row class="data-field" (click)="openAlert('password')">
+  <ion-col col-10>
+    <ion-icon name="key" class="orange-icon"></ion-icon> <span class="email">Change Password</span>
+  </ion-col>
+  <ion-col col-2 style="justify-content: flex-end;">
+    <img src="./assets/img/MyAccount_RightArrow.png"/>
+  </ion-col>
+</ion-row>
+<ion-row class="data-field" (click)="goToNotificationSettings()">
+  <ion-col col-10>
+    <ion-icon name="notifications-outline" class="orange-icon"></ion-icon> <span class="email">Notification Settings</span>
+  </ion-col>
+  <ion-col col-2 style="justify-content: flex-end;">
+    <img src="./assets/img/MyAccount_RightArrow.png"/>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col style="text-align: center;" *ngIf="showEditAlert">
+    <b style="color:red; font-size: 18px;">Urgent Alert</b> <br>
+    You are missing out on important information regarding your challenges. Enter your mobile phone number to start receiving SMS alerts when your are challenged
+  </ion-col>
+</ion-row>
+</ion-content>

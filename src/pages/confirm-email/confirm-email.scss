@@ -1,0 +1,201 @@
+page-confirm-email {
+
+    .label_f{
+        text-align: right;        
+        margin-right: 2px;
+        font-size: 25px;
+        font-weight: 600;
+        color: white;
+    }
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    } 
+
+    .fwd_btn{
+        .button-inner {
+            justify-content: center;
+            color: #243d48;
+            // font-size: 20px;
+            // font-weight: 900;
+            font-size: 19px;
+            font-weight: 600;
+        }
+        padding: 0px;
+        background-color: white;
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 10px;
+        height: 4.4rem;
+        border-radius: 5px;
+    }
+    .message{
+        text-align: center;
+        font-size: 16px;
+        margin: 40px 0px;
+        color: white;
+    
+    }
+    .login-btn{
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        a{
+            color: white;
+            text-decoration: underline;
+        }
+    }
+
+    .label_s{
+        font-size: 25px;
+        color: #ee7449;
+        padding-left: 0px;
+    }
+
+    .label-ios{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .label-md{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .scroll-content{
+        background: url(../assets/img/bg-image.png) !important;
+        background-repeat: no-repeat;
+        background-size: cover !important;
+        background-position: top right !important;
+    }
+    .bg-img{ background: url('../assets/img/Rectangle 9.svg');}
+    .back-button{
+        display: none !important
+    }
+    .toolbar{
+        text-align: center;
+        padding-left: 0 !important;
+    }
+    .label_div{
+        color: white;
+        font-family: industry-black;
+        font-size: 36px;
+        text-align: center;
+        line-height: 36px;
+    }
+    .eye-section{
+        position: absolute;
+        right: 10px;
+        bottom: 35%;
+        width: auto;
+        .item-inner{
+            border:0 !important;
+        }
+    }
+    .active-pass{
+        .a{fill:white;}
+    }
+    .icon-eye{
+        position:absolute;
+        right: 0px;
+        z-index: 99999999;
+    }
+    .username .text-input{
+        background: url('../assets/img/Group 232.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+        color: white;
+    }
+    #password-text2 .text-input{
+        background: url('../assets/img/Group 233.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+        color: white;
+    }
+    form{
+        position: relative;
+        padding-top: 100px;
+    }
+    .input-has-focus .label-floating{
+        padding-left: 0 !important;
+        color:#F47B4E !important;
+        font-size: 16px !important;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom-color:#AFC0C7 !important;
+        box-shadow:none !important
+    }
+    .login_btn{
+        .button-inner {
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        margin: 0px;
+        padding: 0px;
+        background: linear-gradient(180deg, #587581,#203E4B);
+        height: 52px;
+        border-radius: 8px;
+        border: 1px solid white;
+
+    }
+    .checkbox-md .checkbox-checked,.checkbox-ios .checkbox-checked {
+        border-color: white;
+        background-color: transparent;
+    }
+
+    .checkbox-md .checkbox-icon,.checkbox-ios .checkbox-icon {        
+        width: 18px;
+        height: 18px;
+        border-width: 1px;
+        border-color: #fff;
+        background-color: transparent;
+    }
+    .checkbox-md .checkbox-checked .checkbox-inner, .checkbox-ios .checkbox-checked .checkbox-inner {
+        left: 7px;
+        top: 0;       
+        width: 8px;
+        height: 18px;
+        border-width: 1px;
+        border-top-width: 0;
+        border-left-width: 0;
+    }    
+    .checkbox-ios .checkbox-icon {
+        border-radius: 2px;
+    }
+    .forget .button-inner{
+        text-align: right;
+        text-transform: none;
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px !important;
+        text-decoration: underline;
+        color: white !important;
+    }
+    .item-block{
+        background: transparent;
+    }
+    .checkbox{
+        .item-cover{
+            border-radius: 3px !important;
+        }
+        .checkbox-inner{
+            display: none
+        }
+        .checkbox-checked{
+            background:#F47B4E;
+            border-radius: 3px !important;
+            height: 18px;
+            width: 18px;
+            border: 1px solid white;
+        }
+    }
+    .label-floating{
+        padding-left: 25px !important;
+        color:white !important;
+        font-size: 14px;
+    }
+    .item-label-floating{
+        margin-bottom: 20px;
+    }
+}

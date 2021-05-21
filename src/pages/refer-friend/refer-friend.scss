@@ -1,0 +1,146 @@
+page-refer-friend {
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    ion-toggle{
+        .toggle-icon{
+            border-width: 2px;
+            border-style: solid;
+            border-color: #f47b4e;
+            background-color: white!important;
+            .toggle-inner{
+                width: 20px;
+                height: 20px;
+                top: -1px;
+                background-color: white!important;
+            }
+        }
+    }
+
+    ion-toggle.toggle-checked{
+        .toggle-icon{
+            background-color: #f47b4e!important;
+            .toggle-inner {
+                transform: translate3d(14px, 0, 0)!important;
+            }
+        }        
+    }
+
+    ion-grid {
+        padding: 0px!important;
+        margin: 0px;
+    }
+    ion-content {
+        .scroll-content {
+            padding-top: 0px!important;
+            background: #f4f5f6 !important;
+        }        
+    }   
+    .invite{
+        background: #f37447;
+        padding: 17px;
+        letter-spacing: 1px;
+    }
+    .item-row{
+        margin-top: 0;
+        display: flex; 
+        padding: 14px; 
+        border-bottom: 1px solid #F8F8F8;
+        margin-left: 35px;
+        margin-right: 29px;
+        align-items: center;
+        &:last-child{
+            border-bottom: 0;
+        }
+    }
+    .lcol1{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: normal;
+    }
+    .social-row{
+        padding: 30px 0;
+    }
+    .popup img{
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+    .banner-container{
+        background-image: url(../../assets/img/bg-image-referral.png);
+        background-size: cover;
+        background-position: center;
+        padding: 20px !important;
+        text-align: center;
+        .banner-title{
+            color: #F47B4E;
+            font-family: industry-black;
+            font-size: 38px;
+        }
+    }
+    .bg-white{
+        background: #FFFFFF;
+        border-radius: 5px;
+        padding: 20px 37px;
+        margin-top: 15px;
+    }
+    .email-invite{
+        font-size: 15px;
+        background: #F4F4F4;
+        color: #777777;
+        border: 1px solid #D1D1D1;
+        border-radius: 5px;
+        font-family: industry-medium;
+        input{
+            padding-right: 0px !important;
+        }
+    }
+    .current-point{
+        color: white;
+        letter-spacing: 1px;
+        font-size: 18px;
+        span{
+            color: #F47B4E;
+            font-weight: bold;
+        }
+    }
+    .box{
+        border: 1.5px solid #587581;
+        margin-bottom: 10px;
+        align-items: center;
+        border-radius: 5px;
+        padding: 20px 10px;
+        .text {
+            color: #203E4B;
+            max-width: 182px;
+            font-family: industry-medium;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+    }
+    .last-text{
+        color: #203E4B;
+        text-align: center;
+        font-size: 13px;
+        font-family: industry-medium;
+        text-transform: uppercase;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    #url-share{
+        opacity: 0;
+    }
+    .example{
+        color:#587581;
+        border: 1px solid #EBEBEB;
+        background: #F4F4F4;
+        padding:20px;
+        border-radius: 5px;
+        font-style: oblique;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}

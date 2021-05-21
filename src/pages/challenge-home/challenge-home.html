@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="create">
+    <h4>create a new challenge</h4>
+  </div>
+  <!-- <ion-grid style="background-color:#203e4b;text-align: center;color:white;padding: 5px !important;">
+    <ion-row>
+      <ion-col>WHO ARE YOU CHALLENGING?</ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <h3>choose challenge type</h3>
+
+
+  <div id="options">
+
+    <div class="options">
+      <div (click)="gotoChooseSport(false)">
+        <div class="inner">
+          <img src="/assets/img/challenges/Path 301 copy.svg" class="icon" alt="">
+          <img src="/assets/img/challenges/Path 301.svg" class="icon-white" alt="">
+          <h4>public challenge</h4>
+          <p>Get automatically paired against other SportHitters</p>
+        </div>
+      </div>
+      <div (click)="gotoChooseSport(true)">
+        <div class="inner">
+          <img src="/assets/img/challenges/Group 144.svg" style="width: 27.86px; height: 34.96px;" class="icon" alt="">
+          <img src="/assets/img/challenges/Group 144 copy.svg" style="width: 27.86px; height: 34.96px;" class="icon-white" alt="">
+          <h4>private challenge</h4>
+          <p>Challenge other SportHitters in your network</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="options">
+      <div (click)="goToCreateContest()">
+        <div class="inner">
+          <img src="/assets/img/challenges/Group 143.svg" style="width: 38px; height: 38px;" class="icon" alt="">
+          <img src="/assets/img/challenges/Group 143 copy.svg" style="width: 38px; height: 38px;" class="icon-white" alt="">
+          <h4>custom challenge</h4>
+          <p>Set custom game options and then invite your challengers</p>
+        </div>
+      </div>
+      <div (click)="goToSpecialPromo()">
+        <div class="inner">
+          <img src="/assets/img/challenges/Path 515.svg" style="width: 32px; height: 30.95px; margin-top: 10px;" class="icon" alt="">
+          <img src="/assets/img/challenges/Path 515 copy.svg" style="width: 32px; height: 30.95px; margin-top: 10px;" class="icon-white" alt="">
+          <h4>special promotions</h4>
+          <p>Challenge SportHItters with similar interests in a private challenge</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- <ion-grid style="display: none;">
+    <ion-row class="challenge-section" (click)="gotoChooseSport(false)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">PUBLIC CHALLENGES</ion-col>
+          <ion-col col-12 class="content">
+            Entering a PUBLIC challenge allows you to be automatically paired against other SportHitters by game
+            options.
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section" (click)="gotoChooseSport(true)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">PRIVATE CHALLENGES</ion-col>
+          <ion-col col-12 class="content">
+            Entering a PRIVATE challenge allows you to Challenge other SportHitters in your network.
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section" (click)="goToCreateContest()">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">CUSTOM CHALLENGES</ion-col>
+          <ion-col col-12 class="content">
+            Creating a CUSTOM challenge allows you to determine the game options and who to invite to your challenge.
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section" (click)="goToSpecialPromo()">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">SPECIAL PROMOTIONS</ion-col>
+          <ion-col col-12 class="content">
+            Entering a special promotion allows you to Challenge other SportHitters with similar interests. A custom
+            password is needed to enter a Special Promotion
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section-last" (click)="goToChallengeHistory()">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">EXISTING CHALLENGES</ion-col>
+          <ion-col col-12 class="content">
+            See all your challenges, as well as the result from past challenges
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+</ion-content>

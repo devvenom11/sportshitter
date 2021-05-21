@@ -1,0 +1,56 @@
+page-notification {
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .button-ios,.button-md{
+        background-color: #f47b4e;
+        height: 2em;
+        font-size: 1.1rem;
+        padding:0px;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    .button-ios.activated,.button-md.activated{
+        background-color: #f47b4e;
+        opacity: 0.8;
+    }
+    .popup{
+        position: relative;
+    }
+    .popup2{
+        .content{
+            height: 100%;
+            border-radius: 0;
+            width: 100%;
+            padding:10px 5px
+        }
+        .decline{
+            color: #f47d52;
+            font-size: 16px;
+        }
+        .hidelabel{
+            display: none
+        }
+        .countDown{
+            visibility: visible;
+        }
+        .hideCounter{
+            visibility: hidden !important;
+        }
+        .countDownstextBottom{
+            color: gray;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+    }
+}

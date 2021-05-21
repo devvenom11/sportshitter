@@ -1,0 +1,120 @@
+<!--
+  Generated template for the NotificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-color: #F8F8F8">
+    <ion-row style="background-color:#203e4b;padding:3vw;color: white;margin-bottom: 0px;">
+        Notification
+    </ion-row>
+    <div class="popup" *ngIf="showpopup">
+        <div class="content">
+          <img src="./assets/img/logo.png" alt="">
+          <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+          <h2>Challenge Cancelled</h2>
+          <p>The challenge has been cancelled due to not enough challengers before start of the first game.</p>
+          <button ion-button outline class="orange-btn" (click)="closePopup()">CONTINUE</button>
+        </div>
+    </div>
+    <div class="popup popup2" *ngIf="showPopupToAccept">
+        <div class="content">
+            <h2>You are entering challenge name {{challengeName}}</h2>
+            <p>Accepting and joining this challenge will deduct {{challengeVal}} from your balance. Would you like to continue? <br>The challenge will begin in:</p>
+            <ion-row>
+                <ion-col>
+                    <div class="countDown" [ngClass]="{'hideCounter':hideCounter}">
+                        <label class="digit-label" [ngClass]="{'hidelabel':hideDays}">
+                            <span class="label">Days</span>
+                            <span class="digit days0"></span>
+                            <span class="digit days1"></span>
+                            <span class="dots white">:</span>
+                        </label>
+                        <label class="digit-label" [ngClass]="{'hidelabel': hideHours}">
+                            <span class="label">Hours</span>
+                            <span class="digit hours0"></span>
+                            <span class="digit hours1"></span>
+                            <span class="dots">:</span>
+                        </label>
+                        <label class="digit-label">
+                            <span class="label">Minutes</span>
+                            <span class="digit minutes0"></span>
+                            <span class="digit minutes1"></span>
+                            <span class="dots">:</span>
+                        </label>
+                        <label class="digit-label">
+                            <span class="label">Seconds</span>
+                            <span class="digit seconds0"></span>
+                            <span class="digit seconds1"></span>
+                            <span class="dots white">:</span>
+                        </label>
+                    </div>
+                    <div style="text-align: center;color: gray;margin-top: 5px;"> *Timer subject to change.</div>
+                </ion-col>
+            </ion-row>
+            <p style="margin-top: 20px;">Once a challenge begins you will no longer be able to make your picks. Please allow the appropirate amount of time before accepting a challenge</p>
+            <ion-row style="margin-top: 30px;">
+                <ion-col><button ion-button outline class="green-btn" (click)="accept()" [disabled]="disableAcceptButton">ACCEPT CHALLENGE</button></ion-col>
+            </ion-row>
+            <ion-row><ion-col style="text-align: center;"><span class="decline" (click)="decline()">Decline Challenge</span></ion-col></ion-row>
+            <div class="countDownstextBottom"> *Timers are subject to change as players make selections. <br> ALl timers are based on the start time of the selected games.</div>
+          </div>
+    </div>
+    <ion-list no-lines style="margin-top: 0px" *ngIf="!showPopupToAccept">
+      <ion-row *ngFor="let item of notifiData;let i = index;" style="background-color: white;margin-top: 3vw;">
+        <ion-col col-3 style="display: flex;
+        justify-content: center;
+        align-items: center;margin-top: 5vw;">
+          <button ion-button block (click)="decline(i)">No Thanks</button>
+        </ion-col>
+        <ion-col col-6 style="display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;">
+            <!-- <p style="margin: 0px;">{{pendingsportarray[i] | uppercase}} - {{pendingadditionalarray[i].contestname}}<ion-note style="color: grey;font-size:3vw;font-style:italic;">({{item | date: 'MM/dd/yy:hh.mm'}}) <ion-note style="font-size: 12px;font-weight: bolder;" [style.color]="pendingcreatearray[i]=='CC'?'#203e4b':'#f47b4e'">{{ pendingcreatearray[i] }}</ion-note></ion-note></p>
+            <div style="display: flex">
+                <p style="margin: 0px;font-size: 10px;color: grey;" *ngIf="pendingsportinfoarray[i].game == -1">$Free</p>
+                <p style="margin: 0px;font-size: 10px;color: grey;" *ngIf="pendingsportinfoarray[i].game != -1">${{ pendingsportinfoarray[i].game }}</p>&nbsp;&nbsp;&nbsp;
+                <p style="margin: 0px;font-size: 10px;color: grey;border-bottom: 1px dotted #f47b4e;">{{ pendingsportinfoarray[i].player }} challengers</p>&nbsp;&nbsp;&nbsp;
+                <p style="margin: 0px;font-size: 10px;color: grey;border-bottom: 1px dotted #f47b4e;" >{{ pendingsportinfoarray[i].pick }} Picks</p>
+            </div> -->
+            <h6>{{item.username}} Invite pending</h6>
+            <p style="margin: 0px;">{{item.sport | uppercase}} - {{item.contestname}}<span *ngIf="item.game_id && item.flag!='cc'">{{item.game_id}}</span><ion-note style="color: grey;font-size:3vw;font-style:italic;">({{item.createdAt | date:'M/d/yy'}})</ion-note></p>
+            <div style="display: flex">
+                <p style="margin: 0px;font-size: 10px;color: grey;" *ngIf="item.game == -1">$Free</p>
+                <p style="margin: 0px;font-size: 10px;color: grey;" *ngIf="item.game != -1">${{item.game}}</p>&nbsp;&nbsp;&nbsp;
+                <p style="margin: 0px;font-size: 10px;color: grey;border-bottom: 1px dotted #f47b4e;">{{item.player}} challengers</p>&nbsp;&nbsp;&nbsp;
+                <p style="margin: 0px;font-size: 10px;color: grey;border-bottom: 1px dotted #f47b4e;" >{{item.team}} Picks</p>
+            </div>
+        </ion-col>
+        <ion-col col-3 style="display: flex;
+        justify-content: center;
+        align-items: center;margin-top: 5vw;">
+          <button ion-button block (click)="showAcceptPopup(i)">Accept</button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+</ion-content>

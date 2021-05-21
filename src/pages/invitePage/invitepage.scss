@@ -1,0 +1,327 @@
+page-invitepage {
+    .back-button-text-ios{
+        display: none;
+    }
+
+    .back-button-text-ios, .back-button-text-md {        
+        display: none;
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .item-ios ion-avatar, .item-md ion-avatar {
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    .game_btn{
+        text-align: center;
+        button{
+            color: #223e4b;background-color: #f47b4e;margin-top: 5vw;width: 60%; 
+        }
+    }
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    } 
+    .item{
+        .label-ios, .label-md {        
+            display: flex;
+        }
+        border-bottom-width: 1px! important;
+        border-bottom-color: #b8b8b8! important;
+        border-bottom-style: solid! important;
+        font-size: 14px;
+        height: 40px;
+    }  
+
+    .dlgupgrade{
+        background: rgba(32,62,75,0.5);
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        z-index: 999;
+        align-items: center;
+        padding: 5vw;
+    }
+
+    .frmupgrade{
+        background-color: white;
+        padding: 4vw;
+        border-radius: 2vw;
+        text-align: center;
+        img {
+            max-width: 100%;
+            border: 0;
+            margin-top: -20vw;
+        }
+
+        .upgradetitle{
+            color: #223e4b;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .upgradecomment{
+            color: #223e4b;
+            padding-top: 2vw;
+            font-size: 11px;
+        }
+
+        li{
+            padding: 5px 0px;
+            font-size: 11px;
+        }
+
+        ul{
+            color: #223e4b;
+            text-align: left;
+            font-style: italic;
+        }
+
+        button{
+            z-index: 2000;
+        }
+    }
+
+    ion-list {
+        padding-left: 4vw;
+    }
+
+    .search{
+        .item-md, .item-ios{
+            font-size: 1.2rem;
+            padding: 0px;
+        }
+        .list-md, .list-ios{
+            padding: 0px;
+            margin: 0px;
+        }
+        ion-icon{            
+            color : #f47f53;
+            padding-left: 20px;
+        }
+        .item .label-ios, .item .label-md{
+            align-items: center;
+        }
+    }
+    ion-list.search{
+        padding: 0px;
+    }
+
+    .searchIcon{
+        font-size:23px;
+        padding:10px;
+        color:#f47b4e;
+        margin-right:5px;
+    }
+
+    .inviteLabel{
+        position: absolute;
+        right: 8vw;
+        top: 0vw;
+        font-size: 4vw;
+        border-color: #f47f53;
+        border-width: 1px;
+        border-style: solid;
+        padding: 1vw;
+    }
+    .label.invite-user{
+        padding-left: 0px;
+        display: flex;
+        padding-left: 0px;
+        align-items: center;
+        margin: 0 15px;
+        justify-content: space-between;
+        p{
+            color:#24414e;
+            font-size:14px;
+        }
+        .label.btn{
+            padding-left: 0px;
+            display: flex;
+            align-items: center;
+            width: 90px;
+            height: 30px;
+            text-align: center;
+            background-color: #f47b4e;
+            color: white;
+            justify-content: center;
+            font-size:14px;
+
+        }
+        .label.btn.sent{
+            padding-left: 0px;
+            background-color: #203e4b;
+        }
+        
+    }
+    .non-users{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        background-color: #a0b5bf;
+        bottom: 50px;
+        padding: 10px 35px;
+        button{
+            width: 100%;
+            background-color: #f47b4e;
+            text-transform: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+    }
+
+    .searchbar{
+        background-color: #f47b4e;
+        .searchbar-input-container{
+            margin: auto 27px;
+        }
+    }
+    .label{
+        .title-text{
+            padding: 0px 20px;
+            color: #587581;
+        }
+    }
+
+    .heading{
+        padding: 7px 32px;
+        background-color: #f47b4e;
+        .custom-search{
+            outline: none;
+            border: solid 1px #f47b4e;
+            .row.input{
+                width: 100%;
+                padding: 10px;
+                height: 40px;
+                font-family: 'Raleway-bold';
+                font-size: 13px;
+                border-radius: 0px;
+                background-color: #fcfcfc;
+                color: #6d6c6c;
+                .col{
+                    input{
+                        border: none;
+                        padding: 0;
+                        padding-left: 10px;
+                        width: 100%;
+                    }
+                    padding: 0;
+                    line-height: 1.5;
+                    color: #6d6c6c;
+                    font-family: 'Raleway-bold';
+                    .icon{
+                        font-size: 25px;
+                        line-height: 0.7;
+                    }
+                    .text{
+                        color: #223e4b;
+                    }
+                    .active{
+                        color: #f47b4e;
+                    }
+                    .down{
+                        transform: rotate(90deg)
+                    }
+                }
+            }
+        
+            ul.dropdown{
+                z-index: 1;
+                border: solid 1px #456b9d;
+                background-color: #ffffff;
+                position: absolute;
+                width: calc(100% - 65px);
+                margin-left: -1px;
+                -webkit-transform: translateY(-25px);
+                transform: translateY(-15px);
+                padding-left: 0px;
+                max-height: 146px;
+                overflow-y: auto;
+                li{
+                    list-style: none;
+                    padding: 10px;
+                    padding-left: 25px;
+                    color: #1e569e;
+                }
+                li:hover{
+                    background-color: rgb(235, 235, 235);
+                }
+                
+            }
+        }
+        .custom-search:focus{
+            border: solid 1px #456b9d;
+        }
+        
+    }
+    .top-heading{
+        background-color: #203d4a;
+        color:#fff;
+        
+        z-index: 10;
+        .col{
+            height: 36px;
+            justify-content: center;
+            text-align: center;
+            padding-top: 10px;
+            box-shadow: 0 2px 4px  rgba(0, 0, 0, 0.5);
+        }
+    }
+    .challenge-heading{
+        color:#fff;
+        background-color: #587581;
+        padding: 0px;
+        .row{
+            padding: 0px;
+            margin: 0px;
+        }
+        ul{
+            li{
+                display:inline
+
+            }
+            padding:0px;
+            margin:0px;
+        }
+        .col{
+            padding:10px 0px;
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+    }
+    .invite-btn{
+        position: absolute;
+        position: absolute;
+        right: 0;
+        color: #f47b4e;
+        background-color: white;
+        border:none;
+    }
+    .active{
+        color:#f47b4e;
+    }
+}

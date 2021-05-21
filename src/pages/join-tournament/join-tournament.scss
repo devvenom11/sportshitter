@@ -1,0 +1,229 @@
+$custom-primary: #f47b4e;
+$custom-secondary: #203e4b;
+$banner-height: 182px;
+
+page-join-tournament {
+  ion-toolbar {
+    height: $banner-height;
+    display: flex;
+    align-items: flex-start;
+    .toolbar-background {
+      background-image: url("../assets/img/sport-tournament-basketball.png");
+    }
+    .toolbar-title {
+      color: white;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-family: "industry-black";
+    }
+  }
+
+  .row {
+    .col {
+      // height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $custom-secondary;
+      font-family: "industry-black";;
+    }
+  }
+
+  .list-item {
+    box-sizing: border-box;
+    margin: 0px 16px 4px 7px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 1.2;
+    width: 50%;
+    .icon {
+      padding: 8px 8px 10px 0px;
+    }
+    .sub-text {
+      color: #e8ecac;
+      font-family: roboto-regular;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: normal;
+      text-align: left;
+    }
+    .title {
+      font-family: industry-black;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+    .prize-step{
+        color: white; font-size: 12px; text-align: end;
+        p{
+            padding: 2px;
+        }
+        span{
+            font-weight: bold !important;
+            sup{
+                font-weight: bold;
+            }
+        }
+    }
+    .user-status-bar {
+        position: fixed;
+        left: 0px;
+        z-index: 5555;
+        text-align: center;
+        width: 100%;
+        background-color: #f47b4e;
+        font-size: 12px;
+        display: flex;
+        height:64px;
+        justify-content: space-between;
+        padding: 0px 15px;
+        align-items: center;
+        .pick {
+            border: 1.5px solid white;
+            color: white;
+            background-color: #f47b4e;
+            padding: 5px 15px;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+        h6{
+            font-size: 14px;
+            color: white;
+            font-weight: 400;
+            margin:0
+        }
+        .pointsPossible {
+            margin: 0px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+    .user-status-bar2 {
+        position: fixed;
+        left: 0px;
+        z-index: 5555;
+        bottom: 54px;
+        text-align: center;
+        width: 100%;
+        background-color: #25B146;
+        font-size: 12px;
+        display: flex;
+        height:64px;
+        justify-content: space-between;
+        padding: 0px 15px;
+        align-items: center;
+        .pick {
+            border: 1.5px solid white;
+            color: white;
+            background-color: #25B146;
+            padding: 5px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        h6{
+            font-size: 14px;
+            color: white;
+            font-weight: 400;
+            margin:0
+        }
+        .pointsPossible {
+            margin: 0px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+    .subtitle{
+        font-size: 20px;
+        font-family: industry-black;
+        color: #203E4B;
+        line-height: 25px;
+        width: 100%;
+    }
+    .pick-header{
+        height: 34px;
+        color: #587581;
+        background: #F4F4F4;
+        padding-left: 25px;
+        padding-right: 35px;
+        .time_note{
+            text-align: left;
+            color:#587581;
+            font-size: 13px !important;
+            font-weight: 500;
+        }
+        .pick-label{
+            text-align: center;
+            color:#587581;
+            font-size: 13px !important;
+            font-weight: 500;
+        }
+    }
+    .gridcontent{
+        background-color: #fff;
+        padding:5px 30px 5px 25px
+    }
+    .team{
+        font-size: 14px;
+        color: #203E4B;
+        font-family: roboto-medium;
+    }
+    .pitcher{
+        padding-left: 2.8vw;
+        font-size: 12px;
+        color: grey;
+        margin-top: 1vw;
+        margin-bottom: 20px;
+    }
+    .odd{
+        position: relative;
+        .checkbox-icon{
+            width: 102px;
+            height: 35px;
+            border-radius: 8px;
+            border-color: #587581;
+            border-width: 1.5px;
+        }
+        .item-cover{
+            z-index: 9999;
+        }
+        .challenge2CB{
+            width: 102px;
+        }
+        .challenge2Points{
+            position: absolute;
+            z-index: 999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-55%);
+            font-weight: bold;
+            color: #203E4B;
+            font-size: 18px;
+        }
+        .checkbox-inner{
+            display: none;
+        }
+        .checkbox-checked{
+            border-color: #CB5225 !important;
+            background: #F37343;
+        }
+    }
+    .active-sport{
+        .challenge2Points{
+            color:white !important
+        }
+    }
+    .challenge2CB{
+        width: 102px;
+    }
+    .scroll-content{
+        margin: -16px;
+        -webkit-overflow-scrolling: initial!important;
+        bottom:50px;
+        margin-top: 300px !important;
+    }
+}

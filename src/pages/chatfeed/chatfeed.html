@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu">
+                    <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+                    margin-left: -10px;
+                    margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+            </ion-icon>
+        </button>
+        <ion-title>Chat</ion-title>
+    </ion-navbar>
+    <ion-segment [(ngModel)]="chatfeed">
+        <ion-segment-button value="User" (click)="removeBadge()" id="user">
+            User&nbsp;
+            <ion-badge *ngIf="this.badgeNum" color="secondary" item-right>{{ this.badgeNum }}</ion-badge>
+        </ion-segment-button>
+        <ion-segment-button value="Team" (click)="noUser()" id="mychallenges">
+            My Challenges
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content>
+
+    <div [ngSwitch]="chatfeed">
+         <div *ngSwitchCase="'Team'" style="padding:0px 10px;">
+            <ion-grid *ngFor="let sport of contestsportList; let inx = index;">
+                <ion-row *ngIf="inx==0 || sport.sport != contestsportList[inx-1].sport" style="background-color:#203e4b;height: 11vw;">
+                    <ion-col col-6 style="justify-content: flex-start;padding-left:10px;"><p class="game_title">{{sport.sport | uppercase}} Game Lines</p></ion-col>
+                </ion-row>
+                <div [style.margin-top]="inx ==0&&'10px'">
+                    <ion-row class="row1" style="border-bottom: 1px solid #f4f4f4;padding: 3px 2vw 3px 4vw;">
+                        <ion-col col-2 class="col1">
+                            <h5 style="color:green;margin-top: 0px">{{ sport.data.game!=-1?'$':'' }}</h5>
+                            <h5 style="margin-top: 0px;">{{ (sport.data.game==-1 || sport.data.game==0)?'Free':sport.data.game }}</h5>
+                        </ion-col>
+                        <ion-col col-8 class="col2">
+                            <h5 style="margin: 0px;margin-bottom: 2vw;">{{ sport.data.player==0?'All':sport.data.player }} Challengers {{ sport.data.team }} Picks</h5>
+                            <p style="color:black;font-size: 1.3rem;margin-left:3vw;display: inline;">{{ sport.data.sport | uppercase }} - {{ sport.data.contestname }} <span *ngIf="sport.data.game_id && sport.data.flag!='cc'">{{sport.data.game_id}}</span>
+                                <ion-note style="color: grey;font-size:3vw;font-style:italic;font-size: 1.3rem;display: inline"><br>({{ sport.data.createdAt | date: 'MM/dd/yy:hh.mm a'}})
+                                    <ion-note style="font-size: 1.3rem;font-weight: bolder;display:inline" [style.color]="(sport.data.flag =='cc' || sport.data.flag =='CC')?'#203e4b':'#f47b4e'">{{ sport.data.flag | uppercase }}</ion-note>
+                                </ion-note>
+                            </p>
+                        </ion-col>
+                        <ion-col col-2 class="col3">
+                            <ion-icon style="font-size: 6vw;color: #f47b4e;" name="ios-chatbubbles" (click)="chat(sport.data._id, sport.data.sport,sport.data.contestname,sport.data.createdAt,sport.data.flag,sport.data.game_id)"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-grid>
+            <ion-row class="empty-list" *ngIf="!loading && contestsportList.length==0">
+                <ion-col col-12 >
+                    <ion-note>Currently you are not a part of any challenge. So you have no chat available.</ion-note>
+                </ion-col>
+                <ion-col col-12 >
+                    <ion-note>Click the Challenges tab to get started.</ion-note>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div *ngSwitchCase="'User'" style="padding:0px 20px;">
+            <ion-label *ngIf="names.length==0" style="text-align: center;
+            font-style: italic;
+            color: #bdbcbc;">Search for other SportHitters users...</ion-label>
+            <ion-list no-lines style="margin-bottom: 0px;">
+                <ion-item *ngFor="let sport of names; let i = index;" class="item-cell" (click)="chatUser(ids[i], sport,i)">
+                    <h1 [ngClass]="[this.statusArr[i] == '1' ? 'greanClass' : 'redClass']">&bull;</h1>
+                    <div style="font-size: 16px;color: #24414e;overflow: hidden;" fixed>
+                        {{sport}}
+                    </div>
+                    <!-- <p style="width:70px;color: #c5c5c5;font-size:16px;margin-left:8px" fixed>({{ scores[i] }}%)&nbsp;</p> -->
+                    <ion-badge *ngIf="this.badgeItemNum[i]" color="secondary" item-right>{{ this.badgeItemNum[i] }}</ion-badge>
+                    <ion-icon style="color:#f47b4e;margin-top: 0px;font-size:25px;padding:10px;padding-right:0px;margin-bottom:0px" name="ios-arrow-forward-outline" item-end ></ion-icon>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

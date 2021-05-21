@@ -1,0 +1,94 @@
+page-favorite-detail {
+    
+    .button-ios, .button-md {        
+        height: 2em;
+        width: 2em;        
+    }
+
+    .card-content-ios, .card-content-md {
+        padding-right: 0px;
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .toolbar-background-ios, .toolbar-background-ios {
+        // background-color: #2c5766;
+    }
+
+    .scroll-content{
+        background-color: #f4f4f4;
+    }
+
+    .back{
+        background-color: #2c5766; 
+        margin: -16px;
+    }
+
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios,
+    .header-md .toolbar-md:last-child .toolbar-background-md {
+        border-width: 0 0 0.55px;
+        border-width: 0px;
+    }
+
+    .button-outline-ios {        
+        border-color: transparent;
+        color: #f47b4e; 
+    }
+
+    .button-outline-ios.activated {
+        background-color: #f47b4e; 
+    }
+
+    .pretitle{
+        background-color: #203e4b;
+        color: white;
+        margin-top: 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+        height: 10vw;
+        display: flex;
+        align-items: center;
+        padding-left: 4vw;
+    }
+
+    .preselect{
+        display: flex;
+        justify-content: space-around;
+        background-color: #f4f4f4;
+        .select-ios .select-icon,.select-md .select-icon {            
+            margin-right: 2vw;
+        }
+        .item-inner {
+            border-bottom: 0px!important;
+        }
+    }
+
+    .precontent{
+        ion-input{
+            padding: 4vw;
+        }
+        .text-input-ios, .text-input-ios {
+            margin: 0px;
+            width: 100%;
+        }
+    }
+
+    .precontent .text-input-ios, .precontent .text-input-md {       
+        padding-bottom: 1vw;
+    }
+
+}

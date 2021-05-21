@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+      <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px; height: 20.08px" />
+      <ion-badge *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src="./assets/img/logo-new@2x.png" style="height: 36px; width: 28px; position: absolute; top: 8px" />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl">Balance <br />
+          <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span>
+        </ion-label>
+      </button>
+      <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="selectedSportKey && selectedSport">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToChallengeSportList()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+
+      <div class="list-item {{selectedSportKey}}">
+
+        <img class="icon" src="{{selectedSport.iconImage}}" />
+
+        <div style="flex:1;">
+          <div class="sub-text">
+            {{selectedSport.subText}}
+          </div>
+          <div class="title">
+            {{selectedSport.title}}
+          </div>
+        </div>
+      </div>
+
+      <img src="./assets/img/Group 474.svg" alt="" />
+
+      <div class="lobby-btn">
+        <button ion-button id="joinNowButton" class="joinnowbtn" (click)="joinOpenTournament()">Join now</button>
+        <button ion-button id="detailsButton" class="details">Details</button>
+      </div>
+
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-segment [ngClass]="gameType == 'freePlay' ? 'challenge-segment-free' : 'challenge-segment-winner'"
+    [(ngModel)]="gameType" color="custom-secondary" (click)="getChallengesBySport()">
+    <ion-segment-button value="freePlay"
+      [ngClass]="gameType == 'freePlay' ? 'free-play-selected' : 'free-play-not-selected'">
+      Free Play
+    </ion-segment-button>
+    <ion-segment-button value="winnerTakesAll"
+      [ngClass]="gameType == 'winnerTakesAll' ? 'winner-takes-all-selected' : 'winner-takes-all-not-selected'">
+      Winner Takes All
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+<div class="popup" *ngIf="showpopup">
+  <div class="content">
+    <img src="./assets/img/logo.png" alt="">
+    <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+    <h2>{{header}}</h2>
+    <p>{{msg}}</p>
+    <button ion-button outline class="orange-btn" (click)="closePopup()">CONTINUE</button>
+  </div>
+</div>
+<!-- <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let challenge of challenges">
+      <ion-avatar item-start>
+        <img src="{{selectedSport.iconImage}}" />
+      </ion-avatar>
+      <h2>{{challenge.title}}</h2>
+      <div>
+        <div>{{challenge.player}} Challengers</div>
+        <div>{{challenge.team}} Picks</div>
+        <div>${{challenge.game}}</div>
+      </div>
+      <button ion-button  clear item-end>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content> -->
+
+
+<ion-content>
+  <div class="challenges-container">
+
+    <!-- <div *ngFor="let challenge of challenges">
+      <div class="" [ngClass]="gameType == 'freePlay' ? 'challenge-freeplay-box' : 'challenge-winner-box'">
+        <div class="challenge-avatar">
+          <img [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+        </div>
+        <div class="challenge-all-details">
+          <div>
+            <div>
+              <h6 class="challenge-title">{{challenge.sport | uppercase}}</h6>
+            </div>
+            <div class="challenge-cat-details">
+              <div>
+                <p class="challenge-category">CHALLANGES</p>
+                <span class="challenge-cat-info">{{challenge.challengers}}</span>
+              </div>
+            <div>
+              <p class="challenge-category">PICKS</p>
+              <span class="challenge-cat-info">{{challenge.picks}}</span>
+            </div>
+             <div>
+              <p class="challenge-category">ENTRY FEE</p>
+              <span class="challenge-cat-info">{{challenge.entry_fee}}</span>
+          </div>
+          <div>
+            <p class="challenge-date">02/23 06:00 PM EST</p>
+            <div class="challenge-btn" (click)="goPick()">
+              <button ion-button size="small" [ngClass]="gameType == 'freePlay' ? 'challenge-join-btn' : 'challenge-winner-join-btn'"><span style="font-weight: bold;">JOIN</span></button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="challenge-date">{{challenge.created_at}} EST</p>
+          <div class="challenge-btn">
+            <button (click)="join(challenge)" ion-button size="small"
+              [ngClass]="gameType == 'freePlay' ? 'challenge-join-btn' : 'challenge-winner-join-btn'"><span
+                style="font-weight: bold;">JOIN</span></button>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div> -->
+
+    <div *ngFor="let challenge of challenges">
+      <div class="" [ngClass]="gameType == 'freePlay' ? 'challenge-freeplay-box' : 'challenge-winner-box'">
+        <div class="challenge-avatar">
+          <img [src]="lightSelectedSport ? lightSelectedSport.iconImage : ''" [alt]="lightSelectedSport ? lightSelectedSport.title : ''"/>
+        </div>
+        <div class="challenge-all-details">
+          <div>
+            <div>
+              <h6 class="challenge-title">{{challenge.sport | uppercase}} {{challenge.title}}</h6>
+            </div>
+            <div class="challenge-cat-details">
+              <div>
+                <p class="challenge-category">CHALLANGES</p>
+                <span class="challenge-cat-info">{{challenge.challengers ? challenge.challengers : N/A}}</span>
+              </div>
+              <div>
+                <p class="challenge-category">PICKS</p>
+                <span class="challenge-cat-info">{{challenge.picks ? challenge.picks : N/A}}</span>
+              </div>
+              <div>
+                <p class="challenge-category">ENTRY FEE</p>
+                <span class="challenge-cat-info">${{challenge.entry_fee ? challenge.entry_fee : N/A}}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="challenge-date">{{challenge.created_at ? challenge.created_at : N/A}} EST</p>
+            <div class="challenge-btn">
+              <button (click)="join(challenge)" ion-button size="small"
+                [ngClass]="gameType == 'freePlay' ? 'challenge-join-btn' : 'challenge-winner-join-btn'"><span
+                  style="font-weight: bold;">JOIN</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+</ion-content>

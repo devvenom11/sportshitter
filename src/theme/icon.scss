@@ -1,0 +1,16 @@
+ion-icon {
+  &[class*="custom-"] {
+    mask-size: contain;
+    mask-position: 50% 60%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+  &[class*="custom-signout-icon"] {
+    mask-image: url(../assets/img/Signout.png);
+  }
+  &[class*="custom-about-icon"] {
+    mask-image: url(../assets/img/About.png);
+  }
+}

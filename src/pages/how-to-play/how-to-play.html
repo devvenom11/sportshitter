@@ -1,0 +1,134 @@
+<!--
+  Generated template for the HowToPlayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="popup" *ngIf="videoPopUp">
+    <div class="content">
+      <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+      <iframe width="100%" min-height="300"  src="https://www.youtube.com/embed/lcrkBm645_E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <ion-grid class="banner-container">
+    <ion-row>
+      <ion-col col-12>
+        <h2 class="banner-title">HOW TO PLAY</h2>
+        <h4 class="subtitle">Watch the video below and learn <br>how to play SportHitters!</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="second-section">
+    <div class="bg-gray-overlay">
+      <img src="../../assets/img/Group 438.svg" alt="" (click)="showVideo()">
+    </div>
+  </ion-grid>
+  <ion-grid class="box-gray">
+    <ion-row>
+      <ion-col col-12>
+        <h2 class="green-title" style="text-align: center;">CHALLENGE<br>OPTIONS</h2>
+      </ion-col>
+    </ion-row>
+    <div class="bg-white">
+      <ion-row>
+        <ion-col col-12>
+          <img src="../../assets/img/Group 455.svg" alt="">
+          <h2>PUBLIC CHALLENGE</h2>
+        </ion-col>
+        <ion-col col-12>
+          <div class="desc">This allows you to quickly enter and Challenge others from the SportHitters universe. Simply select the Challenge options you desire and select your teams. Once you confirm your picks, you will be placed in a Challenge against a Challenger with the same game options.</div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="bg-white">
+      <ion-row>
+        <ion-col col-12>
+          <img src="../../assets/img/Group 454.svg" alt="">
+          <h2>PRIVATE CHALLENGE</h2>
+        </ion-col>
+        <ion-col col-12>
+          <div class="desc">To play a Challenger from your network select the Challenge options labeled Private Challenge. Follow the process of selecting your teams. Once you confirm your picks, you will be prompted to invite a Challenger from your network.</div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="bg-white">
+      <ion-row>
+        <ion-col col-12>
+          <img src="../../assets/img/Group 453.svg" alt="">
+          <h2>CUSTOM<br>CHALLENGE</h2>
+        </ion-col>
+        <ion-col col-12>
+          <div class="desc">All Users may create their own custom Challenges by selecting the Custom Challenge tab on the Challenge screen. Select your sport and then customize your game options. Once you save it the Challenge will appear in “My Challenges” screen. Enter the screen and proceed with your Challenge.</div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row>
+      <ion-col col-12 style="text-align: center;">
+        <button ion-button (click)="howtpplay()" class="get-start-btn">GET STARTED!</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="black-bg">
+    <div style="background: white;padding:30px 7px 20px;border-radius: 5px;">
+      <ion-row>
+        <ion-col col-12>
+          <h2 class="rule-title">RULES</h2>
+        </ion-col>
+        <ion-col col-12>
+          <ul class="rules">
+            <li>Pick the team you think will win the game. No spreads.</li>
+            <li>All entries are final once selections are confirmed.</li>
+            <li>If your team wins, Value Points are awarded.</li>
+            <li>Challenge winner is determined by Challenger with most points earned.</li>
+            <li>SportHitters Game Team Values are determined by our formula and algorithm. Values are released daily, except for NFL and NCAAF which are released Monday or Tuesday to minimize large value fluctuations during the week.</li>
+            <li>Points may vary slightly in a Challenge based on time of entry. Same team selections can have varying results based on point changes up-to game time.</li>
+            <li>If a sports game is cancelled, suspended or postponed and no game result is offered, the Challenge is Active and Challenge winner is decided by total points.</li>
+          </ul>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row>
+      <ion-col col-12 class="action-box" style="padding-top: 40px;">
+        <img src="../../assets/img/Group 440.svg" alt="">
+        <h3>GET SOCIAL</h3>
+        <p>SportHitters allows users to develop and grow a network of players. To build a network enter the Chat screen. You may search for users by typing in their Username and add them to your network. This will allow you to Invite them to a Challenge and/or chat directly with them any time.</p>
+      </ion-col>
+      <ion-col col-12 class="action-box">
+        <img src="../../assets/img/Group 451.svg" alt="">
+        <h3>DEPOSIT</h3>
+        <p>Funding your account is quick and easy. Simply tap the “add funds button on the upper right corner of the home screen and follow the steps. Your deposits are added to your account in seconds so you can play immediately. We don not charge you a processing fee for deposits.</p>
+      </ion-col>
+      <ion-col col-12 class="action-box">
+        <img src="../../assets/img/Group 452.svg" alt="">
+        <h3>WITHDRAW  <br>YOUR WINNINGS</h3>
+        <p>Withdraw your winnings is quick and easy. Tap on the Home Menu in the top left corner. Click withdraw and enter the amount. You will receive an email confirmation. <br> <br> PayPal withdraws are the quickest and processed within 24 hours. <br> <br> Check withdraws typically take 3-5 business days.</p>
+      </ion-col>
+      <ion-col col-12 style="text-align: center;">
+        <button ion-button (click)="howtpplay()" class="get-start-btn">GET STARTED!</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

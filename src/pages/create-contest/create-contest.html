@@ -1,0 +1,60 @@
+<!--
+  Generated template for the CreateContestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu">
+                <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+                margin-left: -10px;
+                margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+        </ion-icon>
+    </button>
+    <ion-title *ngIf="!onTab">Upgrade</ion-title>
+    <ion-title *ngIf="onTab">Hitters</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="my-network-btn" (click)="goFavourite()" end>
+        <ion-icon name="md-people"></ion-icon>
+      </button>
+      <button ion-button end (click)="goFund()">
+              <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color: #F4F4F4;">
+    <div class="dlgupgrade" *ngIf="showDlgUpgrade" (click)="closeUpgrade()">
+        <div class="frmupgrade">
+                <img src='./assets/img/logo.png'/>
+                <div class="upgradetitle">Upgrade</div>
+                <div class="upgradecomment">Upgrade to unlock the following benefits:</div>
+                <ul>
+                    <li>Winner fees lowered from 8% to 6%</li>
+                    <li>Unlimited follows</li>
+                    <li>Create private contests and invite friends</li>
+                    <li>News feed on the home screen</li>
+                    <li>Unlock chats fpr pending games</li>
+                    <li>Special and Progressive contests available</li>
+                </ul>
+                <div class="game_btn">
+                    <button ion-button (click)="goUpgrade()">LET'S DO IT</button>
+                </div>
+        </div>
+    </div>
+
+    <div class="col colClass" text-center>
+        <p *ngIf="!onTab" style="color: #223f4b;font-size: 20px;">Want to create your own challenge?</p>
+        <p *ngIf="onTab" style="color: #223f4b;font-size: 22px;font-family: 'Raleway-bold';font-weight: bolder;">What to be a Consultant or need help from a Consultant?</p>
+        <p style="color: #223f4b;font-family: sans-serif;margin-top:5vw;font-size: 16px;">Upgrade to premium to access the feature.</p>
+        <button ion-button (click)="goToUpgradeContest()" style="color: #223f4b;background-color: #f47b4e;margin-top: 5vw;width: 50%;height: 4.6rem;border-radius: 5px;">UPGRADE</button>
+    </div>
+
+</ion-content>

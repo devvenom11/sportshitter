@@ -1,0 +1,40 @@
+page-challenge-amount {
+    .challenge-section {
+        align-items: center;
+        .row{
+            margin: 5px 0;
+            border: 2px solid #203e4b;
+            .header{
+                background: #203e4b;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 20px 10px;
+                text-align: center;
+            }
+            .content{
+                padding: 10px;
+            }
+        }
+    }
+    .challenge-section-last{
+        align-items: center;
+        .row{
+            margin: 5px 0;
+            border: 2px solid #f3774b;
+        }
+        .header{
+            background: #f3774b;
+            text-align: center;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px 10px;
+        }
+        .content{
+            padding: 10px;
+            color: #f3774b;
+        }
+    }
+
+}

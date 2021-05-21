@@ -1,0 +1,240 @@
+$custom-primary: #f47b4e;
+$custom-secondary: #203e4b;
+$banner-height: 160px;
+
+page-challenge-lobby {
+  ion-toolbar {
+    height: $banner-height;
+    display: flex;
+    align-items: flex-start;
+    .toolbar-background {
+      background-image: url("../assets/img/sport-tournament-basketball.png");
+    }
+    .toolbar-title {
+      color: white;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-family: "industry-black";
+    }
+  }
+
+  .row {
+    .col {
+      // height: 64px;
+      display: flex;
+      align-items: center;
+
+      justify-content: center;
+      color: $custom-secondary;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-family: "industry-black";
+      background-color: #f4f4f4;
+    }
+  }
+
+  .list-item {
+    box-sizing: border-box;
+    margin: 0px 16px 4px 7px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 1.2;
+    .icon {
+      padding: 8px 8px 10px 0px;
+    }
+    .sub-text {
+      color: #e8ecac;
+      font-family: roboto-regular;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: normal;
+      text-align: left;
+    }
+    .title {
+      font-family: industry-black;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+  ion-content {
+    margin-top: $banner-height;
+  }
+
+
+  .joinnowbtn{
+    background-color: #fff;
+    border-radius: 4px;
+    color: #1C1C1C;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    height: 25px;
+
+    .button-inner {
+      font-family: roboto-condensed-bold;
+    }
+  }
+
+  .details{
+    border-radius: 4px;
+    border:1px solid #D1D1D1;
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+    background-color: transparent !important;
+    height: 25px;
+    text-transform : capitalize;
+
+    .button-inner {
+      font-family: roboto-regular;
+    }
+  }
+
+  .challenges-container {
+    max-height: 58vh;
+    overflow-y: scroll;
+    padding-bottom: 56px;
+
+    hr{
+      margin : 5px 10px;
+      color: #EFEFEF;
+    }
+  }
+
+  .challenge-segment-free,
+  .challenge-segment-winner {
+    width: 95%;
+    margin: 8px;
+  }
+
+  .challenge-segment-free{
+    border-bottom: 2px solid #203E4B;
+  }
+
+  .challenge-segment-winner {
+    border-bottom: 2px solid #327896; 
+  }
+
+  .challenge-freeplay-box,
+  .challenge-winner-box {
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+
+  .challenge-freeplay-box {
+    border-left: 2px solid #203E4B; 
+  }
+
+  .challenge-winner-box {
+    border-left: 2px solid #327896; 
+  }
+
+  .challenge-cat-details{
+    display: flex;
+    width: 100%;
+  }
+
+  .challenge-title{
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: roboto-condensed-bold;
+    color: #203E4B;
+  }
+
+  .challenge-date{
+    font-size: 12px;
+    font-family: roboto-regular;
+    color: #203E4B;
+  }
+
+  .challenge-category{
+    font-size: 8px;
+    font-family: roboto-regular;
+    color: #587581;
+    margin-right: 5px;
+  }
+
+  .challenge-cat-info{
+    font-size: 12px;
+    color: #203E4B;
+    font-family: roboto;
+    font-weight: 700;
+  }
+
+  .challenge-join-btn,
+  .challenge-winner-join-btn{
+    font-size: 13px;
+    font-family: industry-black;
+    height: 25px;
+    color: #fff;
+  }
+
+  .challenge-join-btn {
+    background-color: #203E4B;
+  }
+
+  .challenge-winner-join-btn {
+    background-color: #327896;
+  }
+
+  .winner-takes-all-selected{
+    background-color: #327896 !important;
+    color: #fff !important;
+    border-radius: 7px 7px 0px 0px;
+    border:1.5px solid #327896 !important;
+    font-family: 'industry-bold';
+    font-size: 15px !important;
+    margin-left:10px;
+  }
+
+  .winner-takes-all-not-selected{
+    background-color: #fff;
+    color: #327896 !important; 
+    border-radius: 7px 7px 0px 0px;
+    border-top:1.5px solid #327896;
+    border-left:1.5px solid #327896;
+    border-right:1.5px solid #327896;
+    font-family: 'industry-bold';
+    font-size: 15px !important;
+    margin-left:10px;
+  }
+
+  .free-play-not-selected{
+    background-color: #fff;
+    color: #203E4B; 
+    border-radius: 7px 7px 0px 0px;
+    border-top:1.5px solid #203E4B;
+    border-left:1.5px solid #203E4B;
+    border-right:1.5px solid #203E4B;
+    font-family: 'industry-bold';
+    font-size: 15px !important;
+  }
+
+  .free-play-selected {
+    background-color: #203E4B !important;
+    color: #fff !important; 
+    border:1.5px solid #203E4B;
+    border-radius: 7px 7px 0px 0px;
+    font-family: 'industry-bold';
+    font-size: 15px !important;
+  }
+
+  .challenge-all-details{
+    width: 100%;
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-between;
+  }
+
+  .challenge-btn {
+    width: 100%;
+    text-align: right;
+    margin-top: 5px;
+  }
+}

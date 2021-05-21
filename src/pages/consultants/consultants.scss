@@ -1,0 +1,27 @@
+page-consultants {
+    .back-button-text-ios{
+        display: none;
+    }
+    .colClass{
+        margin-top:10em;
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;        
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {        
+        color: #1f323b;        
+    }
+
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    }  
+}

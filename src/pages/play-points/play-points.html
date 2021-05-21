@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid style="background-color:#2C5766;text-align: center;color:white;padding: 5px !important;">
+    <ion-row style="align-items: center;">
+      <ion-col col-12 style="font-size:20px;font-weight: bold;">{{currentPoints}}</ion-col>
+      <ion-col col-12  style="color:#989898">CURRENT POINTS</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-input clearInput type="number" name="amount" placeholder="Enter Points amount to redeem*" [(ngModel)]="amount" required style="background: white; border-radius: 2px;color:gray;"></ion-input>
+      </ion-col>
+      <ion-col col-12>
+        <p style="text-align:left;color:white;font-size: 12px;">By clicking on the redeem button you agree to redeem 5 points, a $25 credit will be added to your balance, and you will be start a 10x rollover.</p>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button block (click)="reddem()" class="reddem">
+          REDDEM
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid style="margin-top: 20px;">
+    <div style="background-color: white; flex-direction:column">
+      <ion-row class="item-row" (click)="goToPointActivity()">
+        <ion-col class="lcol1">Points Activity</ion-col>
+        <ion-col style="float: right;"><img src="./assets/img/MyAccount_RightArrow.png" style="float: right;"/></ion-col>
+      </ion-row>
+      <ion-row class="item-row" (click)="gotoRefer()">
+        <ion-col class="lcol1">Refer A Friend</ion-col>
+        <ion-col><img src="./assets/img/MyAccount_RightArrow.png" style="float: right;"/></ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

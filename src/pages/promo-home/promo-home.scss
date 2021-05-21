@@ -1,0 +1,104 @@
+page-promo-home {
+  .banner-container{
+    background-image: url(../../assets/img/bg-image-special.png);
+    h2{
+      margin-bottom: 0 !important;
+      font-size: 30px !important;
+    }
+  }
+    .bg{
+        position: relative;
+        min-height: 150px;
+        border-radius: 5px;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        &:after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            background: rgba(0,0,0,0.2);
+            top: 0;
+        }
+    }
+    .challenge-section{
+        align-items: center;
+        padding: 15px 18px 0;
+        ion-col{
+          padding-left: 0;
+          // margin-bottom: 20px;
+          .name{
+            width: 100%;
+            text-align: left;
+            font-size: 20px;
+            color: white;
+            // text-shadow: 1px 1px 1px black;
+            font-weight: 500;
+            z-index: 9;
+            position: relative;
+            top: auto;
+            bottom: -113px;
+            color: #203E4B;
+            padding: 5px;
+            padding-left: 0;
+            display: none;
+          }
+        }
+    }
+
+
+    .toolbar-content{
+      color: white;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+  .content-circle{
+    color: white;
+    font-size: 14px;
+    padding: 6px 0;
+    .name{
+      display: inline-block;
+      font-family: industry-bold;
+      font-size: 16px;
+    }
+  }
+  .title-header{
+    max-width: 257px;
+    margin: 0 auto;
+    h2{
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px !important;
+      color:#203E4B;
+      font-weight: 600;
+    }
+  }
+  .white-bg{
+    text-align: center;
+    font-size: 24px;
+    border:1.5px solid #587581;
+    margin-top: 10px;
+    padding: 10px 10px 20px;
+    h2{
+      font-family: industry-black;
+      font-size: 24px;
+      color: #203E4B;
+  
+    }
+  }
+  .img-bg-slide-circle{
+    background-image: url('../../assets/img/Group 371.svg');
+    background-position: center;
+    height: 65px;
+    max-width: 98px;
+    padding: 0;
+    margin-right: 5px;
+    border-radius: 5px;
+    &:last-child{
+      margin: 0;
+    }
+  }
+}

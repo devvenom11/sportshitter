@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="banner-container">
+    <ion-row>
+      <ion-col col-12>
+        <img src="./assets/img/Group 414.svg" alt="">
+        <h2 class="white-title">YOU CURRENTLY HAVE</h2>
+        <h2 class="banner-title">{{totalPoints}} POINTS</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row class="bg-white">
+      <ion-col col-12>
+        <ion-input clearInput type="number" name="amount" placeholder="Enter amount to redeem*" [(ngModel)]="amount" required class="amount"></ion-input>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button block (click)="reddem()" class="green-btn-style">
+          REDEEM
+        </button>
+      </ion-col>
+      <ion-col col-12 style="padding-left: 0;padding-right: 0;">
+        <div class="label">
+          * You can only redeem in increments <br>of 5 points at a time.
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <div style="color: white;font-family: industry-light;padding-top: 20px;padding-bottom: 10px;">
+          BY CLICKING ON THE REDEEM BUTTON YOU AGREE TO REDEEM 5 POINTS, a $25 CREDIT WILL BE ADDED TO YOUR BALANCE, AND WILL BEGIN THE 5X ROLLOVER REQUIREMENT.
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button block class="transparent-btn-white" (click)="gotoRefer()">VIEW SHARE LINK</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!showempty">
+    <div class="bg-white" style="padding:20px 10px;">
+      <ion-row>
+        <ion-col col-12>
+          <h2 class="green-title">POINTS ACTIVITY</h2>
+        </ion-col>
+      </ion-row>
+      <div class="activity-box">
+        <ion-row *ngFor="let item of data">
+          <ion-col col-4>
+            <small>DATE</small> <br>
+            {{item.firstdepositdate | date:'MM/dd/yyyy'}}
+          </ion-col>
+          <ion-col col-3>
+            <small>REFERRAL</small><br>
+            {{item.username ? item.username : 'REDEEM'}}
+          </ion-col>
+          <ion-col col-3>
+            <small>DEPOSIT</small><br>
+            {{item.redeemvalue ? '$'+item.redeemvalue :''}}
+          </ion-col>
+          <ion-col col-2>
+            <small>POINTS</small><br>
+            {{item.pointsearned ? +'+'+item.pointsearned : +'-'+ item.redeemedpoints}}
+          </ion-col>
+        </ion-row>        
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>

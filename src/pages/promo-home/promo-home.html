@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background: #F4F4F4">
+  <ion-grid class="banner-container">
+    <ion-row>
+      <ion-col col-12>
+        <h2 class="banner-title">SPECIAL PROMOTIONS</h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="showData;else noData">
+    <ion-row class="challenge-section" (click)="gotoSpecialChallenge(item)" *ngFor="let item of data">
+      <ion-col col-12 [style.background-image]="item.promoimage" class="bg">
+        <div class="name">{{item.contestname}} </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ng-template #noData>
+    <ion-grid style="padding:0 20px">
+      <ion-row>
+        <ion-col col-12>
+          <div class="title-header">
+            <h2>There are no special promotions running at this time.</h2>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div class="white-bg">
+        <ion-row style="justify-content: center;">
+          <ion-col col-12>
+            <h2>TRY A DAILY <br>CHALLENGE BELOW</h2>
+          </ion-col>
+          <ion-col col-4 (click)="goto({ create:'jc', inviteFlag:false})" class="img-bg-slide-circle">
+            <div class="content-circle">
+                <img src="./assets/img/Group 364.svg" alt="" style="width: 28px;height: 28px;"> <br>
+                <span class="name">PUBLIC</span>
+            </div>
+          </ion-col>
+          <ion-col col-4 (click)="goto({ create:'jc', inviteFlag:true})" class="img-bg-slide-circle">
+            <div class="content-circle">
+              <img src="./assets/img/Group 296.svg" alt="" style="width: 28px;height: 28px;"> <br>
+              <span class="name">PRIVATE</span>
+          </div>
+          </ion-col>
+          <ion-col col-4 (click)="gotocustom({ create:'cc'})" class="img-bg-slide-circle">
+            <div class="content-circle">
+              <img src="./assets/img/Group 297.svg" alt="" style="width: 28px;height: 28px;"><br>
+              <span class="name">CUSTOM</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+  </ng-template>
+</ion-content>

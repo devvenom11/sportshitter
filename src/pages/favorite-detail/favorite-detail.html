@@ -1,0 +1,136 @@
+<!--
+  Generated template for the ContestMainPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+        <ion-navbar>
+            <button ion-button menuToggle>
+                <ion-icon name="menu">
+                        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+                        margin-left: -10px;
+                        margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+                </ion-icon>
+            </button>        
+            <img src='./assets/img/logo.png' style="height: 36px;width: 28px;position: absolute;top: 8px;left: calc(50% - 14px);" />
+            <ion-buttons end>
+                <button ion-button end (click)="goFund()">
+                    <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+                </button>                
+            </ion-buttons>
+        </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-label style="display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #272727;
+    padding-left: 3vw;
+    font-size: 21px;">{{username}} 
+        <button *ngIf="favflag == 1" ion-button icon-only (click)="setfav(0)" end style="color: #f47b4e;
+        background-color: transparent;box-shadow: none;">
+                <ion-icon name="star"></ion-icon>                
+        </button>
+        <button *ngIf="favflag == 0" ion-button icon-only (click)="setfav(1)" end style="color: #f47b4e;
+        background-color: transparent;box-shadow: none;">
+                <ion-icon name="md-people"></ion-icon>                
+        </button> 
+    </ion-label>
+    
+    <ion-note style="padding-left: 3vw;font-style:italic;">Hitter ({{score}}%)</ion-note>
+    <!-- <p style="background-color: #203e4b;
+    color: white;
+    margin-top: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    height: 10vw;
+    display: flex;
+    align-items: center;
+    padding-left: 4vw;">Scores</p>
+    <ion-list>
+        <ion-item class='item' style="margin-top: 2px;background-color: #f4f4f4;" no-lines *ngFor="let item of sportList;let i = index;">
+            <ion-label style="display: flex;
+            align-items: center;
+            justify-content: space-between;">
+                    <p style="color:#333;font-size:12px;">{{ item.toUpperCase() }}</p>
+                    <ion-note style = "display: flex;
+                    align-items: center;">{{ (scoreList[i]/sportNumList[i]) | number:'1.0-0' }}%</ion-note>
+                    <ion-icon name="ionic" item-end></ion-icon>
+            </ion-label>
+        </ion-item>
+    </ion-list>   -->
+    <!-- <p style="background-color: #203e4b;
+    color: white;
+    margin-top: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    height: 10vw;
+    display: flex;
+    align-items: center;
+    padding-left: 4vw;" *ngIf="favflag == 1">Active chats</p> -->
+    
+    <!-- <ion-list *ngIf="favflag == 1">       
+        <ion-item style="margin-top: 2px;background-color: #f4f4f4;" class='item' no-lines *ngFor="let item of chatarray;let i = index;">
+           
+            <div style="display: flex;
+            align-items: center;
+            justify-content: space-between;">
+                    <p style="color:#333;font-size: 12px;"><ion-icon name="ionic" style="color:#ACABAB;font-size: 12px;" item-end></ion-icon>&nbsp;{{ item }}
+                        <ion-note>&nbsp;({{chatlngarray[i]}})</ion-note>
+                    </p>
+                    <ion-icon style="color:#f47b4e;font-size: 20px;" *ngIf="selectedinx != i" name="add" (click)="showdetail(i)"></ion-icon>
+                    <ion-icon style="color:#f47b4e;font-size: 20px;" *ngIf="selectedinx == i" name="remove" (click)="showdetail(i)"></ion-icon>    
+            </div>
+            <p *ngIf="selectedinx == i" no-lines style="display: flex;
+            background-color: #f4f4f4;            
+            justify-content: space-between;
+            align-items: center;">{{away}}
+                <ion-icon item-end style="color:#f47b4e;" name="ios-arrow-forward" (click)="gochat(selectedinx)"></ion-icon>
+            </p>
+            <p *ngIf="selectedinx == i" no-lines style="display: flex;
+            background-color: #f4f4f4;            
+            justify-content: space-between;
+            align-items: center;">{{home}}
+                <ion-icon item-end style="color:#f47b4e;" name="ios-arrow-forward" (click)="gochat(selectedinx)"></ion-icon>
+            </p>               
+        </ion-item>
+                                 
+    </ion-list>  -->
+    <div class="pretitle">
+        What's your favorite sports team?
+    </div>
+    <ion-item class="preselect">
+        {{ team?team:'- -' }}
+    </ion-item>
+
+    <div class="pretitle">
+        What's your favorite sport?
+    </div>
+    <ion-item class="preselect">
+        {{ sport?sport.toUpperCase():'- -' }}
+    </ion-item>
+
+    <div class="pretitle">
+        What's your favorite sport to bet on?
+    </div>
+    <ion-item class="preselect">    
+        {{ presport?presport.toUpperCase():'- -' }}
+    </ion-item>
+
+    <div class="pretitle">
+        Where do you like to watch a game?
+    </div>        
+    <ion-item class="preselect">
+        {{ place?place:'- -' }}
+    </ion-item>
+
+    <div class="pretitle">
+        What's your favorite cocktail to drink during a game?
+    </div>
+    <ion-item class="preselect">
+        {{ cocktail?cocktail:'- -' }}
+    </ion-item>
+
+</ion-content>

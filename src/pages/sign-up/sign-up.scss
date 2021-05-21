@@ -1,0 +1,261 @@
+page-sign-up {
+    .fab, .fab.activated {
+        background: transparent;
+        color: color($colors, border);
+    }
+
+    .list-ios, .list { 
+        & > .item-block:first-child,
+        > .item-block:last-child  {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        & > .item-block:last-child .item-inner {
+            border-bottom: 0.55px solid color($colors, border);
+        }
+    }
+    
+     ion-icon {
+        font-size: 1.6em;
+    }
+    
+    .label_f{
+        text-align: right;        
+        margin-right: 2px;
+        font-size: 25px;
+        font-weight: 600;
+        color: white;
+    }
+
+    .label_s{
+        font-size: 25px;
+        color: #ee7449;
+        padding-left: 0px;
+    }
+
+    .logo{
+        text-align: center;
+        padding: 0px;
+        padding-top: 2vw;
+    }
+    .item-md, .item-ios {
+        padding-left: 5vw;
+        padding-right: 5vw;     
+        background-color: transparent;       
+    }
+    .button-clear-ios, .button-clear-md {
+        color: white;
+    }
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md,
+    .item-input .label-ios, .item-select .label-ios, .item-datetime .label-ios {
+        color: #fff;
+    }
+
+    .text-input::-moz-placeholder {
+        color: white;
+    }
+    
+    .text-input:-ms-input-placeholder {
+        color: white;
+    }
+    
+    .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: white;
+    }
+
+    .input-ios[clearInput] .text-input, .input-md[clearInput] .text-input {        
+        color: white;
+    }
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    }
+    .sgn_btn{
+        .button-inner {
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-family: industry-bold;
+        }
+        margin: 0px;
+        padding: 0px;
+        background: linear-gradient(180deg, #587581,#203E4B);
+        height: 52px;
+        border-radius: 8px;
+        border: 1px solid white;
+    }
+    a{
+        color: white;
+        font-size: 20px;
+        border-color: white;
+        border-bottom: solid 1px white;
+    }   
+    .list-md .item-input.item-input-has-focus:last-child,
+    .list-md .item-input.input-has-focus:last-child{
+        border-bottom-color:#ee7449;
+        box-shadow: none;
+    }
+
+    .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child{
+        border: none;
+        box-shadow: none;
+    }
+
+    .label-ios{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .label-md{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+     ion-icon {
+        &[class*="custom-"] {
+          mask-size: contain;
+          mask-position: 50% 50%;
+          mask-repeat: no-repeat;
+          background: currentColor;
+          width: 1em;
+          height: 1em;
+        }
+        &[class*="custom-mobile"] {
+            mask-image: url(../../assets/icon/Phone_icon.png);
+          }
+    }
+    .label-right{
+        order: inherit
+    }
+    .not-allow-popup{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background: rgba(37, 54, 70, 0.5);
+        z-index: 99;
+        img{
+            width: 70px;
+            margin-bottom: 5px;
+        }
+        .label_s{
+            text-align: left;
+        }
+        h3{
+            font-size: 4.2rem;
+        }
+        .close{
+            padding: 20px;
+            font-size: 18px;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index:9999999
+        }
+        .row{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: rgba(37, 54, 70, 1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .col{
+            text-align: center;
+            color: white;
+        }
+    }
+    .icon-eye{
+        position:absolute;
+        right: 0px;
+        z-index: 99999999;
+    }
+    .active{
+        color:#f47f53 !important;
+    }
+    .eye-section{
+        position: absolute;
+        right: 10px;
+        bottom: 35%;
+        width: auto;
+        .icon{color:white;}
+        .item-inner{
+            border:0 !important;
+        }
+    }
+    form{
+        position: relative;
+    }
+    .label_div{
+        color: white;
+        font-family: industry-black;
+        font-size: 44px;
+        text-align: left;
+    }
+    .scroll-content{
+        background: url(../assets/img/bg-image.png) !important;
+        background-repeat: no-repeat;
+        background-size: cover !important;
+        background-position: top right !important;
+    }
+    .bg-img{ background: url('../assets/img/Rectangle 9.svg');}
+    form{
+        position: relative;
+        padding-top: 100px;
+    }
+    .input-has-focus .label-floating{
+        padding-left: 0 !important;
+        color:#F47B4E !important;
+        font-size: 16px !important;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom-color:#AFC0C7 !important;
+        box-shadow:none !important
+    }
+    .username .text-input{
+        background: url('../assets/img/Group 232.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+    }
+    .password-text .text-input{
+        background: url('../assets/img/Group 233.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+    }
+    .email .text-input{
+        background: url('../assets/img/Group 238.svg') !important;
+        background-repeat: no-repeat !important;
+        padding-left: 30px !important;
+        background-position: center left !important;
+    }
+    .phone .text-input{
+        background: url('../assets/img/Group 236.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+    }
+    .label-floating{
+        padding-left: 25px !important;
+    }
+    .item-label-floating{
+        margin-bottom: 20px;
+    }
+    .active-pass{
+        .a{fill:white;}
+    }
+    .back-button{
+        display: none !important
+    }
+}
+@media(max-width:768px){
+    .not-allow-popup{
+        .row{
+            width: 100%;
+            align-items: center;
+            height: 100%;
+        }
+    }
+}

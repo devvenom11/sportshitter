@@ -1,0 +1,665 @@
+page-contest-select {
+    ion-content{
+        margin-top: -2px;
+    }
+    .card-ios{
+        margin:0px;
+        margin-top:10px;
+        width:100%;
+    }
+    h3{
+        text-align: center;
+        font-size: 1.9rem;
+        color:#1f323b;
+        margin-bottom:0px;
+        margin-top:3vw;
+        padding: 4px 0px;
+    }
+
+    .item-ios, .item-md {
+        padding: 0px;
+    }
+    .item-ios.item-block .item-inner {
+        padding-right: 0px;
+    }
+    .item-ios .radio-ios, .item-md .radio-md {
+        margin: 0px;
+    }
+    .radio-ios .radio-icon, .radio-md .radio-icon {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #203e4b;
+        border-radius: 50%;
+    }
+    .radio-ios .radio-checked .radio-inner, .radio-md .radio-checked .radio-inner {
+        left: 5px;
+        top: 0px;
+    }
+    .item-radio.item-ios ion-label, .item-radio.item-md ion-label  {
+        border-color: #203e4b;
+    }
+    .button-outline-ios, .button-outline-md{
+        border-width: 0px;
+    }
+    .card-content-md {
+        padding: 10px;
+    }
+    .card-md{
+        margin: 0px;
+        width: 100%;
+    }
+    .card-header-md {
+        padding: 10px;
+    }
+    .toolbar-content-md {
+        display: flex;
+    }
+    .label-md, .label-ios {
+        margin: 0px;
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    .radio-md .radio-checked .radio-inner {
+        left: 3px;
+        top: 3px;
+    }
+    .item.item-ios .checkbox-ios, .item.item-md .checkbox-md {
+       padding: 0px;
+       margin: 0px;
+    }
+
+    .checkbox-ios .checkbox-checked, .checkbox-md .checkbox-checked {
+        border-color: #203e4b;
+        background-color: #fff;
+    }
+
+    .checkbox-ios .checkbox-icon, .checkbox-md .checkbox-icon {
+        width: 16px;
+        height: 16px;
+        float: right;
+    }
+    .checkbox-ios .checkbox-checked .checkbox-inner, .checkbox-md .checkbox-checked .checkbox-inner {
+        left: 2px;
+        top: 2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #203e4b;
+        border-color: #203e4b;
+    }
+    .checkbox-ios .checkbox-icon, .checkbox-md .checkbox-icon {
+        border-color: #203e4b;
+    }
+
+    .checkbox-md .checkbox-icon {
+        border-radius: 50%;
+        border-width: 1px;
+    }
+    .checkbox-md .checkbox-checked .checkbox-inner {
+        left: 2px;
+        top: 2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #203e4b;
+        border-color: #203e4b;
+    }
+
+    .fund_lbl{
+        font-size: 11px;
+        color: #282828;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
+    .bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default  {
+        color: #f47b4e;
+    }
+
+    .toolbar-title-ios, .toolbar-title-md {
+        color: #1f323b;
+    }
+
+    .back-button-text-ios, .back-button-text-md {
+        display: none;
+    }
+    .game_title{
+        margin: 0px;
+        color: #82929a;
+        font-weight: 500;
+        margin-left:2vw;
+    }
+    .scroll-content{
+        margin: -16px;
+        -webkit-overflow-scrolling: initial!important;
+        bottom:50px;
+    }
+    .game_col{
+        display: flex;
+        align-items: center;
+    }
+
+    // .time_note {
+    //     color: #fff;
+    //     background:linear-gradient(to left, #587581 30%, #203e4b 20%);
+    //     padding: 10px;
+    //     font-size: 12px;
+    //     border: 2px solid #f47b4e;
+    //     border-right: 0;
+    //     border-left: 0;
+    //     z-index: 10;
+    // }
+
+    .colleaf{
+        display: flex;
+        align-items: center;
+        padding-left: 2vw;
+    }
+    .gridcontent{
+        background-color: #fff;
+        padding:5px 30px 5px 25px
+    }
+
+    .col {
+        display: flex;
+        align-items: center;
+    }
+
+    .rowcard{
+        display: flex;
+        align-items: center;
+        padding: 0;
+        padding-bottom: 0;
+        font-size: 14px;
+        .team{
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            padding: 10px 0 15px 10px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #203E4B;
+        }
+        .odd{
+            width: 36%;
+            margin-left: 4%;
+            text-align: center;
+            span{
+                font-weight: bold;
+            }
+        }
+        &:last-child{
+            border-top: 0;
+        }
+    }
+    .checkbox-ios, .checkbox-md{
+        width:45px;
+    }
+    .total.checkbox-ios, .total.checkbox-md{
+        width:70px;
+    }
+    // span:not(.fund){
+    //     position: absolute;
+    //     margin-left: -10px;
+    // }
+
+    .bar-button-md{
+        height: 100%;
+    }
+
+    .contestname{
+        display: flex;justify-content: center;
+        margin-bottom: 20px;
+        ion-note{
+            color:#1f323b;
+        }
+    }
+    .heading{
+        position: fixed;
+        z-index: 12;
+        width: 100%;
+        left: 0;
+        top: 45px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        .row{
+            // height: 36px;
+            background-color:#203d4a;
+            padding:10px;
+            color: white;
+            font-size: 15px;
+            font-family: 'Raleway-bold';
+            justify-content: center;
+        }
+        .challenge-name{
+            height: 50px;
+            background-color:#587581;
+        }
+        .challenge-heading {
+            height: 64px;
+            padding: 0px 10px;
+            color: #fff;
+            background-color:#587581;
+            text-align: center;
+            ul {
+                padding: 0px;
+                margin: 0px;
+                li {
+                    display: inline;
+                    font-size: 12px;
+                }
+            }
+            .entryfee{
+                margin-top:6px;
+                font-size:16px;
+                .entryfee-txt{
+                    font-size:10px;
+                }
+            }
+            .flexlist{
+                flex-direction: column;
+            }
+        }
+        .active{
+            color: #f47b4e;
+            font-family: 'Raleway-bold';
+        }
+        .contest-pickem-title-bar{
+            width:100%;
+            height: 36px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+            background-color: #7d95a0;
+            color:#fcfcfc;
+
+            ion-col{
+                justify-content: center;
+            }
+        }
+    }
+    .scroll-content{
+        background-color: #f4f4f4;
+        margin-top: 16px;
+    }
+    ion-navbar{
+        button{
+            .edit-picks{
+                margin-left: 16px;
+                margin-top:-10px;
+                font-size:12px;
+                color:#f47b4e;
+            }
+        }
+    }
+
+
+    .showpicks{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: inherit;
+        .showpicks-heading{
+            background: #F4F4F4;
+        }
+        .showpicks1{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            color: #203E4B;
+            ion-row{
+                padding: 0px 10px;
+                width: 100%;
+            }
+        }
+        .showpicks2{
+            -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.75);
+            height: 11vw;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            padding: 0px 20px;
+            border-bottom: 1px solid #1e3b44;
+            margin-bottom:15px;
+        }
+
+        .btn{
+
+            width: 100%;
+            background-color: #f47b4e;
+            height: 11vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            ;
+            color: white;
+        }
+    }
+
+    span.button-inner{
+        position:initial;
+        margin-left: 0px;
+    }
+
+    .pitcher{
+        padding-left: 2.8vw;
+        font-size: 12px;
+        color: grey;
+        margin-top: 1vw;
+        margin-bottom: 20px;
+    }
+
+    .total-score {
+        font-size: 1.8rem;
+        border-bottom: 1px solid white;
+        input {
+            text-align: center;
+        }
+    }
+
+    .toolbar-title {
+        margin-right: 15vw;
+    }
+
+    .user-status-bar {
+        position: fixed;
+        bottom: 54px;
+        left: 0px;
+        z-index: 5555;
+        text-align: center;
+        width: 100%;
+        background-color: #25B146;
+        font-size: 12px;
+        display: flex;
+        height:64px;
+        justify-content: space-between;
+        padding: 0px 15px;
+        align-items: center;
+        .pick {
+            border: 1.5px solid white;
+            color: white;
+            background-color: #2BC24E;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        h6{
+            font-size: 14px;
+            color: white;
+            font-weight: 400;
+            margin:0
+        }
+        .pointsPossible {
+            margin: 0px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+    // .game-list{
+    //     padding-top: 145px;
+    //     padding-bottom: 30px;
+    //     background-color: #f4f4f4;
+    // }
+    // .gamelisCounter{
+    //     padding-top: 250px;
+    // }
+    .showpicksCounter{
+        height: calc(100% - 250px);
+    }
+  .fundmodal{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(63,86,97,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    div{
+      width: 80%;
+      text-align: center;
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 5px;
+    }
+    img{
+      width: 100px;
+      position: relative;
+      margin-top: -66px;
+      margin-left: 20px;
+    }
+    h3{
+      color: #214049;
+      font-weight: 700;
+      margin-bottom: 5vw;
+    }
+
+    p{
+      color: #214049;
+      font-size: 12px;
+    }
+
+    button{
+      color: #223e4b;
+      background-color: #f47b4e;
+      margin-top: 5vw;
+      width: 80%;
+      height: 4.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    ion-icon{
+      float: right;
+      font-size: 20px;
+      width: 20px;
+    }
+  }
+  .hideCounter{
+    visibility: hidden !important;
+}
+  .countDown{
+    visibility: visible;
+    text-align:center;
+    width: 100%;
+    .digit-label{
+        font-size: 16px;
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+    .dots{
+        font-size: 16px;
+        position: inherit;
+        margin: 0;
+        padding: 0;
+        font-family: industry-black;
+    }
+    .digit{
+        position: inherit;
+        margin: 0;
+        font-size: 16px;
+        padding:2px 4px;
+        font-weight: bold;
+        background: black;
+        color: #E9E930;
+    }
+    .label{
+        bottom: 0;
+        color: #587581;
+        font-size: 6px;
+        font-family: roboto;
+        text-transform: uppercase;
+        top: inherit;
+        left: -3px;
+    }
+    .hidelabel{
+        display: none
+    }
+    .green{
+        color:#223e4b;
+    }
+  }
+    .slide-header{
+        height: 136px;
+        .noab{
+            position: relative !important;
+            top:inherit !important;
+            left: inherit !important;
+            transform: inherit !important;
+            margin-top: 15px;
+        }
+        svg {
+            .a{
+                fill:white !important;
+                stroke:white !important;
+            }
+            .b{
+                stroke:white !important;
+            }
+        }
+        .content{
+            padding: 0 10px;
+            width: 25%;
+        }
+    }
+    .header-details{
+        display: flex;
+        color: white;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        .number {
+            display: inline-block;
+            margin: 0 !important;
+            position: relative !important;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 22px;
+        }
+        .label {
+            display: inline-block;
+            margin: 0 !important;
+            position: relative !important;
+            font-size: 14px;
+            line-height: 17px;
+            padding-bottom: 5px;
+        }
+    }
+    .subtitle{
+        font-size: 21px;
+        font-family: industry-black;
+        color: #203E4B;
+        line-height: 25px;
+        margin: 6px 0 10px !important;
+        width: 100%;
+    }
+    .pick-header{
+        height: 34px;
+        color: #587581;
+        background: #F4F4F4;
+        padding-left: 25px;
+        font-size: 15px;
+        padding-right: 35px;
+        .time_note{
+            text-align: left;
+            color:#587581
+        }
+        .pick-label{
+            text-align: center;
+            color:#587581;
+        }
+    }
+    .team{
+        font-size: 16px;
+        color: #203E4B;
+        font-family: roboto-medium;
+    }
+    .odd{
+        position: relative;
+        .checkbox-icon{
+            width: 102px;
+            height: 40px;
+            border-radius: 8px;
+            border-color: #587581;
+            border-width: 1.5px;
+        }
+        .item-cover{
+            z-index: 9999;
+        }
+        .challenge2CB{
+            width: 102px;
+        }
+        .challenge2Points{
+            position: absolute;
+            z-index: 999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-55%);
+            font-weight: bold;
+            color: #203E4B;
+            font-size: 18px;
+        }
+        .checkbox-inner{
+            display: none;
+        }
+        .checkbox-checked{
+            border-color: #CB5225 !important;
+            background: #F37343;
+        }
+    }
+    .active-sport{
+        .challenge2Points{
+            color:white !important
+        }
+    }
+    .yourpick{
+        color: #F47B4E;
+        font-weight: bold;
+        font-size: 16px;
+        width: 100%;
+    }
+    .btn-pick{
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: roboto;
+        background: #2BC24E;
+        border: 1.5px solid white;
+        border-radius: 8px;
+        padding: 11px 30px;
+        height:50px
+    }
+    .counter-label-start{
+        color: #587581;
+        font-family: industry-black;
+        font-size: 10px;
+        position: relative;
+        justify-content: center;
+        &:before {
+            content: "";
+            height: 1px;
+            width: 21px;
+            background: #587581;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translate(-50%);
+        }
+        &:after {
+            content: "";
+            height: 1px;
+            width: 21px;
+            background: #587581;
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(-50%);
+        }
+    }
+}

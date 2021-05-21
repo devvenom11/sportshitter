@@ -1,0 +1,483 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+            <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;margin-left: -10px;margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+        </button>
+        <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+        <ion-buttons end>
+          <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+          </button>
+          <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+          </button>           
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content padding [ngClass]="{'with-footer':showInviteButton}">
+    <ion-grid class="slide-header" style="background-image: url('./assets/img/field-sunny@2x/field-sunny@2x.png');" *ngIf="showData">
+        <h2 class="title noab">
+            {{ data.challengedetails.sport | uppercase }} - {{data.challengedetails.contestname? data.challengedetails.contestname : data.challengedetails.game_id }} <br>
+            <small class="status-label">{{data.challengestatus}}</small><br>
+            <small>
+                <div *ngIf="data.winnerstatus!='noplay' else noplay">
+                    <ng-container *ngIf="data.winnerstatus=='tie'">
+                        Tie
+                    </ng-container>
+                </div>
+                <ng-template #noplay>
+                    <div>No Play</div>
+                </ng-template>
+            </small>
+        </h2>
+        <div class="header-details">
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12.206" height="9.155" viewBox="0 0 12.206 9.155"><defs><style>.a{fill:#fff;}</style></defs><path class="a" d="M11.062,73.154H1.144A1.146,1.146,0,0,1,0,72.01V70.1a.381.381,0,0,1,.381-.381,1.144,1.144,0,0,0,0-2.289A.381.381,0,0,1,0,67.051V65.143A1.146,1.146,0,0,1,1.144,64h9.918a1.146,1.146,0,0,1,1.144,1.144v1.907a.381.381,0,0,1-.381.381,1.144,1.144,0,0,0,0,2.289.381.381,0,0,1,.381.381V72.01a1.146,1.146,0,0,1-1.144,1.144ZM.763,70.445V72.01a.382.382,0,0,0,.381.381h9.918a.382.382,0,0,0,.381-.381V70.445a1.907,1.907,0,0,1,0-3.738V65.143a.382.382,0,0,0-.381-.381H1.144a.382.382,0,0,0-.381.381v1.564a1.907,1.907,0,0,1,0,3.738Z" transform="translate(0 -63.999)"/></svg>
+                <br><span class="label">Entry Fee</span><br><span class="number">{{data.challengedetails.game!=0?'$'+data.challengedetails.game :'Free'}}</span>
+            </div>
+            <div class="content" *ngIf="data.winnerstatus!='noplay' || data.winnerstatus!='tie'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="9.966" height="11.569" viewBox="0 0 9.966 11.569"><defs><style>.a{fill:#203e4b;stroke:#203e4b;stroke-width:0.2px;}</style></defs><g transform="translate(-33.8 0.1)"><g transform="translate(33.9)"><path class="a" d="M188.745,215.1h-.65a.428.428,0,1,1,0-.856h1.144a.284.284,0,0,0,0-.567H188.7v-.395a.284.284,0,0,0-.567,0v.395h-.04a1,1,0,1,0,0,1.99h.65a.428.428,0,0,1,0,.856H187.58a.284.284,0,0,0,0,.567h.558v.4a.284.284,0,0,0,.567,0v-.4h.054a1,1,0,0,0-.014-1.99Z" transform="translate(-183.479 -207.966)"/><path class="a" d="M43.1,6.493a8.13,8.13,0,0,0-1.229-1.971,9.157,9.157,0,0,0-1.574-1.5L41.506.789a.28.28,0,0,0-.052-.336A1.413,1.413,0,0,0,40.442,0a2.379,2.379,0,0,0-.917.241,1.736,1.736,0,0,1-.577.173A.359.359,0,0,1,38.814.39,4.2,4.2,0,0,0,37.4.057a1.916,1.916,0,0,0-1.423.667.285.285,0,0,0-.033.355l1.3,1.964a9.31,9.31,0,0,0-1.553,1.48,8.2,8.2,0,0,0-1.229,1.971A6.7,6.7,0,0,0,33.9,9.168a2.2,2.2,0,0,0,2.2,2.2h5.365a2.2,2.2,0,0,0,2.2-2.2A6.7,6.7,0,0,0,43.1,6.493ZM36.55.96A1.237,1.237,0,0,1,37.4.619a3.683,3.683,0,0,1,1.217.3.96.96,0,0,0,.329.057A2.094,2.094,0,0,0,39.74.761a1.917,1.917,0,0,1,.7-.2A.75.75,0,0,1,40.9.719L39.762,2.827H37.786ZM41.466,10.8H36.1a1.635,1.635,0,0,1-1.633-1.633A6.609,6.609,0,0,1,36.115,4.9a8.676,8.676,0,0,1,1.6-1.5h2.123a8.513,8.513,0,0,1,1.6,1.5,6.592,6.592,0,0,1,1.647,4.271A1.628,1.628,0,0,1,41.466,10.8Z" transform="translate(-33.9)"/></g></g></svg><br>
+                <span class="label">
+                    <ng-container *ngIf="data.challengestatus=='pending';else gameFinishLabel">{{showPossiblePrize ? 'Possible Prize' : 'Prize'}}</ng-container>
+                    <ng-template #gameFinishLabel>Prize</ng-template>
+                </span><br>
+                <span class="number" *ngIf="createflag!='sp'">
+                    <ng-container *ngIf="data.challengestatus=='pending'; else gameFinish">
+                        <span *ngIf="showPossiblePrize; else prize">
+                            <ng-container *ngIf="data.challengedetails.possibleprize !='NaN'">
+                                {{data.challengedetails.possibleprize | currency:'USD':'2.1-2'}}
+                            </ng-container>
+                            <ng-container *ngIf="data.challengedetails.possibleprize =='NaN'">
+                                $0
+                            </ng-container>
+                        </span>
+                        <ng-template #prize>
+                            <ng-container *ngIf="data.prizeamount !='NaN'">
+                                {{data.prizeamount | currency:'USD':'2.1-2'}}
+                            </ng-container>
+                            <ng-container *ngIf="data.challengedetails.possibleprize =='NaN'">
+                                $0
+                            </ng-container>
+                        </ng-template>
+                    </ng-container>
+                    <ng-template #gameFinish>
+                        <div *ngIf="data.winnerstatus && data.winnerstatus!='noplay'">
+                           <ng-container *ngIf="data.winnerstatus!='tie'">
+                                <ng-container *ngIf="data.prizeamount !='NaN'">
+                                    {{data.prizeamount | currency:'USD':'2.1-2'}}
+                                </ng-container>
+                                <ng-container *ngIf="data.challengedetails.possibleprize =='NaN'">
+                                    $0
+                                </ng-container>
+                           </ng-container>
+                        </div>
+                    </ng-template>
+                </span>
+            </div>
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11.428" viewBox="0 0 10 11.428"><defs><style>.a{fill:#203e4b;}</style></defs><path class="a" d="M7.93,68.915a2.53,2.53,0,1,0-4.092-1.708,2.016,2.016,0,0,0-2.351,3.238A2.483,2.483,0,0,0,0,72.717V75.06a.782.782,0,0,0,.781.781H9.094A.907.907,0,0,0,10,74.936V71.863a3.139,3.139,0,0,0-2.07-2.948ZM6.357,65.18a1.758,1.758,0,1,1-1.768,1.758A1.765,1.765,0,0,1,6.357,65.18ZM2.868,67.727A1.249,1.249,0,0,1,4.09,69.271a3.159,3.159,0,0,0-.883.908,1.25,1.25,0,1,1-.339-2.452ZM.766,75.06V72.717A1.716,1.716,0,0,1,2.48,71h.355a3.125,3.125,0,0,0-.12.859v3.073a.91.91,0,0,0,.011.14H.781A.017.017,0,0,1,.766,75.06Zm8.468-.124a.142.142,0,0,1-.14.14H3.62a.142.142,0,0,1-.14-.14V71.863A2.37,2.37,0,0,1,5.848,69.5H6.867a2.37,2.37,0,0,1,2.367,2.367Z" transform="translate(0 -64.414)"/></svg><br><span class="label">Challengers</span><br><span class="number">{{data.challengedetails.player}}</span>
+            </div>
+            <div class="content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11"><defs><style>.a{fill:#203e4b;}.b,.d{fill:none;}.b{stroke:#203e4b;stroke-width:0.7px;}.c{stroke:none;}</style></defs><g transform="translate(-25 -203)"><circle class="a" cx="2.5" cy="2.5" r="2.5" transform="translate(25 203)"/><g class="b" transform="translate(25 209)"><circle class="c" cx="2.5" cy="2.5" r="2.5"/><circle class="d" cx="2.5" cy="2.5" r="2.15"/></g><g class="b" transform="translate(31 203)"><circle class="c" cx="2.5" cy="2.5" r="2.5"/><circle class="d" cx="2.5" cy="2.5" r="2.15"/></g><g class="b" transform="translate(31 209)"><circle class="c" cx="2.5" cy="2.5" r="2.5"/><circle class="d" cx="2.5" cy="2.5" r="2.15"/></g></g></svg><br><span class="label">Picks</span><br><span class="number">{{ data.challengedetails.team }}</span>
+            </div>
+        </div>
+    </ion-grid>
+    <div *ngIf="showData">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-6></ion-col>
+                <ion-col col-6 (click)="goToChat()">
+                    <h3 class="subtitle">
+                        GROUP CHAT
+                        <img src="./assets/img/Group 244.svg" alt="">
+                    </h3>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid *ngIf="isPending">
+            <ion-row style="padding-right: 4px;">
+                <ion-col col-6><button ion-button class="green_btn"  (click)="showDetails()" [ngClass]="{'active': details}">Challenge Details</button> </ion-col>
+                <ion-col col-6><button ion-button class="green_btn" (click)="showScore()" [ngClass]="{'active': scores}">Current Score</button></ion-col>
+            </ion-row>
+        </ion-grid>
+       <!-- DETAILS VIEW -->
+       <ng-container *ngIf="details">
+        <!-- PENDING CHALLENGES -->
+            <ng-container *ngIf="data.challengestatus=='pending'">
+                <ion-grid class="padding-none">
+                    <ion-row  class="current-title">
+                        <ion-col col-8>Your Picks</ion-col>
+                        <ion-col col-4 style="text-align: right;">Pick 'Em Value</ion-col>
+                    </ion-row>
+                </ion-grid>
+                <!-- show picks games -->
+                <ion-grid class="table-list">
+                    <ion-row *ngFor="let item of pickCurrentUser;let i=index">
+                        <ion-col style="padding-left: 25px;padding-right: 35px;">
+                            <ion-row style="align-items: center;border-bottom: 1px solid rgba(112, 112, 112, .1);padding-bottom: 5px;">
+                                <ion-col col-3 style="padding-left: 0;">
+                                    <span class="game-time"> {{item.time}} EST </span>
+                                </ion-col>
+                                <ion-col col-7 style="padding-right: 0;">
+                                    <span class="currentTeam">{{item.team}}</span><br><span class="other-game">{{item.ii}}</span>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <span class="pick-value">{{item.g2Val}}</span>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                    <ion-grid style="padding-left: 20px;padding-right: 35px;">
+                        <ion-row>
+                            <ion-col col-9 class="possible-label" col-3>Point Possible </ion-col>
+                            <ion-col  col-3 class="total-picks">{{pickCurrentUser | sum:'g2Val'}} </ion-col>
+                        </ion-row>
+                    </ion-grid> 
+                </ion-grid>
+                <!-- section for invite users -->
+                <ion-grid class="invite-section">
+                    <ion-row style="margin-top: 20px;padding-left: 15px;">
+                        <ion-col col-10><h4 class="total-label">CHALLENGERS LIST</h4></ion-col>
+                        <ng-container *ngIf="data.challengedetails.directflag==false">
+                            <ng-container *ngIf="data.challengedetails.flag=='sp';else otherFlag">
+                                <ion-col col-2 class="text-center">{{data.challengedetails.userlist.length}}/{{data.challengedetails.player}}</ion-col>
+                            </ng-container>
+                            <ng-template #otherFlag>
+                                <ion-col col-2 class="text-center">{{data.challengedetails.userlist.length -1}}/{{data.challengedetails.player}}</ion-col>
+                            </ng-template>
+                        </ng-container>
+                        <ng-container *ngIf="data.challengedetails.inviteflag || data.challengedetails.directflag">
+                            <ion-col col-2 class="total-list">{{totalUserInvited}}/{{data.challengedetails.player}}</ion-col>
+                        </ng-container>
+                    </ion-row>
+                </ion-grid>
+                <ion-grid class="challenger-list">
+                    <ion-row class="row" style="padding-left: 22px;padding-right: 25px;">
+                        <ng-container *ngFor="let userInvite of data.challengedetails.invitearrayusername">
+                            <ion-col col-12 *ngIf="ifmakePick(userInvite.userid)" style="font-family: industry-black;font-size: 16px;">{{userInvite.username}} <span class="invited-tag">{{userInvite.invitestatus}}</span></ion-col>
+                        </ng-container>
+                    </ion-row>
+                </ion-grid>
+                <!-- section to show users challengers -->
+                <ng-container *ngIf="data.challengedetails.userlist.length > 1">
+                    <ion-grid *ngFor = "let user of data.challengedetails.userlist; let i = index" style="padding:0px">
+                        <ion-grid style="padding:0px">
+                            <ion-row (click)="showPicks(i)" class="listuserrow" *ngIf="i!=currentUserIndex && checkedgroup[i].length>0">
+                                <ion-col col-10 style="display: flex;align-items: center;padding-left: 18px;">
+                                    <p>
+                                        <span class="name" *ngIf="i>currentUserIndex; else less">
+                                            {{getUsernameUserAccept(user)}}
+                                        </span> 
+                                        <ng-template #less>{{i+1}}. {{getUsernameUserAccept(user)}}</ng-template> 
+                                    </p>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <span  class="down-arrow" [ngClass]="{'active':showpos == i}"><svg xmlns="http://www.w3.org/2000/svg" width="10.169" height="17.51" viewBox="0 0 10.169 17.51"><defs><style>.a{fill:none;stroke:#fff;stroke-width:2px;}</style></defs><path class="a" d="M1314.613,251.48l8.048,8.048-8.048,8.048" transform="translate(-1313.906 -250.773)"/></svg></span>
+                                    <!-- <button ion-button icon-only outline (click)="showPicks(i)">
+                                        <ion-icon *ngIf="showpos != i" name="add"></ion-icon>
+                                        <ion-icon *ngIf="showpos == i" name="remove"></ion-icon>
+                                    </button> -->
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <!-- show picks other challengers -->
+                        <ion-grid class="table-list" *ngIf="showpos == i">
+                            <ion-row *ngFor="let item of checkedgroup[i];let j=index" style="align-items: center;border-bottom: 1px solid rgba(112, 112, 112, .1);padding-bottom: 5px; padding-left: 25px;padding-right: 35px;">
+                                <ion-col col-3 style="padding-left: 0;">
+                                    <span class="game-time"> {{item.time}} EST </span>
+                                </ion-col>
+                                <ion-col col-7 style="padding-right: 0;">
+                                    <span class="currentTeam">{{item.team}}</span><br>
+                                    <span class="other-game">{{item.ii}}</span>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <span class="pick-value">{{item.g2Val}}</span>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row style="padding-left: 20px;padding-right: 35px;">
+                                <ion-col col-9 class="possible-label">Point Possible</ion-col>
+                                <ion-col col-3 class="total-picks">{{checkedgroup[i] | sum:'g2Val'}}</ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-grid>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+        <!-- SCORES VIEW -->
+        <ng-container *ngIf="scores">
+            <ion-grid class="padding-none">
+                <ion-row  class="current-title">
+                    <ion-col col-3 class="table-title">Challengers</ion-col>
+                    <ion-col col-3 class="table-title">Current <br>Score</ion-col>
+                    <ion-col col-2 class="table-title">Games<br> Played</ion-col>
+                    <ion-col col-3 class="table-title">Points<br> Possible</ion-col>
+                </ion-row>
+                <ion-row *ngFor="let score of scoreList;let i=index" class="table-list"  style="align-items: center;border-bottom: 1px solid rgba(112, 112, 112, .1);padding-bottom: 5px; padding-left: 10px;padding-right: 10px;" (click)="showPicksDcore(i)">
+                    <ion-col col-3 class="table-value"> {{score.name}} </ion-col>
+                    <ion-col col-3 class="table-value">{{score.score | number : '1.2-2'}}</ion-col>
+                    <ion-col col-2 class="table-value">{{score.gamesPlayer}}</ion-col>
+                    <ion-col col-3 class="table-value">{{score.pointPossible | number : '1.2-2'}}</ion-col>
+                    <ion-col col-1 class="table-value" [ngClass]="{'active':showposScore == i}"><span class="down-arrow resultorder"><svg height="17.51" viewBox="0 0 10.169 17.51" width="10.169" xmlns="http://www.w3.org/2000/svg"><defs><style>.a{fill:none;stroke:#fff;stroke-width:2px;}</style></defs><path class="a" d="M1314.613,251.48l8.048,8.048-8.048,8.048" transform="translate(-1313.906 -250.773)"></path></svg></span></ion-col>
+                    <ion-grid class="table-list" *ngIf="showposScore == i">
+                        <ion-row  class="current-title">
+                            <ion-col col-2></ion-col>
+                            <ion-col col-2>Score</ion-col>
+                            <ion-col col-4></ion-col>
+                            <ion-col col-2>Value</ion-col>
+                            <ion-col col-2>Result</ion-col>
+                        </ion-row>
+                        <ion-row *ngFor="let item of checkedgroup[score.index];let j=index" style="align-items: center;border-bottom: 1px solid rgba(112, 112, 112, .1);padding-bottom: 5px; padding-left: 10px;padding-right: 20px;" class="row-order">
+                            <!-- show result if the game finished. -->
+                            <ng-container *ngIf="haveResultList(item.eventid); else nofinished">
+                                <ion-col col-2>
+                                    <span class="game-time">FINAL</span>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <ng-container *ngFor="let result of resultList">
+                                        <ng-container *ngIf="item.eventid==result[0].EventID">
+                                            <span *ngIf="item.type=='away'" class="game-result">
+                                                {{result[0].AwayScore}} <br>{{result[0].HomeScore}}
+                                            </span>
+                                            <span *ngIf="item.type=='home'" class="game-result">
+                                                {{result[0].HomeScore}}<br>  {{result[0].AwayScore}}
+                                            </span>
+                                        </ng-container>
+                                    </ng-container>
+                                </ion-col>
+                                <ion-col col-4 style="padding-right: 0;">
+                                    <span class="currentTeam">{{item.team}}</span><br>
+                                    <span class="other-game">{{item.ii}}</span>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <span class="pick-value">{{item.g2Val}}</span>
+                                </ion-col>
+                                <ion-col col-2 style="text-align: right;">
+                                    <span class="game-result">{{resultByUser[score.index][j]}}</span>
+                                </ion-col>
+                            </ng-container>
+                            <!-- IF GAMES ARE NOT STARTED -->
+                            <ng-template #nofinished>
+                                <ion-col col-2 style="padding-left: 0;">
+                                    <span class="game-time"> {{item.time}} EST </span>
+                                </ion-col>
+                                <ion-col col-2>-<br>-</ion-col>
+                                <ion-col col-4 style="padding-right: 0;">
+                                    <span class="currentTeam">{{item.team}}</span><br>
+                                    <span class="other-game">{{item.ii}}</span>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <span class="pick-value">{{item.g2Val}}</span>
+                                </ion-col>
+                                <ion-col col-2 style="text-align: right;">-</ion-col>
+                            </ng-template>
+                        </ion-row>
+                        <ion-row style="padding-left: 10px;padding-right: 20px;">
+                            <ion-col col-8 class="possible-label">Points</ion-col>
+                            <ion-col col-2 class="total-picks">{{score.pointPossible | number : '1.2-2'}}</ion-col>
+                            <ion-col col-2 class="total-picks total-picks-real">{{score.score | number : '1.2-2'}}</ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-row>
+            </ion-grid>
+        </ng-container>
+        <!-- HISTORY SECTION -->
+        <!-- NEW DESIGN -->
+        <ng-container *ngIf="data.challengestatus=='finished'">
+            <ion-grid class="padding-none">
+                <ion-row class="current-title">
+                    <ion-col col-2 class="table-title-h">Rank</ion-col>
+                    <ion-col col-3 class="table-title-h">Name</ion-col>
+                    <ion-col col-3 class="table-title-h">Points</ion-col>
+                    <ion-col col-2 class="table-title-h">Prize</ion-col>
+                    <ion-col col-2 class="table-title-h">Details</ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid class="result-row">
+                <ion-row *ngFor="let item of userOrderByRank; let i = index">
+                    <ion-col col-2 class="table-value-h">{{item.rank}}</ion-col>
+                    <ion-col col-3 class="table-value-h"><ng-container *ngIf="userID==item.userid"><ion-icon name="arrow-forward" style="color:#f47b4e;padding-right: 5px;"></ion-icon></ng-container>{{item.name}}</ion-col>
+                    <ion-col col-3 class="table-value-h">{{item.point |  number : '1.2-2'}}</ion-col>
+                    <ion-col col-2 class="table-value-h">
+                        <ng-container *ngIf="data.winnerstatus == 'tie' || data.winnerstatus =='noplay'; else showPrize">
+                            0
+                        </ng-container>
+                        <ng-template #showPrize>
+                            <ng-container *ngIf="data.challengedetails.flag!='sp'; else shownothing">
+                                {{item.prize |  number : '1.2-2'}}
+                            </ng-container>
+                            <ng-template #shownothing>0</ng-template>
+                        </ng-template>
+                    </ion-col>
+                    <ion-col col-2 class="table-value-h" style="text-align:center">
+                        <span (click)="showPicks(i)" class="down-arrow" [ngClass]="{'active':showpos == i}"><svg xmlns="http://www.w3.org/2000/svg" width="10.169" height="17.51" viewBox="0 0 10.169 17.51"><defs><style>.a{fill:none;stroke:#fff;stroke-width:2px;}</style></defs><path class="a" d="M1314.613,251.48l8.048,8.048-8.048,8.048" transform="translate(-1313.906 -250.773)"/></svg></span>
+                        <!-- <button ion-button icon-only outline (click)="showPicks(i)" class="plus-btn">
+                            <ion-icon *ngIf="showpos != i" name="add"></ion-icon>
+                            <ion-icon *ngIf="showpos == i" name="remove"></ion-icon>
+                        </button> -->
+                    </ion-col>
+                    <ng-container *ngIf="showpos == i">
+                        <ion-row style="width: 100%;color: #587581;margin: 0px;background-color: #F4F4F4;font-size: 14px;">
+                            <ion-col col-2 class="table-title-h">Possible Points</ion-col>
+                            <ion-col col-5 class="table-title-h">Your Pick</ion-col>
+                            <ion-col col-3 class="table-title-h">Results</ion-col>
+                            <ion-col col-2 class="table-title-h">Pick Points</ion-col>
+                        </ion-row>
+                        <ion-row *ngFor="let pick of item.picks; let j=index" class="picks-row">
+                            <ion-col col-2>
+                                <span class="pick-value">{{pick.g2Val |  number : '1.2-2'}}</span>
+                            </ion-col>
+                            <ion-col col-5>
+                                <span class="currentTeam">{{pick.team}}</span><br><span class="other-game">{{pick.ii}}</span>
+                            </ion-col>
+                            <ng-container *ngFor="let result of resultList">
+                                <ion-col col-3 *ngIf="pick.eventid==result[0].EventID">
+                                    <span *ngIf="pick.type=='away'" class="game-result">
+                                        {{result[0].AwayScore}} - {{result[0].HomeScore}}
+                                    </span>
+                                    <span *ngIf="pick.type=='home'" class="game-result">
+                                        {{result[0].HomeScore}} -  {{result[0].AwayScore}}
+                                    </span>
+                                </ion-col>
+                                <ion-col col-2 *ngIf="pick.eventid==result[0].EventID">
+                                    <span *ngIf="pick.type=='away'" class="pick-value">
+                                        {{toNumber(result[0].AwayScore) > toNumber(result[0].HomeScore) ? pick.g2Val : 0 }}
+                                    </span>
+                                    <span *ngIf="pick.type=='home'" class="pick-value">
+                                        {{toNumber(result[0].AwayScore) < toNumber(result[0].HomeScore) ? pick.g2Val : 0 }}
+                                    </span>
+                                    <ng-template #addCero>0</ng-template>
+                                </ion-col>
+                            </ng-container>
+                        </ion-row>
+                    </ng-container>
+                </ion-row>
+            </ion-grid>
+            <!-- OLD DESIGN -->
+            <!-- show picks games -->
+            <!-- <ion-grid class="table-list" style="color: white;padding-left: 2vw;padding-right: 2vw;font-size: 12px;font-weight: 400;border-bottom: 1px solid #587581;text-align: center">
+                <ion-row *ngFor="let item of pickCurrentUser;let i=index">
+                    <ion-col col-3 style="font-weight: bold;color: #f47b4e;">
+                        {{item.team}}
+                    </ion-col>
+                    <ion-col col-2 style="color: #f47b4e;">
+                        {{item.g2Val}}
+                    </ion-col>
+                    <ion-col col-3>
+                        {{item.ii}}
+                    </ion-col>
+                    <ng-container *ngFor="let result of resultList">
+                        <ion-col col-2 *ngIf="item.eventid==result[0].EventID">
+                            <span *ngIf="item.type=='away'" style="text-align: center; color:#8eb8ef">
+                                {{result[0].AwayScore}} - {{result[0].HomeScore}}
+                            </span>
+                            <span *ngIf="item.type=='home'" style="text-align: center; color:#8eb8ef">
+                                {{result[0].HomeScore}} -  {{result[0].AwayScore}}
+                            </span>
+                        </ion-col>
+                    </ng-container>
+                    <ion-col col-2>
+                        <span>{{resultByUser[currentUserIndex][i]}}</span>
+                    </ion-col>
+                </ion-row>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-3></ion-col>
+                        <ion-col  col-2 style="text-align: center; font-weight: bold;color: #f47b4e;border-top:1px solid #f47b4e; padding:5px 5px;">{{pickCurrentUser | sum:'g2Val'}} </ion-col>
+                    </ion-row>
+                </ion-grid> 
+            </ion-grid> -->
+            <!-- <ion-grid class="invite-section  grid">
+                <ion-row>
+                    <ion-col  col-12 style="text-align: right;">{{calcTotal(currentUserIndex) | number : '1.2-2'}} </ion-col>
+                </ion-row>
+            </ion-grid> -->
+            <!-- <ng-container *ngIf="data.challengedetails.userlist.length > 1">
+                <ion-grid *ngFor = "let user of data.challengedetails.userlist; let i = index" style="padding:0px">
+                    <ion-grid style="padding:0px">
+                        <ion-row style="background-color: white;box-shadow: 1px 1px 1px rgba(0,0,0,0.4);" *ngIf="i!=currentUserIndex">
+                            <ion-col col-10 style="display: flex;align-items: center;padding-left: 18px;">
+                                <p>
+                                    <ion-icon style="color:grey;" name="radio-button-on"></ion-icon>
+                                    <span *ngIf="i>currentUserIndex; else less">{{i}}. {{getUsernameUserAccept(user)}} </span> 
+                                    <ng-template #less>{{i+1}}. {{getUsernameUserAccept(user)}} </ng-template> 
+                                    <ion-note>({{calcTotal(i) | number : '1.2-2'}} Points)</ion-note>
+                                </p>
+                            </ion-col>
+                            <ion-col col-2 style="display: flex;justify-content: flex-end;align-items: center;">
+                                <button ion-button icon-only outline (click)="showPicks(i)">
+                                    <ion-icon *ngIf="showpos != i" name="add"></ion-icon>
+                                    <ion-icon *ngIf="showpos == i" name="remove"></ion-icon>
+                                </button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid> -->
+                    <!-- show picks other challengers -->
+                    <!-- <ion-grid style="padding:0px;padding-left:11px;color:#333;padding-right:0px;font-size: 10px;" *ngIf="showpos == i">
+                        <ion-row *ngFor="let item of checkedgroup[i];let j=index">
+                            <ion-col col-3 style="font-weight: bold;color: #f47b4e;">
+                                {{item.team}}
+                            </ion-col>
+                            <ion-col col-2>
+                                {{item.g2Val}}
+                            </ion-col>
+                            <ion-col col-3>
+                                {{item.ii}}
+                            </ion-col>
+                            <ng-container *ngFor="let result of resultList">
+                                <ion-col col-2 *ngIf="item.eventid==result[0].EventID">
+                                    <span *ngIf="item.type=='away'" style="text-align: center; color:#8eb8ef">
+                                        {{result[0].AwayScore}} - {{result[0].HomeScore}}
+                                    </span>
+                                    <span *ngIf="item.type=='home'" style="text-align: center; color:#8eb8ef">
+                                        {{result[0].HomeScore}} -  {{result[0].AwayScore}}
+                                    </span>
+                                </ion-col>
+                            </ng-container>
+                            <ion-col col-2>
+                                <span>{{resultByUser[i][j]}}</span>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-grid>
+            </ng-container> -->
+        </ng-container>
+    </div>
+</ion-content>
+<ion-footer style="bottom: 56px;min-height: 64px;" *ngIf="showInviteButton">
+    <ng-container *ngIf="showData && data.challengestatus=='pending'">
+        <ion-toolbar style="padding:0">
+            <ion-row style="align-items: center;">
+                <ion-col col-5 style="text-align: center;">
+                    <ng-container *ngIf="data.challengedetails.directflag==false">
+                        <ng-container *ngIf="data.challengedetails.flag=='sp';else otherFlag">
+                            <span class="label">Current Challengers</span><br><span class="number">{{data.challengedetails.userlist.length}}/{{data.challengedetails.player}}</span>
+                        </ng-container>
+                        <ng-template #otherFlag>
+                            <span class="label">Current Challengers</span><br><span class="number"> {{data.challengedetails.userlist.length -1}}/{{data.challengedetails.player}}</span>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container *ngIf="data.challengedetails.inviteflag || data.challengedetails.directflag">
+                        <span class="label">Current Challengers</span><br><span class="number"> {{totalUserInvited}}/{{data.challengedetails.player}}</span>
+                    </ng-container>
+                </ion-col>
+                <!-- if its not a custom challenge -->
+                <ng-container *ngIf="data.challengedetails.flag=='jc'">
+                    <ion-col col-7 class="invite-btn">
+                        <button (click)="inviteUser()" style="margin-top: 12px" ion-button outline icon-start >
+                            Invite Challengers
+                        </button>
+                    </ion-col>
+                </ng-container>
+                <!-- custom challenge -->
+                <ng-container *ngIf="data.challengedetails.flag=='cc'">
+                    <ion-col col-7 class="invite-btn">
+                        <button (click)="inviteUser()" style="margin-top: 12px" ion-button outline icon-start >
+                            Invite Challengers
+                        </button>
+                    </ion-col>
+                </ng-container>
+            </ion-row>
+        </ion-toolbar>
+    </ng-container>
+</ion-footer>

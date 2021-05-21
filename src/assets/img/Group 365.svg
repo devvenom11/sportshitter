@@ -1,0 +1,53 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="20"
+  height="20"
+  viewBox="0 0 20 20"
+>
+  <defs>
+    <style>
+      .a,
+      .c {
+        fill: none;
+      }
+      .a,
+      .b,
+      .c {
+        stroke: #587581;
+      }
+      .b,
+      .e {
+        fill: none;
+      }
+      .b {
+        stroke-width: 1.5px;
+      }
+      .c {
+        stroke-width: 1.2px;
+      }
+      .d {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g transform="translate(-29 -552)">
+    <g class="a" transform="translate(29 552)">
+      <rect class="d" width="20" height="20" rx="4" />
+      <rect class="e" x="0.5" y="0.5" width="19" height="19" rx="3.5" />
+    </g>
+    <line
+      class="b"
+      x1="11.071"
+      y2="11.212"
+      transform="translate(33.429 556.5)"
+    />
+    <g class="c" transform="translate(32 555)">
+      <circle class="d" cx="3" cy="3" r="3" />
+      <circle class="e" cx="3" cy="3" r="2.4" />
+    </g>
+    <g class="c" transform="translate(40 563)">
+      <circle class="d" cx="3" cy="3" r="3" />
+      <circle class="e" cx="3" cy="3" r="2.4" />
+    </g>
+  </g>
+</svg>

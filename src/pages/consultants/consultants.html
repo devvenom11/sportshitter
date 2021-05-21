@@ -1,0 +1,39 @@
+<!--
+  Generated template for the FavouritesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu">
+                    <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+                    margin-left: -10px;
+                    margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+            </ion-icon>
+        </button>        
+        <img src='./assets/img/logo.png' style="height: 36px;width: 28px;position: absolute;top: 8px;left: calc(50% - 14px);" />
+        <ion-buttons end>
+            <button ion-button icon-only class="my-network-btn" (click)="goFavourite()" end>
+                <ion-icon name="md-people"></ion-icon>                
+            </button>
+            <button ion-button end (click)="goFund()">
+                    <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+            </button>   
+            
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    
+    <div class="col colClass" text-center>
+        <p style="color: #1f323b;font-size: 20px;">What to be a Consultant for need help from a consultant?</p>
+        <br><p style="color: #1f323b;font-family: monospace;">Upgrade to premium to access the feature.</p>
+        <button ion-button (click)="goToUpgradeContest()" style="color: #223e4b;background-color: #f47b4e;margin-top: 5vw;width: 50%;">UPGRADE</button>
+    </div>
+
+</ion-content>

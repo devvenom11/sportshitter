@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{accountBalance | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+<ion-content padding style="background: #F4F4F4">
+  <ion-grid class="banner-container">
+    <ion-row>
+      <ion-col col-12>
+        <h2 class="banner-title">{{userName}}</h2>
+        <h3 class="subtitle">hitter</h3>
+        <div class="close" (click)="closeModal()"><svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)" /></svg></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid style="background-color: #1F2932" *ngIf="showdata">
+    <ion-row style="padding: 5px 0 10px;">
+      <ion-col col-4>
+        <p class="label">CURRENT <br> BALANCE</p>
+        <p class="amount">{{accountBalance | currency:'USD':'2.1-2'}}</p>
+      </ion-col>
+      <ion-col col-4>
+        <p class="label"style="">PENDING <br> CHALLENGES</p>
+        <p class="amount">{{pendingFunds | currency:'USD':'2.1-2'}}</p>
+      </ion-col>
+      <ion-col col-4>
+        <p class="label">POSSIBLE <br> PRIZE</p>
+        <p class="amount">{{possiblePrize | currency:'USD':'2.1-2'}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="popup" *ngIf="showpopup">
+    <div class="content">
+      <img src="./assets/img/logo.png" alt="">
+      <div class="close"><ion-icon name="close" (click)="closePopup()"></ion-icon></div>
+      <h2>{{header}}</h2>
+      <p>{{msg}}</p>
+      <button ion-button outline class="orange-btn" (click)="closePopup()">CONTINUE</button>
+    </div>
+  </div>
+  <div class="green-bg" *ngIf="!hideSignUpBonus">
+    <ion-row>
+      <ion-col col-12><h2>YOUR BONUSES</h2></ion-col>
+    </ion-row>
+    <ng-container *ngFor="let item of bonus; let i = index">
+      <ion-row *ngIf="item.show">
+        <ion-col col-4 class="bonus-name">
+          {{item.bonusname}}
+        </ion-col>
+        <ion-col col-4>
+          <span class="bonus-val" *ngIf="!item.redeemed">{{item.bonus_amount | currency:'USD':'2.1-2'}}
+          </span>
+        </ion-col>
+        <ion-col col-4 style="text-align: right;">
+          <button ion-button (click)="addBonusFund(i)"class="accept">accept</button>
+        </ion-col>
+      <!-- <ng-container *ngIf="item.show">
+        <ion-col class="chall">{{item.bonusname}}</ion-col>
+      <ion-col style="float:right">
+        <span style="float:right;color:#f47b4e;padding-right: 31px;" *ngIf="!item.redeemed">{{item.bonus_amount | currency:'USD':'2.1-2'}}<ion-icon name="checkmark-circle" style="color:#203e4b;padding-left: 5px;" (click)="addBonusFund(i)"></ion-icon><br></span>
+      </ion-col>
+      </ng-container> -->
+      </ion-row>
+    </ng-container>
+    <!-- <ion-row
+      ><ion-col style="float:right">
+        <span style="float:right;color:#f47b4e;padding-right: 31px;">To add bonus to balance click on check icon</span></ion-col
+      ></ion-row
+    > -->
+  </div>
+  <div class="bg-white">
+    <ion-row>
+      <ion-col col-12>
+        <h2 class="green-title">YESTERDAY'S RESULTS</h2>
+      </ion-col>
+      <ion-col col-8 class="fee-label">Entry Fees</ion-col>
+      <ion-col col-4 class="fee-val">
+        <b>{{yesterdaysChallenges | currency:'USD':'2.1-2'}}</b>
+      </ion-col>
+      <ion-col col-8 class="fee-label">Prize</ion-col>
+      <ion-col col-4 class="fee-val">
+        <b>{{yesterdaysPrize | currency:'USD':'2.1-2'}}</b>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="bg-white">
+    <ion-row>
+      <ion-col col-12> <h2 class="green-title">ACCOUNT OPTIONS</h2></ion-col>
+    </ion-row>
+    <ion-row  (click)="GoToAddFund()" class="acc-opt" id="makeDeposit">
+      <ion-col col-11 class="labl">Make a Deposit</ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+    <ion-row  (click)="GoToRefer()" class="acc-opt" id="go-refer">
+      <ion-col col-11 class="labl"> Referral Bonus </ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+    <ion-row  (click)="GoToBonus()" class="acc-opt" id="goBonus">
+      <ion-col col-11 class="labl">Manage Bonus Funds</ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+    <ion-row   (click)="GoToMyChallenge()" class="acc-opt"  id="accountActivity">
+      <ion-col col-11 class="labl">Account Activity</ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+    <ion-row  (click)="mailToSupport()" class="acc-opt" id="contactSuport">
+      <ion-col col-11 class="labl">Contact Support</ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+    <ion-row  (click)="editProfile()" class="acc-opt">
+      <ion-col col-11 class="labl">Edit My Profile</ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+    <ion-row  (click)="goToNotificationSettings()" class="acc-opt">
+      <ion-col col-11 class="labl">Notification Settings</ion-col>
+      <ion-col col-1 class="val">
+        <svg xmlns="http://www.w3.org/2000/svg" width="7.494" height="12.867" viewBox="0 0 7.494 12.867"><defs><style>.a{fill:none;stroke:#587581;stroke-width:1.5px;}</style></defs><path class="a" d="M0,11.807,5.9,5.9,0,0" transform="translate(0.53 0.53)"/></svg>
+      </ion-col>
+      <img src="../../assets/img/Line 12.svg" alt="" class="border-img">
+    </ion-row>
+  </div>
+</ion-content>

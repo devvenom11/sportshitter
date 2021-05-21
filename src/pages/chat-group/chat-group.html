@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ContestMainPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+        <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px;height: 20.08px;">
+        <ion-badge *ngIf="global.notifiBadget.length != 0" style="position: absolute;
+            margin-left: -10px;
+            margin-top: -3px;">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src='./assets/img/logo-new@2x.png' style="height: 36px;width: 28px;position: absolute;top: 8px;" />
+    <ion-buttons end>
+        <button ion-button icon-only end>
+            <ion-label class="fund_lbl">Balance <br> <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label>
+        </button>
+        <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+            <img src='./assets/img/Group 83.svg' style="margin-right: 5px;">Add Funds
+        </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<div class="chat-group" *ngIf="chatGroup">
+    <div class="chat-header">
+      <div style="transform: rotate(180deg); left: 20px; position: absolute;" (click)="goBack()" *ngIf="comingfromSingleChallenge"><img alt="" src="/assets/img/Path 298.svg" ></div>
+      <div style="color:white">{{ chatGroupTitle() }}</div>
+    </div>
+    <div class="chat-messages" id="messagesEl">
+        <div *ngFor="let message of chatGroup.messages" [ngClass]="{'self': message.author._id == user._id, 'other': message.author._id != user._id}">
+            <div style="max-width:75%;">
+              <div class="user">{{ message.author.username}}</div>
+              <div class="message">
+                  <div>{{ message.body }}</div>
+                  <div class="timestamp">{{message.createdAt | date:'M/d h:mm a '}}</div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-box">
+      <ion-item>
+          <ion-textarea
+            [(ngModel)]="message"
+            placeholder="Write a message...">
+          </ion-textarea>
+      </ion-item>
+      <button ion-button icon-only (click)="sendMessage()" style="background-color: #203E4B !important;margin: 8px;">
+        <img src="./assets/img/Path 540.svg" alt="">
+      </button>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+      <img
+        src="./assets/img/Group 9.svg"
+        alt=""
+        style="margin-right: 15px; height: 20.08px"
+      />
+      <ion-badge
+        *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px"
+        >{{global.notifiBadget.length}}</ion-badge
+      >
+    </button>
+    <img
+      src="./assets/img/logo-new@2x.png"
+      style="height: 36px; width: 28px; position: absolute; top: 8px"
+    />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl"
+          >Balance <br />
+          <span class="fund">{{fund | currency:'USD':'2.1-2'}}</span></ion-label
+        >
+      </button>
+      <button
+        ion-button
+        end
+        (click)="goFund()"
+        id="addFundButton"
+        class="addfundbtn"
+      >
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToMyAccount()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Notification Settings</ion-title>
+
+    <ion-buttons right>
+      <button ion-button (click)="saveSettings()">
+        Save
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+    <ion-list inset *ngIf="loaded">
+
+      <ion-item-group>
+        <ion-item-divider style="font-size: 1.75rem;">
+          <ion-icon name="phone-portrait" class="orange-icon"></ion-icon>
+          &nbsp;&nbsp;Phone
+        </ion-item-divider>
+
+        <ion-item>
+          <ion-label>Challenge Invite</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="phone.challengeInvite"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Friend Requests</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="phone.friendRequest"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Challenge chat messages</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="phone.challengeChat"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>User chat messages</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="phone.userChat"></ion-toggle>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider style="font-size: 1.75rem;">
+          <ion-icon name="mail" class="orange-icon"></ion-icon>
+          &nbsp;&nbsp;Email
+        </ion-item-divider>
+
+        <ion-item>
+          <ion-label>Challenge Invite</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="email.challengeInvite"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Friend Requests</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="email.friendRequest"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Challenge chat messages</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="email.challengeChat"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>User chat messages</ion-label>
+          <ion-toggle color="custom-primary" [(ngModel)]="email.userChat"></ion-toggle>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+</ion-content>

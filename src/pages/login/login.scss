@@ -1,0 +1,241 @@
+page-login {
+   .bg-img{ background: url('../assets/img/Rectangle 9.svg');}
+    .list-ios, .list { 
+        & > .item-block:first-child,
+            > .item-block:last-child  {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        & > .item-block:last-child .item-inner {
+            border-bottom: 0.55px solid color($colors, border);
+        }
+    }
+    .scroll-content{
+        background: url(../assets/img/bg-image.png) !important;
+        background-repeat: no-repeat;
+        background-size: cover !important;
+        background-position: top right !important;
+    }
+    ion-icon {
+        font-size: 1.6em;
+    }
+    
+    .gridTop{
+        margin-top:-10px;
+    }
+
+    .logo{
+        text-align: center;
+        padding: 0px;
+        padding-top: 2vw;
+    }
+
+    .label_f{
+        text-align: right;        
+        margin-right: 2px;
+        font-size: 25px;
+        font-weight: 600;
+        color: white;
+    }
+
+    .label_s{
+        font-size: 25px;
+        color: #ee7449;
+        padding-left: 0px;
+    }
+
+    .label_div{
+        color: white;
+        font-family: industry-black;
+        font-size: 44px;
+        text-align: left;
+    }
+
+    .item-md, .item-ios {
+        padding-left: 5vw;
+        padding-right: 5vw;     
+        background-color: transparent;       
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md,
+    .item-input .label-ios, .item-select .label-ios, .item-datetime .label-ios {
+        color: #fff;
+    }
+
+    .text-input::-moz-placeholder {
+        color: white;
+    }
+    
+    .text-input:-ms-input-placeholder {
+        color: white;
+    }
+    
+    .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: white;
+    }
+
+    .button-inner {
+        justify-content: flex-end;
+    }
+
+    .forget{
+        text-align: right;
+        text-transform: none;
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+
+    .item.item-md .checkbox-md {
+        margin: 0px;
+        padding-left:2vw;
+    }
+
+    p{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        padding-left: 2vw;
+        font-weight: 300;
+        color: white;
+    }
+
+    .checkbox-md .checkbox-checked,.checkbox-ios .checkbox-checked {
+        border-color: white;
+        background-color: transparent;
+    }
+
+    .checkbox-md .checkbox-icon,.checkbox-ios .checkbox-icon {        
+        width: 18px;
+        height: 18px;
+        border-width: 1px;
+        border-color: #fff;
+        background-color: transparent;
+    }
+    .checkbox-md .checkbox-checked .checkbox-inner, .checkbox-ios .checkbox-checked .checkbox-inner {
+        left: 7px;
+        top: 0;       
+        width: 8px;
+        height: 18px;
+        border-width: 1px;
+        border-top-width: 0;
+        border-left-width: 0;
+    }    
+    .checkbox-ios .checkbox-icon {
+        border-radius: 2px;
+    }
+    .login_btn{
+        .button-inner {
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        margin: 0px;
+        padding: 0px;
+        background: linear-gradient(180deg, #587581,#203E4B);
+        height: 52px;
+        border-radius: 8px;
+        border: 1px solid white;
+
+    }
+    .button-clear-ios, .button-clear-md {
+        color: white;
+    }
+    a{
+        color: white;
+        font-size: 20px;
+        border-color: white;
+        border-bottom: solid 1px white;
+    }
+    .input-ios[clearInput] .text-input, .input-md[clearInput] .text-input {        
+        color: white;
+    }
+    .button-ios.activated , .button-md.activated {
+        background-color : #f47f53;
+    }  
+    .list-ios, .list-md {        
+        margin-bottom: 5vw;
+    }
+
+    form{
+        position: relative;
+        padding-top: 100px;
+        // width: calc(100% - 70px);
+        // bottom: 40px;
+    }
+    .input-has-focus .label-floating{
+        padding-left: 0 !important;
+        color:#F47B4E !important;
+        font-size: 16px !important;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom-color:#AFC0C7 !important;
+        box-shadow:none !important
+    }
+    .username .text-input{
+        background: url('../assets/img/Group 232.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+    }
+    #password-text .text-input{
+        background: url('../assets/img/Group 233.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        padding-left: 30px !important;
+    }
+    .label-floating{
+        padding-left: 25px !important;
+    }
+    .item-label-floating{
+        margin-bottom: 20px;
+    }
+    .label-ios{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .label-md{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .icon-eye{
+        position:absolute;
+        right: 0px;
+        z-index: 99999999;
+    }
+    .active{
+        color:#f47f53 !important;
+    }
+    .active-pass{
+        .a{fill:white;}
+    }
+    .eye-section{
+        position: absolute;
+        right: 10px;
+        bottom: 35%;
+        width: auto;
+        .item-inner{
+            border:0 !important;
+        }
+    }
+    .checkbox{
+        .item-cover{
+            border-radius: 3px !important;
+        }
+        .checkbox-inner{
+            display: none
+        }
+        .checkbox-checked{
+            background:#F47B4E;
+            border-radius: 3px !important;
+            height: 18px;
+            width: 18px;
+            border: 1px solid white;
+        }
+    }
+}

@@ -1,0 +1,157 @@
+
+<ion-header>
+  <ion-navbar class="new-header" hideBackButton="true">
+    <button ion-button menuToggle>
+      <img src="./assets/img/Group 9.svg" alt="" style="margin-right: 15px; height: 20.08px" />
+      <ion-badge *ngIf="global.notifiBadget.length != 0"
+        style="position: absolute; margin-left: -10px; margin-top: -3px">{{global.notifiBadget.length}}</ion-badge>
+    </button>
+    <img src="./assets/img/logo-new@2x.png" style="height: 36px; width: 28px; position: absolute; top: 8px" />
+    <ion-buttons end>
+      <button ion-button icon-only end>
+        <ion-label class="fund_lbl">Balance <br />
+          <span class="fund">{{funds | currency:'USD':'2.1-2'}}</span>
+        </ion-label>
+      </button>
+      <button ion-button end (click)="goFund()" id="addFundButton" class="addfundbtn">
+        <img src="./assets/img/Group 83.svg" style="margin-right: 5px" />Add
+        Funds
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="selectedSportKey && selectedSport">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToChallengeSportList()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <div style="display: flex; flex-direction: column;align-items: center;">
+      <!-- <ion-title> -->
+
+        <div class="list-item {{selectedSportKey}}">
+          <img class="icon" src="{{selectedSport.iconImage}}" />
+
+          <div style="flex:1;">
+            <div class="sub-text">
+              {{selectedSport.subText}}
+            </div>
+            <div class="title">
+              {{selectedSport.title}}
+            </div>
+          </div>
+        </div>
+
+        <img src="./assets/img/Group 474.svg" alt="" />
+
+
+      <!-- </ion-title> -->
+
+    </div>
+    <hr style="background: white; width: 85%;">
+    <div style="margin-top: 10px;">
+      <ion-grid style="padding: 0!important;">
+        <ion-row>
+          <ion-col col-6 style="border-right: 1px solid white; flex-direction: column; top: -10px;">
+           <span style="color: white; margin: 0px; font-size: 12px; font-weight: bold;">Current Total Prize</span>
+           <h2 style="color: yellow; margin: 0px; font-weight: 900;">{{prizeMoney.totalPrize | currency:'USD': '2'}}</h2>
+          </ion-col>
+          <ion-col col-6 style="top: -10px; margin-top: 8px;">
+            <div class="prize-step">
+              <p> <span style="font-size: 12px; margin-right: 8px;">GRAND PRIZE</span> <span style="color: yellow; font-weight: bold; font-size: 14px;">{{prizeMoney.tier1 | currency:'USD':'2.1-2'}}</span></p>
+              <p> <span style="font-size: 12px; margin-right: 8px;">TIER 2 Spots</span> <span style="color: yellow; font-weight: bold; font-size: 14px;"> {{prizeMoney.tier2}} Winners </span></p>
+              <p> <span style="font-size: 12px; margin-right: 8px;">TIER 3 Spots</span> <span style="color: yellow; font-weight: bold; font-size: 14px;"> {{prizeMoney.tier3}} Winners</span></p>
+            </div>
+         </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </ion-toolbar>
+  <div class="user-status-bar" ion-fixed>
+    <div>
+        <h6>Entry Fee</h6>
+        <h6 class="pointsPossible" >$100</h6>
+    </div>
+    <div>
+        <h6>Current Challenger</h6>
+        <h6 class="pointsPossible" >27/100</h6>
+    </div>
+    <div>
+      <h6>Picks</h6>
+      <h6 class="pointsPossible" >3</h6>
+   </div>
+    <ion-note class="pick">Details</ion-note>
+  </div>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid style="padding-left: 25px;padding-right: 35px;">
+    <ion-row>
+        <ion-col col-12><h3 class="subtitle">MAKE YOUR PICKS!</h3></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngFor="let item of sportinfo; let i = index;">
+    <ion-row class="pick-header">
+      <ion-col col-7><ion-note class="time_note">{{item.parsedTime}} <ng-container *ngIf="name=='SX'">( {{item.sport | uppercase}} )</ng-container></ion-note></ion-col>
+      <ion-col col-5 style="justify-content: flex-end;"><ion-note class="pick-label">Pick 'Em Value</ion-note></ion-col>
+    </ion-row>
+    <div class="gridcontent">
+      <ion-row>
+        <ion-col col-6>
+          <div class="team">
+            {{item.AwayTeam}}
+            <div>
+              <span class="pitcher">{{item.AwayPitcher}}</span>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-6 style="justify-content: flex-end;">
+          <div class="odd" [ngClass]="{'active-sport':awaySports[i]}">
+            <ion-checkbox class="challenge2CB" (ionChange)="checkItem2(i,'away', item.HomeTeam, item.parsedTime, item.AwayTeam, item.Odds.MoneyLineAway,item.Odds.MoneyLineHome,item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2AwayVal, $event,'awaySports',item.source)" [(ngModel)]="awaySports[i]"></ion-checkbox>
+            <span class="challenge2Points">{{item.Odds.G2AwayVal}}</span>
+            <!-- <div class="challenge2CB" (click)="checkItem2(i,'away', item.HomeTeam, item.parsedTime, item.AwayTeam, item.Odds.MoneyLineAway,item.Odds.MoneyLineHome,item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2AwayVal, $event,'awaySports')" [ngClass]="{'active-sport':awaySports[i]}">
+                <span class="challenge2Points">{{item.Odds.G2AwayVal}}</span>
+            </div>-->
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <div class="team">
+            {{item.HomeTeam}}
+            <div>
+              <span class="pitcher">{{item.HomePitcher}}</span>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-6 style="justify-content: flex-end;">
+          <div class="odd" [ngClass]="{'active-sport':homeSports[i]}">
+            <ion-checkbox class="challenge2CB" (ionChange)="checkItem2(i,'home', item.AwayTeam, item.parsedTime, item.HomeTeam,item.Odds.MoneyLineHome,item.Odds.MoneyLineAway, item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2HomeVal, $event,'homeSports',item.source)" [(ngModel)]="homeSports[i]"></ion-checkbox>
+            <span class="challenge2Points">{{item.Odds.G2HomeVal}}</span>
+            <!-- <div class="challenge2CB" (click)="checkItem2(i,'home', item.AwayTeam, item.parsedTime, item.HomeTeam,item.Odds.MoneyLineHome,item.Odds.MoneyLineAway, item.Odds.EventID, item.Odds.TotalNumber,item.Odds.G2HomeVal, $event,'homeSports')" [ngClass]="{'active-sport':homeSports[i]}">
+                <span class="challenge2Points">{{item.Odds.G2HomeVal}}</span>
+            </div> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+  <!-------- End -->
+  <div class="user-status-bar2" ion-fixed>
+    <div *ngIf="global.gameType == 'game2'">
+        <h6>Points Possible</h6>
+        <h6 class="pointsPossible" >39.3</h6>
+    </div>
+    <div>
+        <h6>Your Picks</h6>
+        <h6 class="pointsPossible" >0/3</h6>
+    </div>
+
+    <ion-note class="pick" (click)="myChallenges()">Submit Picks</ion-note>
+  </div>
+</ion-content>

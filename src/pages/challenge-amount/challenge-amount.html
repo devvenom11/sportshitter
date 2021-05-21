@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <span *ngIf="directFlag; else public">Private {{sport}} Challenges</span>
+    <ng-template #public>Public {{sport}} Challenges</ng-template>
+    <ion-buttons end>
+        <button ion-button end (click)="goFund()">
+          <ion-label class="fund_lbl"><p style="margin: 0px;">${{fund}}</p><p style="margin: 0px;color: grey;">ADD FUNDS</p></ion-label>
+        </button>   
+        
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid style="background-color:#203e4b;text-align: center;color:white;padding: 5px !important;">
+    <ion-row>
+      <ion-col>SELECT ENTRY AMOUNT</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row class="challenge-section" (click)="gotoChallengePicks(25)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">$25</ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section" (click)="gotoChallengePicks(50)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">$50</ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section" (click)="gotoChallengePicks(100)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">$100</ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section" (click)="gotoChallengePicks(250)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">$250</ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="challenge-section-last" (click)="gotoChallengePicks(1000)">
+      <ion-col col-11>
+        <ion-row>
+          <ion-col col-12 class="header">$1000</ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon style="font-size: 40px;color: #f47b4e;" name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
